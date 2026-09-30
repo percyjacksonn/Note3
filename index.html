@@ -1,288 +1,208 @@
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html>
-<body>4
-<!DOCTYPE html>
-<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Lumos - Study Materials</title>
+    <title>LUMOS - Java Notes</title>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial, sans-serif;
-        }
-
         body {
-            min-height: 100vh;
-            background: #080b12;
+            font-family: Arial, sans-serif;
+            background: #0b0f19;
             color: white;
-            padding: 40px 20px;
+            margin: 0;
+            padding: 40px;
         }
 
         .container {
-            max-width: 850px;
+            max-width: 800px;
             margin: auto;
         }
 
-        /* Header */
-        .header {
-            margin-bottom: 35px;
-        }
-
-        .logo {
-            color: #7c5cff;
-            font-size: 18px;
-            font-weight: bold;
-            letter-spacing: 2px;
-            margin-bottom: 15px;
-        }
-
         h1 {
-            font-size: 38px;
+            color: #8b6cff;
+            text-align: center;
             margin-bottom: 10px;
         }
 
         .subtitle {
-            color: #9298a8;
-            font-size: 15px;
+            text-align: center;
+            color: #999;
+            margin-bottom: 35px;
         }
 
-        /* Search */
-        .search {
-            width: 100%;
-            padding: 15px 18px;
-            margin: 25px 0;
-            background: #111622;
-            border: 1px solid #242b3a;
-            border-radius: 12px;
-            color: white;
-            outline: none;
-            font-size: 15px;
-        }
-
-        .search:focus {
-            border-color: #7c5cff;
-        }
-
-        /* Materials */
-        .materials {
-            display: grid;
-            gap: 14px;
-        }
-
-        .material {
+        .file {
             display: flex;
             align-items: center;
-            gap: 16px;
+            justify-content: space-between;
+            background: #151b28;
+            border: 1px solid #252d3d;
             padding: 18px;
-            background: #111622;
-            border: 1px solid #202838;
-            border-radius: 15px;
+            margin: 12px 0;
+            border-radius: 12px;
             text-decoration: none;
             color: white;
-            transition: 0.25s;
+            transition: 0.2s;
         }
 
-        .material:hover {
-            transform: translateY(-3px);
-            border-color: #7c5cff;
-            background: #151b29;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        .file:hover {
+            background: #20283a;
+            border-color: #8b6cff;
+            transform: translateY(-2px);
         }
 
-        .icon {
-            width: 48px;
-            height: 48px;
-            border-radius: 12px;
-            background: #201a45;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 22px;
-        }
-
-        .info {
-            flex: 1;
-        }
-
-        .info h3 {
+        .name {
             font-size: 16px;
-            margin-bottom: 5px;
         }
 
-        .info p {
-            color: #777f91;
-            font-size: 13px;
-        }
-
-        .arrow {
-            color: #7c5cff;
-            font-size: 22px;
-        }
-
-        .section-title {
-            margin: 25px 0 15px;
-            font-size: 13px;
-            color: #777f91;
-            text-transform: uppercase;
-            letter-spacing: 1.5px;
-        }
-
-        footer {
-            text-align: center;
-            margin-top: 40px;
-            color: #555d6d;
-            font-size: 12px;
-        }
-
-        @media (max-width: 600px) {
-            body {
-                padding: 25px 15px;
-            }
-
-            h1 {
-                font-size: 30px;
-            }
-
-            .material {
-                padding: 15px;
-            }
+        .open {
+            color: #8b6cff;
+            font-weight: bold;
         }
     </style>
+
 </head>
 
 <body>
 
-    <div class="container">
+<div class="container">
 
-        <div class="header">
-            <div class="logo">LUMOS</div>
+    <h1>JAVA NOTES</h1>
 
-            <h1>Study Materials</h1>
-
-            <p class="subtitle">
-                Notes, question banks and resources — all in one place.
-            </p>
-        </div>
-
-        <input
-            type="text"
-            class="search"
-            id="search"
-            placeholder="Search study materials..."
-        >
-
-        <div class="section-title">Java • Study Resources</div>
-
-        <div class="materials" id="materials">
-
-            <a class="material" href="UNIT IV (OOPS) (1).pdf" target="_blank">
-                <div class="icon">📄</div>
-
-                <div class="info">
-                    <h3>Unit IV — OOPS</h3>
-                    <p>Object Oriented Programming notes</p>
-                </div>
-
-                <div class="arrow">→</div>
-            </a>
+    <p class="subtitle">
+        Study materials, notes and question banks
+    </p>
 
 
-            <a class="material" href="java%20notes%20Unit-4.pdf" target="_blank">
-                <div class="icon">📘</div>
+    <a class="file"
+       href="java%20notes/Java%20notes%20Unit-4.pdf"
+       target="_blank">
 
-                <div class="info">
-                    <h3>Java Notes — Unit 4</h3>
-                    <p>Complete Unit 4 study notes</p>
-                </div>
+        <span class="name">📄 Java Notes Unit-4</span>
+        <span class="open">OPEN →</span>
 
-                <div class="arrow">→</div>
-            </a>
+    </a>
 
 
-            <a class="material" href="java unit%205%20notes.pdf" target="_blank">
-                <div class="icon">📘</div>
+    <a class="file"
+       href="java%20notes/Method%20overriding.pdf"
+       target="_blank">
 
-                <div class="info">
-                    <h3>Java Notes — Unit 5</h3>
-                    <p>Complete Unit 5 study notes</p>
-                </div>
+        <span class="name">📄 Method Overriding</span>
+        <span class="open">OPEN →</span>
 
-                <div class="arrow">→</div>
-            </a>
+    </a>
 
 
-            <a class="material" href="PART%20A%20QUESTION%20BANK%20QA%202.pdf" target="_blank">
-                <div class="icon">📝</div>
+    <a class="file"
+       href="java%20notes/PART%20A%20QUESTION%20BANK%20CIA%202.pdf"
+       target="_blank">
 
-                <div class="info">
-                    <h3>Part A Question Bank — QA 2</h3>
-                    <p>Important examination questions</p>
-                </div>
+        <span class="name">📝 Part A Question Bank CIA 2</span>
+        <span class="open">OPEN →</span>
 
-                <div class="arrow">→</div>
-            </a>
+    </a>
 
 
-            <a class="material" href="UNIT%204%20NOTES.pdf" target="_blank">
-                <div class="icon">📚</div>
+    <a class="file"
+       href="java%20notes/UNIT%202-REVISION.pdf"
+       target="_blank">
 
-                <div class="info">
-                    <h3>Unit 4 Notes</h3>
-                    <p>Study material for Unit 4</p>
-                </div>
+        <span class="name">📘 Unit 2 Revision</span>
+        <span class="open">OPEN →</span>
 
-                <div class="arrow">→</div>
-            </a>
+    </a>
 
 
-            <a class="material" href="UNIT%20III%20NOTES.pdf" target="_blank">
-                <div class="icon">📚</div>
+    <a class="file"
+       href="java%20notes/UNIT%204%20NOTES.pdf"
+       target="_blank">
 
-                <div class="info">
-                    <h3>Unit III Notes</h3>
-                    <p>Study material for Unit 3</p>
-                </div>
+        <span class="name">📘 Unit 4 Notes</span>
+        <span class="open">OPEN →</span>
 
-                <div class="arrow">→</div>
-            </a>
-
-        </div>
-
-        <footer>
-            © 2026 Lumos • College Study Portal
-        </footer>
-
-    </div>
+    </a>
 
 
-    <script>
-        const search = document.getElementById("search");
-        const materials = document.querySelectorAll(".material");
+    <a class="file"
+       href="java%20notes/UNIT%20I%20(OOPS).docx.pdf"
+       target="_blank">
 
-        search.addEventListener("input", function () {
+        <span class="name">📘 Unit I - OOPS</span>
+        <span class="open">OPEN →</span>
 
-            const value = search.value.toLowerCase();
+    </a>
 
-            materials.forEach(function (item) {
 
-                const text = item.innerText.toLowerCase();
+    <a class="file"
+       href="java%20notes/UNIT%20III%20NOTES.pdf"
+       target="_blank">
 
-                if (text.includes(value)) {
-                    item.style.display = "flex";
-                } else {
-                    item.style.display = "none";
-                }
+        <span class="name">📘 Unit III Notes</span>
+        <span class="open">OPEN →</span>
 
-            });
+    </a>
 
-        });
-    </script>
+
+    <a class="file"
+       href="java%20notes/UNIT%20V%20(OOPS)%20(1).pdf"
+       target="_blank">
+
+        <span class="name">📘 Unit V - OOPS</span>
+        <span class="open">OPEN →</span>
+
+    </a>
+
+
+    <a class="file"
+       href="java%20notes/java%20unit%205%20notes.pdf"
+       target="_blank">
+
+        <span class="name">📘 Java Unit 5 Notes</span>
+        <span class="open">OPEN →</span>
+
+    </a>
+
+
+    <a class="file"
+       href="java%20notes/javanotes5.pdf"
+       target="_blank">
+
+        <span class="name">📘 Java Notes 5</span>
+        <span class="open">OPEN →</span>
+
+    </a>
+
+
+    <a class="file"
+       href="java%20notes/super_constructor%20chaining.pdf"
+       target="_blank">
+
+        <span class="name">📘 Super Constructor Chaining</span>
+        <span class="open">OPEN →</span>
+
+    </a>
+
+
+    <a class="file"
+       href="java%20notes/unit%202%20notes%20oops.pdf"
+       target="_blank">
+
+        <span class="name">📘 Unit 2 OOPS Notes</span>
+        <span class="open">OPEN →</span>
+
+    </a>
+
+
+    <a class="file"
+       href="java%20notes/unit1-Revision.pdf"
+       target="_blank">
+
+        <span class="name">📘 Unit 1 Revision</span>
+        <span class="open">OPEN →</span>
+
+    </a>
+
+</div>
 
 </body>
 </html>

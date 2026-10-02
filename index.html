@@ -1,178 +1,163 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>DBMS Materials</title>
-<style>
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-body {
-    font-family: Arial, sans-serif;
-    background: #f5f6f8;
-    color: #222;
-    padding: 30px 15px;
-}
+    <title>DBMS Notes </title>
 
-.container {
-    max-width: 900px;
-    margin: auto;
-}
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f5f5f5;
+            margin: 0;
+            padding: 30px;
+        }
 
-h1 {
-    text-align: center;
-    margin-bottom: 8px;
-}
+        .container {
+            max-width: 900px;
+            margin: auto;
+        }
 
-.subtitle {
-    text-align: center;
-    color: #777;
-    margin-bottom: 30px;
-}
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
 
-.material {
-    background: white;
-    padding: 20px;
-    margin-bottom: 15px;
-    border-radius: 14px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 15px;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.07);
-}
+        .file {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: white;
+            padding: 18px 22px;
+            margin: 15px 0;
+            border-radius: 12px;
+            text-decoration: none;
+            color: #222;
+            box-shadow: 0 3px 12px rgba(0,0,0,0.08);
+        }
 
-.material h3 {
-    font-size: 17px;
-    margin-bottom: 6px;
-}
+        .file:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+        }
 
-.material p {
-    color: #777;
-    font-size: 14px;
-}
+        .name {
+            font-size: 17px;
+            font-weight: 600;
+        }
 
-.open-btn {
-    text-decoration: none;
-    background: #111;
-    color: white;
-    padding: 10px 18px;
-    border-radius: 8px;
-    white-space: nowrap;
-}
+        .open {
+            color: #2563eb;
+            font-weight: bold;
+        }
 
-.open-btn:hover {
-    background: #444;
-}
+        @media (max-width: 600px) {
+            body {
+                padding: 15px;
+            }
 
-@media(max-width:600px) {
-    .material {
-        flex-direction: column;
-        align-items: flex-start;
-    }
-
-    .open-btn {
-        width: 100%;
-        text-align: center;
-    }
-}
+            .file {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
+        }
+    </style>
 </head>
-</style>
+
 <body>
 
 <div class="container">
 
-    <h1>DBMS Study Materials</h1>
-    <p class="subtitle">
-        Notes, question banks and important study materials
-    </p>
+    <h1>DBMS</h1>
 
 
-    <!-- 1 -->
-    <div class="material">
-        <div>
-            <h3>24EC501 Question Bank</h3>
-            <p>Question Bank</p>
-        </div>
+    <!-- 24EC501 Question Bank -->
 
-        <a
-            class="open-btn"
-            href="../Dbms/24EC501%20Question%20bank.docx"
-            target="_blank">
-            Open
-        </a>
-    </div>
+    <a class="file"
+       href="./Dbms/24EC501%20Question%20bank.docx"
+       target="_blank">
 
+        <span class="name">
+            📄 24EC501 Question Bank
+        </span>
 
-    <!-- 2 -->
-    <div class="material">
-        <div>
-            <h3>DBMS Important 16 Mark Questions Unit 1 to 5</h3>
-            <p>Important Questions</p>
-        </div>
+        <span class="open">
+            OPEN ↗
+        </span>
 
-        <a
-            class="open-btn"
-            href="../Dbms/DBMS%20important%2016m%20questions%20unit%201%20to5.docx"
-            target="_blank">
-            Open
-        </a>
-    </div>
+    </a>
 
 
-    <!-- 3 -->
-    <div class="material">
-        <div>
-            <h3>Hand Written Notes - Unit 3</h3>
-            <p>Relational Database Design and Normalization</p>
-        </div>
+    <!-- DBMS Important Questions -->
 
-        <a
-            class="open-btn"
-            href="../Dbms/Hand%20Written%20Notes%20-%20Unit%203%20-%20Relational%20Database%20Design%20and%20Normalization.pdf"
-            target="_blank">
-            Open
-        </a>
-    </div>
+    <a class="file"
+       href="./Dbms/DBMS%20important%2016m%20questions%20unit%201%20to5.docx"
+       target="_blank">
 
+        <span class="name">
+            📄 DBMS Important 16M Questions Unit 1 to 5
+        </span>
 
-    <!-- 4 -->
-    <div class="material">
-        <div>
-            <h3>Hand Written Notes - Unit 5</h3>
-            <p>Object Relational and No SQL Databases</p>
-        </div>
+        <span class="open">
+            OPEN ↗
+        </span>
 
-        <a
-            class="open-btn"
-            href="../Dbms/Hand%20Written%20Notes%20-%20Unit%205%20-%20Object%20Relational%20and%20No%20Sql%20Databases.pdf"
-            target="_blank">
-            Open
-        </a>
-    </div>
+    </a>
 
 
-    <!-- 5 -->
-    <div class="material">
-        <div>
-            <h3>Database Management System - CS3492</h3>
-            <p>Complete DBMS Notes</p>
-        </div>
+    <!-- Unit 3 -->
 
-        <a
-            class="open-btn"
-            href="../Dbms/Database%20Management%20System%20DBMS%20-%20CS3492%20-%20Notes.pdf"
-            target="_blank">
-            Open
-        </a>
-    </div>
+    <a class="file"
+       href="./Dbms/Hand%20Written%20Notes%20-%20Unit%203%20-%20Relational%20Database%20Design%20and%20Normalization.pdf"
+       target="_blank">
+
+        <span class="name">
+            📘 Hand Written Notes - Unit 3 - Relational Database Design and Normalization
+        </span>
+
+        <span class="open">
+            OPEN ↗
+        </span>
+
+    </a>
+
+
+    <!-- Unit 5 -->
+
+    <a class="file"
+       href="./Dbms/Hand%20Written%20Notes%20-%20Unit%205%20-%20Object%20Relational%20and%20No%20Sql%20Databases.pdf"
+       target="_blank">
+
+        <span class="name">
+            📘 Hand Written Notes - Unit 5 - Object Relational and No SQL Databases
+        </span>
+
+        <span class="open">
+            OPEN ↗
+        </span>
+
+    </a>
+
+
+    <!-- Complete DBMS Notes -->
+
+    <a class="file"
+       href="./Dbms/Database%20Management%20System%20DBMS%20-%20CS3492%20-%20Notes.pdf"
+       target="_blank">
+
+        <span class="name">
+            📘 Database Management System DBMS - CS3492 - Notes
+        </span>
+
+        <span class="open">
+            OPEN ↗
+        </span>
+
+    </a>
 
 </div>
-
 
 
 <div class="container">

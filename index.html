@@ -4,6 +4,2063 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 30px;
+            max-width: 1000px;
+        }
+
+        h1, h2, h3, h4 {
+            margin-top: 24px;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+
+        pre {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 12px;
+            overflow-x: auto;
+            white-space: pre-wrap;
+        }
+
+        ul, ol {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<p>Absolutely. I read the questions carefully, and <strong>Question 1 is “Normalization,” not Organization</strong>.</p>
+
+<p>Below are <strong>all 10 questions in 16-mark answer format</strong>, but explained in <strong>simple language</strong> so you can understand, learn, and write them in the exam. I’ve included <strong>definitions, types/classifications, examples, uses, advantages/disadvantages, steps, and diagrams/tables wherever useful</strong>.</p>
+
+<hr>
+
+<h1>1. Define Normalization. Explain its need and types.</h1>
+
+<h2>Definition</h2>
+
+<p><strong>Normalization</strong> is the process of organizing data in a database to <strong>reduce data redundancy (unnecessary repetition)</strong> and <strong>avoid data anomalies</strong>.</p>
+
+<p>In simple words, normalization means <strong>dividing a large table into smaller, related tables</strong> so that data is stored properly without unnecessary duplication.</p>
+
+<h3>Example of an unnormalized table</h3>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Student_Name</th>
+        <th>Department</th>
+        <th>Subjects</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>CSE</td>
+        <td>DBMS, Java, OS</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>Priya</td>
+        <td>CSE</td>
+        <td>DBMS, Java</td>
+    </tr>
+    <tr>
+        <td>103</td>
+        <td>Rahul</td>
+        <td>ECE</td>
+        <td>DBMS, Networks</td>
+    </tr>
+</table>
+
+<p>Here, multiple subjects are stored in one column. This creates problems when we search, update, or delete data.</p>
+
+<p>After normalization:</p>
+
+<p><strong>Student Table</strong></p>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Student_Name</th>
+        <th>Dept_ID</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>D01</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>Priya</td>
+        <td>D01</td>
+    </tr>
+    <tr>
+        <td>103</td>
+        <td>Rahul</td>
+        <td>D02</td>
+    </tr>
+</table>
+
+<p><strong>Department Table</strong></p>
+
+<table>
+    <tr>
+        <th>Dept_ID</th>
+        <th>Dept_Name</th>
+    </tr>
+    <tr>
+        <td>D01</td>
+        <td>CSE</td>
+    </tr>
+    <tr>
+        <td>D02</td>
+        <td>ECE</td>
+    </tr>
+</table>
+
+<p><strong>Student_Subject Table</strong></p>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Subject</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>DBMS</td>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Java</td>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>OS</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>DBMS</td>
+    </tr>
+    <tr>
+        <td>102</td>
+        <td>Java</td>
+    </tr>
+</table>
+
+<p>Now the data is organized properly.</p>
+
+<h2>Need for Normalization</h2>
+
+<p>Normalization is required for the following reasons:</p>
+
+<h3>1. Reduces Data Redundancy</h3>
+
+<p>Redundancy means storing the same information repeatedly.</p>
+
+<p>For example:</p>
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Department</th>
+        <th>HOD</th>
+    </tr>
+    <tr>
+        <td>Arun</td>
+        <td>CSE</td>
+        <td>Kumar</td>
+    </tr>
+    <tr>
+        <td>Priya</td>
+        <td>CSE</td>
+        <td>Kumar</td>
+    </tr>
+    <tr>
+        <td>Rahul</td>
+        <td>CSE</td>
+        <td>Kumar</td>
+    </tr>
+</table>
+
+<p>The HOD name <strong>Kumar</strong> is repeated many times.</p>
+
+<p>Normalization stores department information separately.</p>
+
+<hr>
+
+<h3>2. Avoids Update Anomaly</h3>
+
+<p>An <strong>update anomaly</strong> occurs when the same information exists in many places and we must update it everywhere.</p>
+
+<p>Example:</p>
+
+<p>If the CSE HOD changes from Kumar to Ravi, every row must be updated.</p>
+
+<p>If one row is forgotten, inconsistent data occurs.</p>
+
+<p>Normalization stores it only once.</p>
+
+<hr>
+
+<h3>3. Avoids Insertion Anomaly</h3>
+
+<p>An <strong>insertion anomaly</strong> occurs when we cannot insert information because some unrelated information is missing.</p>
+
+<p>Example:</p>
+
+<p>We want to add a new department:</p>
+
+<p><code>AI &amp; DS</code></p>
+
+<p>But if the table requires a student ID, we cannot add the department until a student exists.</p>
+
+<p>Separating the Department table solves this problem.</p>
+
+<hr>
+
+<h3>4. Avoids Deletion Anomaly</h3>
+
+<p>A <strong>deletion anomaly</strong> occurs when deleting one piece of information accidentally removes another important piece.</p>
+
+<p>Example:</p>
+
+<p>If the only student belonging to the ECE department is deleted, the department information may also disappear.</p>
+
+<p>Separate tables prevent this problem.</p>
+
+<hr>
+
+<h2>Types / Normal Forms</h2>
+
+<p>Normalization is divided into different <strong>normal forms</strong>.</p>
+
+<p>The major normal forms are:</p>
+
+<ol>
+    <li>First Normal Form – 1NF</li>
+    <li>Second Normal Form – 2NF</li>
+    <li>Third Normal Form – 3NF</li>
+    <li>Boyce-Codd Normal Form – BCNF</li>
+    <li>Fourth Normal Form – 4NF</li>
+    <li>Fifth Normal Form – 5NF</li>
+</ol>
+
+<hr>
+
+<h2>1NF – First Normal Form</h2>
+
+<p>A table is in <strong>1NF</strong> when:</p>
+
+<ul>
+    <li>Each column contains atomic/single values.</li>
+    <li>There are no repeating groups.</li>
+    <li>Each row is unique.</li>
+</ul>
+
+<h3>Not in 1NF</h3>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Name</th>
+        <th>Subjects</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>DBMS, Java, OS</td>
+    </tr>
+</table>
+
+<p>The Subjects column contains multiple values.</p>
+
+<h3>In 1NF</h3>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Name</th>
+        <th>Subject</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>DBMS</td>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>Java</td>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>OS</td>
+    </tr>
+</table>
+
+<p>Each cell contains only one value.</p>
+
+<hr>
+
+<h2>2NF – Second Normal Form</h2>
+
+<p>A table is in <strong>2NF</strong> when:</p>
+
+<ul>
+    <li>It is already in 1NF.</li>
+    <li>There must be <strong>no partial dependency</strong>.</li>
+</ul>
+
+<p>Partial dependency occurs when a non-key attribute depends only on <strong>part of a composite primary key</strong>.</p>
+
+<h3>Example</h3>
+
+<p>Suppose:</p>
+
+<p><code>Student_ID + Subject_ID → Marks</code></p>
+
+<p>But:</p>
+
+<p><code>Student_ID → Student_Name</code></p>
+
+<p>Student_Name depends only on Student_ID, not on the complete key.</p>
+
+<p>So we divide the table.</p>
+
+<p><strong>Student</strong></p>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Student_Name</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+    </tr>
+</table>
+
+<p><strong>Marks</strong></p>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Subject_ID</th>
+        <th>Marks</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>S01</td>
+        <td>85</td>
+    </tr>
+</table>
+
+<p>Now it satisfies 2NF.</p>
+
+<hr>
+
+<h2>3NF – Third Normal Form</h2>
+
+<p>A table is in <strong>3NF</strong> when:</p>
+
+<ul>
+    <li>It is already in 2NF.</li>
+    <li>There is no <strong>transitive dependency</strong>.</li>
+</ul>
+
+<h3>Example</h3>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Student_Name</th>
+        <th>Dept_ID</th>
+        <th>Dept_Name</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>D01</td>
+        <td>CSE</td>
+    </tr>
+</table>
+
+<p>Here:</p>
+
+<p><code>Student_ID → Dept_ID</code></p>
+
+<p>and</p>
+
+<p><code>Dept_ID → Dept_Name</code></p>
+
+<p>Therefore:</p>
+
+<p><code>Student_ID → Dept_Name</code></p>
+
+<p>This is transitive dependency.</p>
+
+<p>So divide it into:</p>
+
+<p><strong>Student</strong></p>
+
+<table>
+    <tr>
+        <th>Student_ID</th>
+        <th>Student_Name</th>
+        <th>Dept_ID</th>
+    </tr>
+    <tr>
+        <td>101</td>
+        <td>Arun</td>
+        <td>D01</td>
+    </tr>
+</table>
+
+<p><strong>Department</strong></p>
+
+<table>
+    <tr>
+        <th>Dept_ID</th>
+        <th>Dept_Name</th>
+    </tr>
+    <tr>
+        <td>D01</td>
+        <td>CSE</td>
+    </tr>
+</table>
+
+<hr>
+
+<h2>BCNF – Boyce-Codd Normal Form</h2>
+
+<p>BCNF is a stronger version of 3NF.</p>
+
+<p>A relation is in <strong>BCNF if every determinant is a candidate key</strong>.</p>
+
+<p>In simple words:</p>
+
+<p>Every attribute that determines another attribute must itself be capable of uniquely identifying a record.</p>
+
+<p>BCNF is mainly used when 3NF still allows certain dependency problems.</p>
+
+<hr>
+
+<h2>4NF – Fourth Normal Form</h2>
+
+<p>A table is in 4NF when:</p>
+
+<ul>
+    <li>It is already in BCNF.</li>
+    <li>It has no unwanted <strong>multivalued dependencies</strong>.</li>
+</ul>
+
+<p>Example:</p>
+
+<p>A student may have multiple:</p>
+
+<ul>
+    <li>hobbies</li>
+    <li>languages</li>
+</ul>
+
+<p>If both are stored in the same table, unnecessary combinations are created.</p>
+
+<p>Instead, separate them:</p>
+
+<p><strong>Student_Hobby</strong></p>
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Hobby</th>
+    </tr>
+    <tr>
+        <td>Arun</td>
+        <td>Chess</td>
+    </tr>
+    <tr>
+        <td>Arun</td>
+        <td>Football</td>
+    </tr>
+</table>
+
+<p><strong>Student_Language</strong></p>
+
+<table>
+    <tr>
+        <th>Student</th>
+        <th>Language</th>
+    </tr>
+    <tr>
+        <td>Arun</td>
+        <td>English</td>
+    </tr>
+    <tr>
+        <td>Arun</td>
+        <td>Tamil</td>
+    </tr>
+</table>
+
+<hr>
+
+<h2>5NF – Fifth Normal Form</h2>
+
+<p>5NF deals with <strong>join dependency</strong>.</p>
+
+<p>A relation is in 5NF when it cannot be further decomposed without losing important information.</p>
+
+<p>It is useful in complex databases where information is represented using multiple relationships.</p>
+
+<hr>
+
+<h2>Advantages of Normalization</h2>
+
+<ul>
+    <li>Reduces data redundancy.</li>
+    <li>Saves storage space.</li>
+    <li>Prevents insertion anomalies.</li>
+    <li>Prevents update anomalies.</li>
+    <li>Prevents deletion anomalies.</li>
+    <li>Improves data consistency.</li>
+    <li>Makes database structure easier to maintain.</li>
+    <li>Improves data integrity.</li>
+</ul>
+
+<h2>Disadvantages</h2>
+
+<ul>
+    <li>Creates more tables.</li>
+    <li>More tables may require more JOIN operations.</li>
+    <li>Complex queries may become slower.</li>
+    <li>Database design can become more complicated at higher normal forms.</li>
+</ul>
+
+<h3>Conclusion</h3>
+
+<p>Normalization is an important database design technique that organizes data into properly related tables. It reduces duplication and prevents anomalies while maintaining consistency and integrity.</p>
+
+<hr>
+
+<h1>2. Explain Two-Phase Locking with a suitable transaction schedule and show how it ensures serializability.</h1>
+
+<h2>Introduction</h2>
+
+<p><strong>Two-Phase Locking (2PL)</strong> is a concurrency-control technique used in DBMS.</p>
+
+<p>It controls simultaneous transactions by using <strong>locks</strong>.</p>
+
+<p>The main purpose is to ensure that transactions execute in a way that is <strong>conflict-serializable</strong>.</p>
+
+<hr>
+
+<h2>Types of Locks</h2>
+
+<p>There are two major locks.</p>
+
+<h3>1. Shared Lock (S-lock)</h3>
+
+<p>Used when a transaction wants to <strong>read</strong> data.</p>
+
+<p>Several transactions can hold a shared lock on the same data.</p>
+
+<p>Example:</p>
+
+<pre>T1: Read(A)
+
+gets:
+
+S(A)</pre>
+
+<h3>2. Exclusive Lock (X-lock)</h3>
+
+<p>Used when a transaction wants to <strong>write/update</strong> data.</p>
+
+<p>Only one transaction can hold an exclusive lock.</p>
+
+<p>Example:</p>
+
+<pre>T1: Write(A)
+
+gets:
+
+X(A)</pre>
+
+<hr>
+
+<h2>Two Phases of 2PL</h2>
+
+<p>2PL contains two phases:</p>
+
+<h3>Phase 1 – Growing Phase</h3>
+
+<p>During this phase:</p>
+
+<ul>
+    <li>Transaction can acquire locks.</li>
+    <li>Transaction cannot release locks.</li>
+</ul>
+
+<p>Example:</p>
+
+<pre>Lock-S(A)
+
+Lock-X(B)</pre>
+
+<hr>
+
+<h3>Phase 2 – Shrinking Phase</h3>
+
+<p>During this phase:</p>
+
+<ul>
+    <li>Transaction releases locks.</li>
+    <li>Transaction cannot acquire any new lock.</li>
+</ul>
+
+<p>Example:</p>
+
+<pre>Unlock(A)
+
+Unlock(B)</pre>
+
+<h3>Important rule</h3>
+
+<p>Once a transaction releases its first lock, it cannot acquire another lock.</p>
+
+<hr>
+
+<h2>Example</h2>
+
+<p>Consider two transactions.</p>
+
+<h3>T1</h3>
+
+<pre>Lock-X(A)
+Read(A)
+Write(A)
+
+Lock-X(B)
+Read(B)
+Write(B)
+
+Unlock(A)
+Unlock(B)</pre>
+
+<h3>T2</h3>
+
+<pre>Lock-S(A)
+Read(A)
+Unlock(A)</pre>
+
+<p>T1 first obtains the required locks.</p>
+
+<p>After T1 starts releasing locks, it cannot obtain any new lock.</p>
+
+<p>Therefore, it follows two-phase locking.</p>
+
+<hr>
+
+<h2>How 2PL Ensures Serializability</h2>
+
+<p>Consider:</p>
+
+<pre>T1: Lock-X(A)
+T1: Write(A)
+T1: Unlock(A)
+
+T2: Lock-S(A)
+T2: Read(A)
+T2: Unlock(A)</pre>
+
+<p>T2 can access A only after T1 releases it.</p>
+
+<p>Therefore, the result is equivalent to:</p>
+
+<pre>T1 → T2</pre>
+
+<p>which is a serial order.</p>
+
+<p>Hence, <strong>2PL guarantees conflict serializability</strong>.</p>
+
+<hr>
+
+<h2>Advantages</h2>
+
+<ul>
+    <li>Ensures conflict serializability.</li>
+    <li>Prevents many concurrency problems.</li>
+    <li>Simple and widely used.</li>
+    <li>Maintains database consistency.</li>
+</ul>
+
+<h2>Disadvantages</h2>
+
+<ul>
+    <li>Can cause deadlock.</li>
+    <li>Transactions may have to wait.</li>
+    <li>Reduces concurrency in some situations.</li>
+</ul>
+
+<h3>Conclusion</h3>
+
+<p>Two-phase locking divides transaction execution into a growing phase and shrinking phase. By controlling when locks can be acquired and released, it ensures conflict-serializable schedules.</p>
+
+<hr>
+
+<h1>3. Explain ACID properties of database transactions with a suitable real-time banking example.</h1>
+
+<p>A <strong>transaction</strong> is a group of database operations treated as one logical unit.</p>
+
+<p>For example, transferring ₹5,000 from Account A to Account B involves:</p>
+
+<pre>Debit ₹5,000 from A
+Credit ₹5,000 to B</pre>
+
+<p>Both operations should happen correctly.</p>
+
+<p>ACID stands for:</p>
+
+<p>
+<strong>A – Atomicity</strong><br>
+<strong>C – Consistency</strong><br>
+<strong>I – Isolation</strong><br>
+<strong>D – Durability</strong>
+</p>
+
+<hr>
+
+<h2>1. Atomicity</h2>
+
+<p>Atomicity means:</p>
+
+<p>A transaction is treated as one complete unit. Either all operations happen or none happen.</p>
+
+<h3>Banking example</h3>
+
+<p>Suppose:</p>
+
+<pre>A = ₹10,000
+B = ₹5,000</pre>
+
+<p>Transfer ₹2,000:</p>
+
+<pre>A = A - 2000
+B = B + 2000</pre>
+
+<p>If money is deducted from A but the system crashes before adding it to B, the transaction must be rolled back.</p>
+
+<p>Final result:</p>
+
+<pre>A = ₹10,000
+B = ₹5,000</pre>
+
+<p>Therefore, <strong>partial transactions are not allowed</strong>.</p>
+
+<hr>
+
+<h2>2. Consistency</h2>
+
+<p>Consistency means:</p>
+
+<p>A transaction must take the database from one valid state to another valid state.</p>
+
+<p>Example:</p>
+
+<p>Before transfer:</p>
+
+<pre>A + B = ₹15,000</pre>
+
+<p>After transferring ₹2,000:</p>
+
+<pre>A + B = ₹15,000</pre>
+
+<p>The total amount remains the same.</p>
+
+<p>Therefore, database rules are preserved.</p>
+
+<hr>
+
+<h2>3. Isolation</h2>
+
+<p>Isolation means:</p>
+
+<p>Multiple transactions executing at the same time should not interfere with each other.</p>
+
+<p>Example:</p>
+
+<p>Two transactions simultaneously try to withdraw money from the same account.</p>
+
+<p>The database ensures that one transaction does not see incomplete changes made by another transaction.</p>
+
+<hr>
+
+<h2>4. Durability</h2>
+
+<p>Durability means:</p>
+
+<p>Once a transaction is successfully committed, its changes are permanently stored.</p>
+
+<p>Example:</p>
+
+<p>You transfer ₹2,000 and receive:</p>
+
+<p><strong>Transaction Successful</strong></p>
+
+<p>Even if the database server crashes immediately afterward, the transaction should not disappear.</p>
+
+<hr>
+
+<h2>Real-Time Example</h2>
+
+<p>ATM withdrawal:</p>
+
+<pre>1. Check account balance
+2. Deduct amount
+3. Dispense cash
+4. Update account
+5. Commit transaction</pre>
+
+<p>ACID properties ensure that this process happens safely.</p>
+
+<h3>Conclusion</h3>
+
+<p>ACID properties provide reliability and correctness in database transactions. They are especially important in banking, e-commerce, reservation systems and other systems where incorrect data can cause serious problems.</p>
+
+<hr>
+
+<h1>4. Illustrate the different transaction states.</h1>
+
+<p>A transaction passes through different states during its execution.</p>
+
+<p>The major states are:</p>
+
+<ol>
+    <li>Active</li>
+    <li>Partially Committed</li>
+    <li>Committed</li>
+    <li>Failed</li>
+    <li>Aborted</li>
+    <li>Terminated</li>
+</ol>
+
+<hr>
+
+<h2>Transaction State Diagram</h2>
+
+<pre>              START
+                |
+                ↓
+             ACTIVE
+             /    \
+            /      \
+           ↓        ↓
+Partially Committed  FAILED
+           |           |
+           ↓           ↓
+       COMMITTED     ABORTED
+           |          /   \
+           ↓         /     \
+       TERMINATED   ↓       ↓
+                  Restart  Terminated</pre>
+
+<hr>
+
+<h2>1. Active State</h2>
+
+<p>This is the initial state.</p>
+
+<p>The transaction is currently executing.</p>
+
+<p>Example:</p>
+
+<pre>Read(A)
+Write(A)
+Read(B)</pre>
+
+<p>The transaction is active.</p>
+
+<hr>
+
+<h2>2. Partially Committed State</h2>
+
+<p>The transaction has completed its final operation, but changes are not yet permanently stored.</p>
+
+<p>Example:</p>
+
+<pre>T1:
+Debit money
+Credit money</pre>
+
+<p>All operations are completed, but the database has not yet confirmed the commit.</p>
+
+<hr>
+
+<h2>3. Committed State</h2>
+
+<p>The transaction has successfully completed and all changes are permanently saved.</p>
+
+<p>Example:</p>
+
+<pre>COMMIT;</pre>
+
+<p>The transaction enters the committed state.</p>
+
+<hr>
+
+<h2>4. Failed State</h2>
+
+<p>A transaction enters the failed state when it cannot continue.</p>
+
+<p>Reasons may include:</p>
+
+<ul>
+    <li>Hardware failure</li>
+    <li>System crash</li>
+    <li>Invalid operation</li>
+    <li>Deadlock</li>
+    <li>Constraint violation</li>
+</ul>
+
+<hr>
+
+<h2>5. Aborted State</h2>
+
+<p>After failure, the DBMS rolls back the transaction.</p>
+
+<p>Example:</p>
+
+<pre>A = ₹10,000
+Debit ₹2,000
+System failure</pre>
+
+<p>The DBMS restores A to ₹10,000.</p>
+
+<p>This is called <strong>rollback</strong>.</p>
+
+<hr>
+
+<h2>6. Terminated State</h2>
+
+<p>After commit or abort, the transaction leaves the system.</p>
+
+<p>It enters the terminated state.</p>
+
+<h3>Conclusion</h3>
+
+<p>Transaction states help the DBMS track whether a transaction is executing, successfully completed, failed, or rolled back.</p>
+
+<hr>
+
+<h1>5. Explain serial and non-serial schedules with examples. Analyze the given schedule using a precedence graph to determine conflict serializability.</h1>
+
+<h2>Schedule</h2>
+
+<p>A <strong>schedule</strong> is the order in which operations of multiple transactions are executed.</p>
+
+<hr>
+
+<h2>Serial Schedule</h2>
+
+<p>In a serial schedule, one transaction completely finishes before another transaction starts.</p>
+
+<p>Example:</p>
+
+<pre>T1: Read(A)
+T1: Write(A)
+T1: Read(B)
+T1: Write(B)
+
+T2: Read(A)
+T2: Write(A)</pre>
+
+<p>Order:</p>
+
+<pre>T1 → T2</pre>
+
+<p>There is no interleaving.</p>
+
+<h3>Advantage</h3>
+
+<p>Very safe and easy to understand.</p>
+
+<h3>Disadvantage</h3>
+
+<p>Less concurrency and lower performance.</p>
+
+<hr>
+
+<h2>Non-Serial Schedule</h2>
+
+<p>In a non-serial schedule, operations of different transactions are interleaved.</p>
+
+<p>Example:</p>
+
+<pre>T1: Read(A)
+T2: Read(B)
+T1: Write(A)
+T2: Write(B)</pre>
+
+<p>Here operations of T1 and T2 are mixed.</p>
+
+<p>Non-serial schedules provide better concurrency.</p>
+
+<hr>
+
+<h2>Conflict Operations</h2>
+
+<p>Two operations conflict when:</p>
+
+<ol>
+    <li>They belong to different transactions.</li>
+    <li>They operate on the same data item.</li>
+    <li>At least one operation is a WRITE.</li>
+</ol>
+
+<p>Examples:</p>
+
+<pre>R1(A) and W2(A) → Conflict
+W1(A) and R2(A) → Conflict
+W1(A) and W2(A) → Conflict</pre>
+
+<p>But:</p>
+
+<pre>R1(A) and R2(A)</pre>
+
+<p>do not conflict.</p>
+
+<hr>
+
+<h2>Precedence Graph</h2>
+
+<p>A precedence graph is used to determine whether a schedule is <strong>conflict serializable</strong>.</p>
+
+<h3>Steps</h3>
+
+<ol>
+    <li>Create one node for every transaction.</li>
+    <li>Look for conflicting operations.</li>
+    <li>If Ti's operation occurs before Tj's conflicting operation, draw:</li>
+</ol>
+
+<pre>Ti → Tj</pre>
+
+<ol start="4">
+    <li>Check the graph for cycles.</li>
+</ol>
+
+<h3>Rule</h3>
+
+<p><strong>No cycle → Conflict serializable</strong></p>
+
+<p><strong>Cycle → Not conflict serializable</strong></p>
+
+<hr>
+
+<h2>Example</h2>
+
+<p>Consider:</p>
+
+<pre>R1(A)
+W1(A)
+R2(A)
+W2(A)</pre>
+
+<p>Conflicts create:</p>
+
+<pre>T1 → T2</pre>
+
+<p>Graph:</p>
+
+<pre>T1 ─────→ T2</pre>
+
+<p>There is no cycle.</p>
+
+<p>Therefore, <strong>Schedule is conflict serializable.</strong></p>
+
+<p>Equivalent serial order:</p>
+
+<pre>T1 → T2</pre>
+
+<hr>
+
+<h2>Example with a cycle</h2>
+
+<p>Suppose:</p>
+
+<pre>R1(A)
+R2(B)
+W1(B)
+W2(A)</pre>
+
+<p>Conflicts produce:</p>
+
+<pre>T1 → T2
+T2 → T1</pre>
+
+<p>Graph:</p>
+
+<pre>      ┌───────┐
+      ↓       |
+     T1 ←──── T2</pre>
+
+<p>There is a cycle.</p>
+
+<p>Therefore:</p>
+
+<p><strong>Schedule is NOT conflict serializable.</strong></p>
+
+<hr>
+
+<h1>6. Given a schedule containing READ and WRITE operations, analyze and determine whether the schedule is conflict serializable.</h1>
+
+<p>For this question, the main technique is the <strong>precedence graph</strong>.</p>
+
+<p>Consider the following example schedule:</p>
+
+<pre>R1(A)
+W1(A)
+R2(A)
+W2(A)
+R2(B)
+W2(B)
+R3(B)
+W3(B)</pre>
+
+<p>We have three transactions:</p>
+
+<pre>T1
+T2
+T3</pre>
+
+<hr>
+
+<h2>Step 1: Identify conflicts</h2>
+
+<p>For A:</p>
+
+<pre>W1(A) before R2(A)</pre>
+
+<p>Therefore:</p>
+
+<pre>T1 → T2</pre>
+
+<p>Also:</p>
+
+<pre>W1(A) before W2(A)</pre>
+
+<p>Therefore:</p>
+
+<pre>T1 → T2</pre>
+
+<p>For B:</p>
+
+<pre>W2(B) before R3(B)</pre>
+
+<p>Therefore:</p>
+
+<pre>T2 → T3</pre>
+
+<p>Also:</p>
+
+<pre>W2(B) before W3(B)</pre>
+
+<p>Therefore:</p>
+
+<pre>T2 → T3</pre>
+
+<hr>
+
+<h2>Step 2: Construct precedence graph</h2>
+
+<pre>T1 ─────→ T2 ─────→ T3</pre>
+
+<p>There is <strong>no cycle</strong>.</p>
+
+<hr>
+
+<h2>Step 3: Determine serializability</h2>
+
+<p>Since the graph has no cycle:</p>
+
+<p><strong>The schedule is conflict serializable.</strong></p>
+
+<p>Equivalent serial order:</p>
+
+<pre>T1 → T2 → T3</pre>
+
+<h3>Important exam rule</h3>
+
+<table>
+    <tr>
+        <th>Precedence Graph</th>
+        <th>Result</th>
+    </tr>
+    <tr>
+        <td>No cycle</td>
+        <td>Conflict serializable</td>
+    </tr>
+    <tr>
+        <td>Cycle exists</td>
+        <td>Not Conflict serializable</td>
+    </tr>
+</table>
+
+<p>This is the easiest rule to remember for this question.</p>
+
+<hr>
+
+<h1>7. Given a MongoDB collection, find INSERT, FIND, UPDATE and DELETE operations.</h1>
+
+<p>MongoDB is a <strong>NoSQL document-oriented database</strong>.</p>
+
+<p>It stores data in the form of <strong>documents</strong>, usually using BSON, which looks similar to JSON.</p>
+
+<p>Example database:</p>
+
+<pre>college</pre>
+
+<p>Collection:</p>
+
+<pre>students</pre>
+
+<hr>
+
+<h2>1. INSERT</h2>
+
+<p>Used to add a document.</p>
+
+<h3>Insert one document</h3>
+
+<pre>db.students.insertOne({
+    name: "Arun",
+    age: 20,
+    department: "CSE"
+});</pre>
+
+<h3>Insert multiple documents</h3>
+
+<pre>db.students.insertMany([
+    {
+        name: "Arun",
+        age: 20,
+        department: "CSE"
+    },
+    {
+        name: "Priya",
+        age: 21,
+        department: "ECE"
+    }
+]);</pre>
+
+<hr>
+
+<h2>2. FIND</h2>
+
+<p>Used to retrieve documents.</p>
+
+<h3>Find all students</h3>
+
+<pre>db.students.find();</pre>
+
+<h3>Find CSE students</h3>
+
+<pre>db.students.find({
+    department: "CSE"
+});</pre>
+
+<h3>Find one document</h3>
+
+<pre>db.students.findOne({
+    name: "Arun"
+});</pre>
+
+<hr>
+
+<h2>3. UPDATE</h2>
+
+<p>Used to modify existing documents.</p>
+
+<h3>Update one document</h3>
+
+<pre>db.students.updateOne(
+    { name: "Arun" },
+    { $set: { age: 21 } }
+);</pre>
+
+<p>This changes Arun's age to 21.</p>
+
+<h3>Update many</h3>
+
+<pre>db.students.updateMany(
+    { department: "CSE" },
+    { $set: { course: "Computer Science" } }
+);</pre>
+
+<hr>
+
+<h2>4. DELETE</h2>
+
+<p>Used to remove documents.</p>
+
+<h3>Delete one</h3>
+
+<pre>db.students.deleteOne({
+    name: "Arun"
+});</pre>
+
+<h3>Delete many</h3>
+
+<pre>db.students.deleteMany({
+    department: "ECE"
+});</pre>
+
+<hr>
+
+<h2>Common MongoDB Operations</h2>
+
+<table>
+    <tr>
+        <th>Operation</th>
+        <th>MongoDB command</th>
+    </tr>
+    <tr>
+        <td>Insert</td>
+        <td><code>insertOne()</code></td>
+    </tr>
+    <tr>
+        <td>Insert many</td>
+        <td><code>insertMany()</code></td>
+    </tr>
+    <tr>
+        <td>Read</td>
+        <td><code>find()</code></td>
+    </tr>
+    <tr>
+        <td>Read one</td>
+        <td><code>findOne()</code></td>
+    </tr>
+    <tr>
+        <td>Update</td>
+        <td><code>updateOne()</code></td>
+    </tr>
+    <tr>
+        <td>Update many</td>
+        <td><code>updateMany()</code></td>
+    </tr>
+    <tr>
+        <td>Delete</td>
+        <td><code>deleteOne()</code></td>
+    </tr>
+    <tr>
+        <td>Delete many</td>
+        <td><code>deleteMany()</code></td>
+    </tr>
+</table>
+
+<h3>Real-time uses</h3>
+
+<p>MongoDB is commonly useful for:</p>
+
+<ul>
+    <li>Web applications</li>
+    <li>Social media applications</li>
+    <li>Product catalogs</li>
+    <li>Content management</li>
+    <li>Real-time applications</li>
+    <li>Applications where data structure changes frequently</li>
+</ul>
+
+<hr>
+
+<h1>8. Explain the need for concurrency control in DBMS.</h1>
+
+<h2>Definition</h2>
+
+<p><strong>Concurrency control</strong> is the process of managing multiple transactions executing at the same time without causing incorrect or inconsistent data.</p>
+
+<p>In a real database, thousands of users may access the same data simultaneously.</p>
+
+<p>For example:</p>
+
+<pre>User A → Withdraw ₹5,000
+User B → Withdraw ₹3,000</pre>
+
+<p>Both may access the same account simultaneously.</p>
+
+<p>Without concurrency control, incorrect results can occur.</p>
+
+<hr>
+
+<h2>Need for Concurrency Control</h2>
+
+<h3>1. Lost Update Problem</h3>
+
+<p>Two transactions read the same value and update it.</p>
+
+<p>Example:</p>
+
+<p>Initial balance:</p>
+
+<pre>₹10,000</pre>
+
+<p>T1 reads ₹10,000.</p>
+
+<p>T2 also reads ₹10,000.</p>
+
+<p>T1 withdraws ₹2,000:</p>
+
+<pre>₹8,000</pre>
+
+<p>T2 withdraws ₹3,000:</p>
+
+<pre>₹7,000</pre>
+
+<p>One update may overwrite another.</p>
+
+<p>This is called <strong>lost update</strong>.</p>
+
+<hr>
+
+<h3>2. Dirty Read</h3>
+
+<p>A transaction reads data that another transaction has modified but not committed.</p>
+
+<p>Example:</p>
+
+<pre>T1 changes A = 5000
+T2 reads A = 5000
+T1 rolls back</pre>
+
+<p>Now T2 has read incorrect/uncommitted data.</p>
+
+<hr>
+
+<h3>3. Non-Repeatable Read</h3>
+
+<p>A transaction reads the same data twice but gets different values.</p>
+
+<p>Example:</p>
+
+<pre>T1 reads A = 1000
+T2 updates A = 2000
+T1 reads A again = 2000</pre>
+
+<p>The same transaction received different values.</p>
+
+<hr>
+
+<h3>4. Incorrect Summary</h3>
+
+<p>Suppose T1 calculates total bank balance while T2 is updating accounts.</p>
+
+<p>T1 may calculate using a mixture of old and new values.</p>
+
+<p>Therefore, the result becomes incorrect.</p>
+
+<hr>
+
+<h2>Concurrency Control Techniques</h2>
+
+<h3>1. Lock-Based Protocol</h3>
+
+<p>Uses locks.</p>
+
+<p>Examples:</p>
+
+<ul>
+    <li>Shared lock</li>
+    <li>Exclusive lock</li>
+    <li>Two-phase locking</li>
+</ul>
+
+<hr>
+
+<h3>2. Timestamp-Based Protocol</h3>
+
+<p>Each transaction receives a timestamp.</p>
+
+<p>The DBMS uses timestamps to determine the correct order of operations.</p>
+
+<hr>
+
+<h3>3. Optimistic Concurrency Control</h3>
+
+<p>Transactions execute without locking initially.</p>
+
+<p>Before committing, the system checks whether conflicts occurred.</p>
+
+<hr>
+
+<h3>4. Multiversion Concurrency Control</h3>
+
+<p>Multiple versions of data are maintained.</p>
+
+<p>Readers can access an appropriate version without blocking writers.</p>
+
+<hr>
+
+<h2>Advantages</h2>
+
+<p>Concurrency control:</p>
+
+<ul>
+    <li>Maintains consistency.</li>
+    <li>Prevents data corruption.</li>
+    <li>Prevents lost updates.</li>
+    <li>Controls conflicting transactions.</li>
+    <li>Improves database reliability.</li>
+    <li>Allows multiple users to work simultaneously.</li>
+</ul>
+
+<h3>Conclusion</h3>
+
+<p>Concurrency control is essential in multi-user DBMS environments. It allows transactions to execute concurrently while ensuring that the final database state remains correct and consistent.</p>
+
+<hr>
+
+<h1>9. Explain the structure and properties of a B+ Tree for a given set of keys. Illustrate searching, insertion and splitting with example.</h1>
+
+<h2>Definition</h2>
+
+<p>A <strong>B+ Tree</strong> is a balanced tree data structure commonly used in DBMS indexing.</p>
+
+<p>It is especially useful for:</p>
+
+<ul>
+    <li>Searching records</li>
+    <li>Range queries</li>
+    <li>Database indexing</li>
+    <li>File systems</li>
+</ul>
+
+<hr>
+
+<h2>Structure of B+ Tree</h2>
+
+<p>A B+ Tree has:</p>
+
+<ol>
+    <li>Root node</li>
+    <li>Internal nodes</li>
+    <li>Leaf nodes</li>
+</ol>
+
+<h3>Important feature</h3>
+
+<p><strong>Actual data/record pointers are stored only in leaf nodes.</strong></p>
+
+<p>Internal nodes mainly contain <strong>keys and pointers to child nodes</strong>.</p>
+
+<p>Leaf nodes are connected using linked pointers.</p>
+
+<p>Example:</p>
+
+<pre>              [30 | 60]
+             /    |     \
+            /     |      \
+       [10,20] [30,40,50] [60,70,80]
+          ↔          ↔           ↔</pre>
+
+<p>The leaf nodes are linked for fast sequential/range searching.</p>
+
+<hr>
+
+<h2>Properties of B+ Tree</h2>
+
+<ul>
+    <li>It is always balanced.</li>
+    <li>All leaf nodes are at the same level.</li>
+    <li>Internal nodes contain keys and child pointers.</li>
+    <li>Leaf nodes contain keys and record pointers.</li>
+    <li>Leaf nodes are linked together.</li>
+    <li>Searching is efficient.</li>
+    <li>Supports range queries efficiently.</li>
+    <li>Height remains small even for large data.</li>
+</ul>
+
+<hr>
+
+<h2>Searching</h2>
+
+<p>Suppose the tree is:</p>
+
+<pre>             [30 | 60]
+            /    |     \
+           /     |      \
+      [10,20] [30,40,50] [60,70,80]</pre>
+
+<p>Search for:</p>
+
+<pre>50</pre>
+
+<h3>Step 1</h3>
+
+<p>Start from root:</p>
+
+<pre>[30 | 60]</pre>
+
+<p>50 lies between 30 and 60.</p>
+
+<p>Move to middle child.</p>
+
+<h3>Step 2</h3>
+
+<p>Search:</p>
+
+<pre>[30,40,50]</pre>
+
+<p>50 is found.</p>
+
+<p>Thus B+ Tree provides fast searching.</p>
+
+<hr>
+
+<h2>Insertion</h2>
+
+<p>Suppose we insert:</p>
+
+<pre>25</pre>
+
+<p>Current leaf:</p>
+
+<pre>[10,20]</pre>
+
+<p>After insertion:</p>
+
+<pre>[10,20,25]</pre>
+
+<p>If the node exceeds its maximum capacity, it must be split.</p>
+
+<hr>
+
+<h2>Splitting</h2>
+
+<p>Suppose a leaf can contain a maximum of 3 keys.</p>
+
+<p>If we insert 30:</p>
+
+<pre>[10,20,25,30]</pre>
+
+<p>This exceeds the limit.</p>
+
+<p>Split it:</p>
+
+<pre>[10,20]    [25,30]</pre>
+
+<p>The first key of the new right node is copied to the parent.</p>
+
+<p>Parent becomes:</p>
+
+<pre>[25 | 60]</pre>
+
+<p>So:</p>
+
+<pre>              [25 | 60]
+             /    |     \
+        [10,20] [25,30] [60,70,80]</pre>
+
+<p>The leaf nodes remain linked.</p>
+
+<hr>
+
+<h2>Advantages of B+ Tree</h2>
+
+<ul>
+    <li>Very fast searching.</li>
+    <li>Efficient insertion and deletion.</li>
+    <li>Excellent for range queries.</li>
+    <li>Always balanced.</li>
+    <li>Suitable for large databases.</li>
+    <li>Reduces disk I/O.</li>
+    <li>Leaf nodes allow sequential access.</li>
+</ul>
+
+<h3>Real-time example</h3>
+
+<p>Suppose a college database contains:</p>
+
+<pre>1,00,000 student records</pre>
+
+<p>An index on:</p>
+
+<pre>Student_ID</pre>
+
+<p>can use a B+ Tree.</p>
+
+<p>Instead of checking every student record, the DBMS follows the tree and quickly reaches the required record.</p>
+
+<hr>
+
+<h2>B+ Tree vs B Tree</h2>
+
+<table>
+    <tr>
+        <th>B Tree</th>
+        <th>B+ Tree</th>
+    </tr>
+    <tr>
+        <td>Records may be stored in internal and leaf nodes</td>
+        <td>Records are stored at leaf level</td>
+    </tr>
+    <tr>
+        <td>Leaf nodes may not be linked</td>
+        <td>Leaf nodes are linked</td>
+    </tr>
+    <tr>
+        <td>Sequential search is less efficient</td>
+        <td>Range/sequential search is efficient</td>
+    </tr>
+    <tr>
+        <td>Used for indexing</td>
+        <td>Very commonly used for DBMS indexing</td>
+    </tr>
+</table>
+
+<h3>Conclusion</h3>
+
+<p>B+ Trees are important indexing structures in DBMS because they provide fast searching, insertion, deletion and especially efficient range queries.</p>
+
+<hr>
+
+<h1>10. Explain the need for NoSQL databases. Discuss Key-Value Store and Document Store.</h1>
+
+<h2>Definition</h2>
+
+<p><strong>NoSQL</strong> means <strong>“Not Only SQL.”</strong></p>
+
+<p>NoSQL databases are non-relational databases designed to handle:</p>
+
+<ul>
+    <li>Large amounts of data</li>
+    <li>Unstructured/semi-structured data</li>
+    <li>High-speed operations</li>
+    <li>Distributed systems</li>
+    <li>Flexible data structures</li>
+</ul>
+
+<hr>
+
+<h2>Need for NoSQL</h2>
+
+<p>Traditional relational databases use tables with fixed schemas.</p>
+
+<p>But modern applications often generate huge amounts of data.</p>
+
+<p>Examples:</p>
+
+<ul>
+    <li>Social media</li>
+    <li>Online shopping</li>
+    <li>IoT</li>
+    <li>Gaming</li>
+    <li>Real-time applications</li>
+    <li>Big-data applications</li>
+</ul>
+
+<p>The structure of this data may change frequently.</p>
+
+<p>NoSQL databases provide greater flexibility.</p>
+
+<hr>
+
+<h2>Advantages of NoSQL</h2>
+
+<h3>1. Flexible Schema</h3>
+
+<p>The structure can change easily.</p>
+
+<p>For example:</p>
+
+<pre>{
+   "name": "Arun",
+   "age": 20
+}</pre>
+
+<p>Later, we can add:</p>
+
+<pre>"skills": ["JavaScript", "Python"]</pre>
+
+<p>without redesigning a fixed table.</p>
+
+<hr>
+
+<h3>2. High Scalability</h3>
+
+<p>NoSQL databases can scale horizontally by adding more servers.</p>
+
+<hr>
+
+<h3>3. High Performance</h3>
+
+<p>They are suitable for applications requiring fast read/write operations.</p>
+
+<hr>
+
+<h3>4. Handles Large Data</h3>
+
+<p>NoSQL is suitable for very large datasets.</p>
+
+<hr>
+
+<h3>5. Suitable for Distributed Systems</h3>
+
+<p>NoSQL databases are designed to work across multiple servers.</p>
+
+<hr>
+
+<h2>Types of NoSQL Databases</h2>
+
+<p>The major types are:</p>
+
+<ol>
+    <li><strong>Key-Value Store</strong></li>
+    <li><strong>Document Store</strong></li>
+    <li><strong>Column-Family Store</strong></li>
+    <li><strong>Graph Database</strong></li>
+</ol>
+
+<hr>
+
+<h2>1. Key-Value Store</h2>
+
+<p>Data is stored as:</p>
+
+<pre>Key → Value</pre>
+
+<p>Example:</p>
+
+<pre>101 → "Arun"
+102 → "Priya"
+103 → "Rahul"</pre>
+
+<p>The key uniquely identifies the value.</p>
+
+<h3>Example</h3>
+
+<pre>user:101 → Arun
+user:102 → Priya</pre>
+
+<h3>Real-time uses</h3>
+
+<p>Key-value stores are useful for:</p>
+
+<ul>
+    <li>Caching</li>
+    <li>Session management</li>
+    <li>Shopping carts</li>
+    <li>User preferences</li>
+    <li>Fast lookups</li>
+</ul>
+
+<h3>Example database</h3>
+
+<p><strong>Redis</strong></p>
+
+<hr>
+
+<h2>2. Document Store</h2>
+
+<p>Data is stored as documents, usually in JSON/BSON-like format.</p>
+
+<p>Example:</p>
+
+<pre>{
+   "student_id": 101,
+   "name": "Arun",
+   "department": "CSE",
+   "skills": ["Java", "Python"]
+}</pre>
+
+<p>Another document can have a different structure:</p>
+
+<pre>{
+   "student_id": 102,
+   "name": "Priya",
+   "department": "ECE",
+   "phone": "9876543210"
+}</pre>
+
+<p>The schema is flexible.</p>
+
+<h3>Example database</h3>
+
+<p><strong>MongoDB</strong></p>
+
+<hr>
+
+<h2>3. Column-Family Store</h2>
+
+<p>Data is organized using column families instead of traditional relational tables.</p>
+
+<p>Examples:</p>
+
+<ul>
+    <li>Apache Cassandra</li>
+    <li>HBase</li>
+</ul>
+
+<p>Useful for:</p>
+
+<ul>
+    <li>Big data</li>
+    <li>Analytics</li>
+    <li>Distributed systems</li>
+</ul>
+
+<hr>
+
+<h2>4. Graph Database</h2>
+
+<p>Data is represented using:</p>
+
+<ul>
+    <li>Nodes</li>
+    <li>Relationships</li>
+    <li>Properties</li>
+</ul>
+
+<p>Example:</p>
+
+<pre>Arun ──FRIEND_OF──→ Priya
+  |
+  |
+STUDIES
+  ↓
+CSE</pre>
+
+<p>Useful for:</p>
+
+<ul>
+    <li>Social networks</li>
+    <li>Recommendation systems</li>
+    <li>Fraud detection</li>
+    <li>Relationship-based applications</li>
+</ul>
+
+<p>Example:</p>
+
+<p><strong>Neo4j</strong></p>
+
+<hr>
+
+<h2>Key-Value vs Document Store</h2>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Key-Value</th>
+        <th>Document</th>
+    </tr>
+    <tr>
+        <td>Structure</td>
+        <td>Key → Value</td>
+        <td>JSON/BSON document</td>
+    </tr>
+    <tr>
+        <td>Schema</td>
+        <td>Flexible</td>
+        <td>Flexible</td>
+    </tr>
+    <tr>
+        <td>Access</td>
+        <td>Mainly by key</td>
+        <td>By fields/contents</td>
+    </tr>
+    <tr>
+        <td>Example</td>
+        <td>Redis</td>
+        <td>MongoDB</td>
+    </tr>
+    <tr>
+        <td>Best for</td>
+        <td>Fast lookup/cache</td>
+        <td>Complex application data</td>
+    </tr>
+    <tr>
+        <td>Data</td>
+        <td>Simple</td>
+        <td>Rich/structured documents</td>
+    </tr>
+</table>
+
+<hr>
+
+<h2>When to Use NoSQL?</h2>
+
+<p>Use NoSQL when:</p>
+
+<ul>
+    <li>Data structure changes frequently.</li>
+    <li>Very large amounts of data are generated.</li>
+    <li>High performance is required.</li>
+    <li>Horizontal scalability is required.</li>
+    <li>Data is semi-structured or unstructured.</li>
+    <li>Distributed applications are required.</li>
+</ul>
+
+<h3>Conclusion</h3>
+
+<p>NoSQL databases provide flexibility, scalability and high performance for modern applications. Key-value databases are ideal for simple and extremely fast lookups, while document databases such as MongoDB are suitable for flexible, JSON-like application data.</p>
+
+<hr>
+
+<h2>⭐ Quick 16-Mark Exam Pattern</h2>
+
+<p>For <strong>each question</strong>, you can structure your answer like this:</p>
+
+<pre>1. Definition / Introduction
+2. Explanation
+3. Types / Classification
+4. Diagram / Table
+5. Example
+6. Real-time application
+7. Advantages
+8. Disadvantages (if applicable)
+9. Conclusion</pre>
+
+<p>For <strong>Q5 and Q6</strong>, remember this one line very strongly:</p>
+
+<blockquote>
+    <p><strong>Precedence graph with no cycle → Conflict Serializable.</strong><br>
+    <strong>Precedence graph with a cycle → Not Conflict Serializable.</strong></p>
+</blockquote>
+
+<p>And for <strong>Q2</strong>:</p>
+
+<blockquote>
+    <p><strong>2PL = Growing phase + Shrinking phase.</strong></p>
+</blockquote>
+
+<p>For <strong>Q3</strong>:</p>
+
+<blockquote>
+    <p><strong>ACID = Atomicity + Consistency + Isolation + Durability.</strong></p>
+</blockquote>
+
+<p>For <strong>Q1</strong>:</p>
+
+<blockquote>
+    <p><strong>1NF → 2NF → 3NF → BCNF → 4NF → 5NF.</strong></p>
+</blockquote>
+
+</body>
+
     <title>DBMS Notes </title>
 
     <style>

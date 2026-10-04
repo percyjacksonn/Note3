@@ -4,6 +4,814 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 30px;
+            background-color: #f5f5f5;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            background-color: #333;
+            color: white;
+            padding: 10px;
+        }
+
+        .question {
+            background-color: white;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+
+        .question h3 {
+            margin-top: 0;
+            color: #222;
+        }
+
+        .answer {
+            margin-left: 10px;
+        }
+
+        .example {
+            background-color: #eeeeee;
+            padding: 8px;
+            margin-top: 8px;
+        }
+
+        ul {
+            margin-top: 5px;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>DBMS – 2 Mark Questions</h1>
+<p><strong>Units III, IV and V</strong></p>
+
+
+<!-- ================= UNIT III ================= -->
+
+<h2>UNIT III – Relational Database Design and Normalization</h2>
+
+<div class="question">
+    <h3>1. What is a Functional Dependency?</h3>
+
+    <div class="answer">
+        <p>
+            A functional dependency shows a relationship between two attributes.
+            It means that the value of one attribute can determine the value of another attribute.
+        </p>
+
+        <p><strong>Example:</strong> Student_ID → Student_Name</p>
+
+        <p>
+            Here, Student_ID determines Student_Name because each student ID belongs to only one student.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>2. Define Attribute Closure.</h3>
+
+    <div class="answer">
+        <p>
+            Attribute closure is the set of all attributes that can be determined
+            from a given set of attributes using the functional dependencies.
+        </p>
+
+        <p><strong>Example:</strong></p>
+
+        <p>
+            If A → B and B → C, then the closure of A is:
+        </p>
+
+        <p><strong>A<sup>+</sup> = {A, B, C}</strong></p>
+
+        <p>
+            This means A can determine A, B and C.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>3. What is a Minimal Cover?</h3>
+
+    <div class="answer">
+        <p>
+            A minimal cover is the smallest equivalent set of functional dependencies.
+            It contains no unnecessary attributes or dependencies.
+        </p>
+
+        <p><strong>Example:</strong></p>
+
+        <p>
+            If we have:
+        </p>
+
+        <p><strong>A → BC</strong></p>
+
+        <p>
+            It can be divided into:
+        </p>
+
+        <ul>
+            <li>A → B</li>
+            <li>A → C</li>
+        </ul>
+
+        <p>
+            This gives a simpler set of dependencies.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>4. What is Decomposition of a Relation?</h3>
+
+    <div class="answer">
+        <p>
+            Decomposition means splitting one large relation or table into two or more
+            smaller tables to reduce redundancy and improve database design.
+        </p>
+
+        <p><strong>Example:</strong></p>
+
+        <p>
+            A Student table containing Student_ID, Student_Name and Department_Name
+            can be divided into Student and Department tables.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>5. What is a Lossless-Join Decomposition?</h3>
+
+    <div class="answer">
+        <p>
+            A decomposition is called lossless-join when the original table can be
+            obtained exactly by joining the smaller tables.
+        </p>
+
+        <p>
+            It should not create any extra or incorrect rows.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If a Student table is divided into Student and Department tables,
+            joining them should give back the original Student information correctly.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>6. What is Dependency Preservation?</h3>
+
+    <div class="answer">
+        <p>
+            Dependency preservation means that all the important functional dependencies
+            can be checked using the decomposed tables without joining them again.
+        </p>
+
+        <p><strong>Example:</strong></p>
+
+        <p>
+            If the original table has A → B, after decomposition we should still
+            be able to check A → B using the smaller tables.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>7. Define 1NF and 2NF.</h3>
+
+    <div class="answer">
+        <p><strong>1NF (First Normal Form):</strong></p>
+        <p>
+            A table is in 1NF when every column contains only atomic or single values
+            and there are no repeating groups.
+        </p>
+
+        <p><strong>Example:</strong> A student should have separate rows for different phone numbers instead of storing multiple numbers in one cell.</p>
+
+        <p><strong>2NF (Second Normal Form):</strong></p>
+        <p>
+            A table must first be in 1NF, and every non-key attribute must depend
+            on the complete primary key.
+        </p>
+
+        <p>
+            2NF mainly removes partial dependency.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>8. Define 3NF and BCNF.</h3>
+
+    <div class="answer">
+        <p><strong>3NF (Third Normal Form):</strong></p>
+        <p>
+            A table is in 3NF when it is in 2NF and non-key attributes do not
+            depend on other non-key attributes.
+        </p>
+
+        <p><strong>BCNF (Boyce-Codd Normal Form):</strong></p>
+        <p>
+            A table is in BCNF when, for every non-trivial functional dependency,
+            the determinant is a superkey.
+        </p>
+
+        <p>
+            BCNF is stricter than 3NF.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>9. What is a Multivalued Dependency?</h3>
+
+    <div class="answer">
+        <p>
+            A multivalued dependency occurs when one attribute determines multiple
+            independent values of another attribute.
+        </p>
+
+        <p><strong>Example:</strong></p>
+
+        <p>
+            A student may have many hobbies and many languages.
+        </p>
+
+        <p>
+            Student →→ Hobby
+        </p>
+
+        <p>
+            Student →→ Language
+        </p>
+
+        <p>
+            The hobbies and languages are independent of each other.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>10. What are Insertion, Deletion and Update Anomalies?</h3>
+
+    <div class="answer">
+        <p>
+            Anomalies are problems that occur in a poorly designed database because
+            the same information is stored repeatedly.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Insertion anomaly:</strong>
+                Difficulty in adding new information.
+            </li>
+
+            <li>
+                <strong>Deletion anomaly:</strong>
+                Deleting one record may accidentally remove useful information.
+            </li>
+
+            <li>
+                <strong>Update anomaly:</strong>
+                The same information must be changed in many places.
+            </li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If a department name is repeated in many student rows,
+            changing the department name requires updating many rows.
+        </div>
+    </div>
+</div>
+
+
+<!-- ================= UNIT IV ================= -->
+
+<h2>UNIT IV – Transactions</h2>
+
+
+<div class="question">
+    <h3>11. What is a Transaction?</h3>
+
+    <div class="answer">
+        <p>
+            A transaction is a sequence of database operations treated as one
+            logical unit of work.
+        </p>
+
+        <p>
+            A transaction should either complete successfully or should not affect
+            the database.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            Transferring ₹500 from Account A to Account B involves
+            deducting ₹500 from A and adding ₹500 to B.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>12. What are the Four ACID Properties?</h3>
+
+    <div class="answer">
+        <p>
+            ACID properties ensure that database transactions are reliable.
+        </p>
+
+        <ul>
+            <li><strong>Atomicity:</strong> All operations happen or none happen.</li>
+            <li><strong>Consistency:</strong> The database remains correct after the transaction.</li>
+            <li><strong>Isolation:</strong> Transactions do not interfere with each other.</li>
+            <li><strong>Durability:</strong> Completed changes remain saved even after a failure.</li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            During a bank transfer, money should be deducted from one account
+            and added to another. Both operations must happen correctly.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>13. What is a Schedule?</h3>
+
+    <div class="answer">
+        <p>
+            A schedule is the order in which the operations of one or more
+            transactions are executed.
+        </p>
+
+        <p><strong>Example:</strong></p>
+
+        <p>
+            T1: Read(A) → Write(A)
+        </p>
+
+        <p>
+            T2: Read(B) → Write(B)
+        </p>
+
+        <p>
+            The order of these operations forms a schedule.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>14. Differentiate between Serial and Non-Serial Schedules.</h3>
+
+    <div class="answer">
+        <p><strong>Serial Schedule:</strong></p>
+        <p>
+            One transaction completes completely before another transaction starts.
+        </p>
+
+        <p><strong>Non-Serial Schedule:</strong></p>
+        <p>
+            Operations of different transactions can be mixed or interleaved.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong><br>
+            Serial: T1 → T2<br>
+            Non-Serial: T1 → T2 → T1 → T2
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>15. What is Serializability?</h3>
+
+    <div class="answer">
+        <p>
+            Serializability is the property that allows a non-serial schedule
+            to produce the same result as some serial schedule.
+        </p>
+
+        <p>
+            It helps maintain the correctness of the database when transactions
+            run at the same time.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If a non-serial schedule gives the same result as T1 followed by T2,
+            it is considered serializable.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>16. What is Conflict Serializability?</h3>
+
+    <div class="answer">
+        <p>
+            Conflict serializability checks whether a schedule can be converted
+            into a serial schedule by changing the order of non-conflicting operations.
+        </p>
+
+        <p>
+            A precedence graph is commonly used to check conflict serializability.
+            If the graph has no cycle, the schedule is conflict serializable.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If T1 and T2 perform operations that do not create a cycle in the
+            precedence graph, the schedule is conflict serializable.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>17. What is Concurrency Control?</h3>
+
+    <div class="answer">
+        <p>
+            Concurrency control is the process of managing multiple transactions
+            running at the same time.
+        </p>
+
+        <p>
+            It prevents incorrect results and maintains database consistency.
+        </p>
+
+        <p><strong>Example:</strong>
+            Two users trying to update the same bank account at the same time
+            must be controlled properly.
+        </p>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>18. What are Shared and Exclusive Locks?</h3>
+
+    <div class="answer">
+        <p>
+            Locks are used to control access to database data when multiple
+            transactions are running.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Shared Lock (S):</strong>
+                Used for reading data. Multiple transactions can usually hold
+                a shared lock at the same time.
+            </li>
+
+            <li>
+                <strong>Exclusive Lock (X):</strong>
+                Used for writing or modifying data. Other transactions cannot
+                access the locked data in a conflicting way.
+            </li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            T1 reads Account A → Shared Lock.<br>
+            T2 wants to update Account A → Exclusive Lock.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>19. What is Two-Phase Locking (2PL)?</h3>
+
+    <div class="answer">
+        <p>
+            Two-Phase Locking is a concurrency control method that uses two phases
+            to control locks.
+        </p>
+
+        <ul>
+            <li>
+                <strong>Growing Phase:</strong>
+                The transaction can acquire locks but cannot release them.
+            </li>
+
+            <li>
+                <strong>Shrinking Phase:</strong>
+                The transaction can release locks but cannot acquire new locks.
+            </li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            First, a transaction obtains all required locks.
+            After that, it starts releasing the locks.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>20. What is a Deadlock? Mention any Two Methods for Handling It.</h3>
+
+    <div class="answer">
+        <p>
+            A deadlock occurs when two or more transactions wait for each other
+            indefinitely and none of them can continue.
+        </p>
+
+        <p><strong>Methods for handling deadlock:</strong></p>
+
+        <ul>
+            <li>Deadlock prevention</li>
+            <li>Deadlock detection and recovery</li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            T1 holds a lock on A and waits for B, while T2 holds B and waits for A.
+            Both transactions keep waiting.
+        </div>
+    </div>
+</div>
+
+
+<!-- ================= UNIT V ================= -->
+
+<h2>UNIT V – Storage, Indexing, Query Processing and Emerging Trends</h2>
+
+
+<div class="question">
+    <h3>21. What is File Organization?</h3>
+
+    <div class="answer">
+        <p>
+            File organization is the method used to arrange and store records
+            in a database file.
+        </p>
+
+        <p><strong>Main types include:</strong></p>
+
+        <ul>
+            <li>Heap file organization</li>
+            <li>Sequential or sorted file organization</li>
+            <li>Hash file organization</li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            Student records can be stored based on Student_ID or simply
+            in the order in which they are inserted.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>22. What is Heap File Organization?</h3>
+
+    <div class="answer">
+        <p>
+            Heap file organization stores records in no particular order.
+            New records are generally placed wherever space is available.
+        </p>
+
+        <p>
+            It is simple and makes insertion fast, but searching for a particular
+            record can be slow.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            Student records are inserted one after another without arranging
+            them by Student_ID.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>23. What is Indexing?</h3>
+
+    <div class="answer">
+        <p>
+            Indexing is a technique used to make searching and retrieving
+            records from a database faster.
+        </p>
+
+        <p>
+            An index works like an index in a book, helping the database
+            quickly find the required data.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            An index on Student_ID helps the database quickly find a student
+            with Student_ID = 105.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>24. Differentiate between Single-Level and Multi-Level Indexing.</h3>
+
+    <div class="answer">
+        <p><strong>Single-Level Indexing:</strong></p>
+        <p>
+            It has one level of index entries that directly point to the data records.
+        </p>
+
+        <p><strong>Multi-Level Indexing:</strong></p>
+        <p>
+            It uses multiple levels of indexes, where one index can point to another index.
+            This is useful when the index itself becomes large.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            A small table may use a single-level index, while a very large table
+            may use multiple index levels for faster searching.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>25. What is a Clustered Index?</h3>
+
+    <div class="answer">
+        <p>
+            A clustered index organizes the stored records according to the
+            indexed field or key.
+        </p>
+
+        <p>
+            The data records are arranged in the same general order as the index.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If Student_ID is used as the clustered index, student records can
+            be stored in Student_ID order.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>26. What is a B+ Tree?</h3>
+
+    <div class="answer">
+        <p>
+            A B+ tree is a balanced tree data structure commonly used for
+            database indexing.
+        </p>
+
+        <p>
+            It keeps the data entries at the leaf level, and the leaf nodes
+            are linked to make sequential searching easier.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            A database can use a B+ tree index on Student_ID to quickly find
+            students with IDs between 100 and 200.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>27. What is Hash Indexing?</h3>
+
+    <div class="answer">
+        <p>
+            Hash indexing uses a hash function to convert a search key into
+            a location called a bucket.
+        </p>
+
+        <p>
+            It is especially useful for quickly finding records using exact values.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            Searching for Student_ID = 105 can use a hash function to directly
+            locate the bucket containing student 105.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>28. What are the Main Steps in Query Processing?</h3>
+
+    <div class="answer">
+        <p>
+            Query processing is the process of converting a user's SQL query
+            into a form that the database can execute efficiently.
+        </p>
+
+        <p><strong>Main steps:</strong></p>
+
+        <ol>
+            <li>Parsing and validation</li>
+            <li>Translation of the query</li>
+            <li>Query optimization</li>
+            <li>Selection of an execution plan</li>
+            <li>Query execution</li>
+        </ol>
+
+        <div class="example">
+            <strong>Example:</strong>
+            For <strong>SELECT * FROM Student WHERE Student_ID = 105;</strong>,
+            the DBMS checks the query, finds an efficient way to search,
+            and then returns the required student record.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>29. What is Query Optimization? What is Cost-Based Optimization?</h3>
+
+    <div class="answer">
+        <p>
+            <strong>Query Optimization</strong> is the process of choosing an
+            efficient way to execute a SQL query.
+        </p>
+
+        <p>
+            <strong>Cost-Based Optimization</strong> compares different possible
+            execution plans and chooses the plan with the lowest estimated cost.
+        </p>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If a table has an index on Student_ID, the optimizer may choose
+            the index instead of scanning the entire table because it is faster.
+        </div>
+    </div>
+</div>
+
+
+<div class="question">
+    <h3>30. What is NoSQL? Mention the Major Types of NoSQL Databases.</h3>
+
+    <div class="answer">
+        <p>
+            NoSQL means "Not Only SQL". It refers to databases that use
+            flexible data models and are useful for large-scale or rapidly
+            changing data.
+        </p>
+
+        <p><strong>Major types of NoSQL databases:</strong></p>
+
+        <ul>
+            <li><strong>Key-Value Database</strong></li>
+            <li><strong>Document Database</strong></li>
+            <li><strong>Column-Family Database</strong></li>
+            <li><strong>Graph Database</strong></li>
+        </ul>
+
+        <div class="example">
+            <strong>Example:</strong>
+            A document database can store a student's information as a flexible
+            document containing name, age, department and subjects.
+        </div>
+    </div>
+</div>
+
     <style>
         body {
             font-family: Arial, sans-serif;

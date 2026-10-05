@@ -4,6 +4,1064 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 30px;
+            color: #222;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        h2 {
+            margin-top: 30px;
+        }
+
+        h3 {
+            margin-top: 20px;
+        }
+
+        pre {
+            background: #f4f4f4;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #333;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background: #eee;
+        }
+    </style>
+</head>
+
+<body>
+
+<h1>Data Structures - 16 Mark Answers</h1>
+
+
+<!-- SEARCHING -->
+
+<h2>Searching and Its Types</h2>
+
+<h3>1. Introduction</h3>
+
+<p>Searching is the process of finding a particular element or data from a collection of elements.</p>
+
+<p>The element we want to find is called the search key.</p>
+
+<h3>Types of Searching</h3>
+
+<p>The two common searching techniques are:</p>
+
+<ul>
+    <li>Linear Search</li>
+    <li>Binary Search</li>
+</ul>
+
+<h3>2. Linear Search</h3>
+
+<p>Linear Search is a simple searching method in which each element is checked one by one from the beginning until the required element is found.</p>
+
+<h3>Example</h3>
+
+<p><b>Array:</b></p>
+
+<p>10 &nbsp; 25 &nbsp; 30 &nbsp; 45 &nbsp; 50</p>
+
+<p><b>Search for 45.</b></p>
+
+<p>Compare 45 with 10 → Not found</p>
+<p>Compare 45 with 25 → Not found</p>
+<p>Compare 45 with 30 → Not found</p>
+<p>Compare 45 with 45 → Found</p>
+
+<h3>Algorithm</h3>
+
+<ol>
+    <li>Start from the first element.</li>
+    <li>Compare the search key with the current element.</li>
+    <li>If both are equal, the element is found.</li>
+    <li>Otherwise, move to the next element.</li>
+    <li>Repeat until the element is found or the list ends.</li>
+    <li>If the list ends, display Not Found.</li>
+</ol>
+
+<h3>Simple Pseudocode</h3>
+
+<pre>
+LinearSearch(A, n, key)
+    for i = 0 to n-1
+        if A[i] == key
+            return i
+    return -1
+</pre>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Very simple and easy to understand.</li>
+    <li>Works on sorted and unsorted data.</li>
+    <li>No special arrangement of data is required.</li>
+</ul>
+
+<h3>Disadvantages</h3>
+
+<ul>
+    <li>Slow for large amounts of data.</li>
+    <li>May need to check every element.</li>
+</ul>
+
+<h3>Time Complexity</h3>
+
+<ul>
+    <li>Best case: O(1)</li>
+    <li>Worst case: O(n)</li>
+    <li>Average case: O(n)</li>
+</ul>
+
+
+<h3>3. Binary Search</h3>
+
+<p>Binary Search is a faster searching technique that works by repeatedly dividing a sorted list into two halves.</p>
+
+<p><b>Important:</b> Binary search can be used only when the elements are sorted.</p>
+
+<h3>Example</h3>
+
+<p><b>Array:</b></p>
+
+<p>10 &nbsp; 20 &nbsp; 30 &nbsp; 40 &nbsp; 50 &nbsp; 60 &nbsp; 70</p>
+
+<p><b>Search for 60.</b></p>
+
+<p>Middle element = 40</p>
+
+<p>60 is greater than 40 → Search the right half.</p>
+
+<p>Middle element of the remaining part = 60</p>
+
+<p>60 is found.</p>
+
+<h3>Algorithm</h3>
+
+<ol>
+    <li>Arrange the elements in sorted order.</li>
+    <li>Find the middle element.</li>
+    <li>Compare the middle element with the search key.</li>
+    <li>If they are equal, the element is found.</li>
+    <li>If the key is smaller, search the left half.</li>
+    <li>If the key is greater, search the right half.</li>
+    <li>Repeat until the element is found or the search area becomes empty.</li>
+</ol>
+
+<h3>Simple Pseudocode</h3>
+
+<pre>
+BinarySearch(A, n, key)
+    low = 0
+    high = n-1
+
+    while low &lt;= high
+        mid = (low + high) / 2
+
+        if A[mid] == key
+            return mid
+        else if key &lt; A[mid]
+            high = mid - 1
+        else
+            low = mid + 1
+
+    return -1
+</pre>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Faster than linear search.</li>
+    <li>Very useful for large sorted data.</li>
+    <li>Reduces the search area by half in every step.</li>
+</ul>
+
+<h3>Disadvantages</h3>
+
+<ul>
+    <li>Data must be sorted.</li>
+    <li>Slightly more complex than linear search.</li>
+</ul>
+
+<h3>Time Complexity</h3>
+
+<ul>
+    <li>Best case: O(1)</li>
+    <li>Worst case: O(log n)</li>
+    <li>Average case: O(log n)</li>
+</ul>
+
+<h3>4. Difference Between Linear and Binary Search</h3>
+
+<table>
+    <tr>
+        <th>Linear Search</th>
+        <th>Binary Search</th>
+    </tr>
+    <tr>
+        <td>Checks elements one by one</td>
+        <td>Divides the list into two halves</td>
+    </tr>
+    <tr>
+        <td>Works on sorted and unsorted data</td>
+        <td>Requires sorted data</td>
+    </tr>
+    <tr>
+        <td>Simple to implement</td>
+        <td>Slightly more complex</td>
+    </tr>
+    <tr>
+        <td>Slower for large data</td>
+        <td>Faster for large data</td>
+    </tr>
+    <tr>
+        <td>Worst case: O(n)</td>
+        <td>Worst case: O(log n)</td>
+    </tr>
+</table>
+
+<h3>Conclusion</h3>
+
+<p>Searching is an important operation in Data Structures. Linear Search is simple and can be used for any list, while Binary Search is faster but requires sorted data. Therefore, binary search is preferred when the data is large and already sorted.</p>
+
+
+<!-- SORTING -->
+
+<h2>Sorting and Its Types</h2>
+
+<h3>1. Introduction</h3>
+
+<p>Sorting is the process of arranging data in a particular order.</p>
+
+<p>Usually, data is arranged in:</p>
+
+<ul>
+    <li><b>Ascending order</b> – smallest to largest</li>
+    <li><b>Descending order</b> – largest to smallest</li>
+</ul>
+
+<h3>Types of Sorting</h3>
+
+<p>Some important sorting techniques are:</p>
+
+<ul>
+    <li>Quick Sort</li>
+    <li>Merge Sort</li>
+    <li>Heap Sort</li>
+</ul>
+
+<h3>2. Quick Sort</h3>
+
+<p>Quick Sort is a sorting technique that uses the divide and conquer method.</p>
+
+<p>It selects one element as a pivot and divides the remaining elements into two parts.</p>
+
+<h3>Steps</h3>
+
+<ol>
+    <li>Select an element as the pivot.</li>
+    <li>Place smaller elements on the left side.</li>
+    <li>Place larger elements on the right side.</li>
+    <li>Apply the same process to the left and right parts.</li>
+    <li>Continue until the complete array is sorted.</li>
+</ol>
+
+<h3>Example</h3>
+
+<p>40 &nbsp; 20 &nbsp; 60 &nbsp; 10 &nbsp; 30</p>
+
+<p>Take 40 as pivot.</p>
+
+<p>Smaller elements → 20 &nbsp; 10 &nbsp; 30</p>
+
+<p>Larger elements → 60</p>
+
+<p>Then sort each part.</p>
+
+<p><b>Final result:</b></p>
+
+<p>10 &nbsp; 20 &nbsp; 30 &nbsp; 40 &nbsp; 60</p>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Fast for large data.</li>
+    <li>Requires less extra memory.</li>
+    <li>Easy to implement using recursion.</li>
+</ul>
+
+<h3>Disadvantage</h3>
+
+<p>Performance can become slow if a poor pivot is selected.</p>
+
+<h3>Time Complexity</h3>
+
+<ul>
+    <li>Best/Average: O(n log n)</li>
+    <li>Worst: O(n²)</li>
+</ul>
+
+
+<h3>3. Merge Sort</h3>
+
+<p>Merge Sort is also based on the divide and conquer method.</p>
+
+<p>It divides the array into smaller parts and then merges them in sorted order.</p>
+
+<h3>Steps</h3>
+
+<ol>
+    <li>Divide the array into two halves.</li>
+    <li>Continue dividing until each part contains one element.</li>
+    <li>Compare the elements.</li>
+    <li>Merge them in sorted order.</li>
+    <li>Continue merging until one sorted array is obtained.</li>
+</ol>
+
+<h3>Example</h3>
+
+<p>40 &nbsp; 20 &nbsp; 60 &nbsp; 10</p>
+
+<p><b>Divide:</b></p>
+
+<p>40 20 | 60 10</p>
+
+<p><b>Divide again:</b></p>
+
+<p>40 | 20 and 60 | 10</p>
+
+<p><b>Merge:</b></p>
+
+<p>20 40 and 10 60</p>
+
+<p><b>Final:</b></p>
+
+<p>10 20 40 60</p>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Gives consistent performance.</li>
+    <li>Suitable for large amounts of data.</li>
+    <li>Time complexity remains O(n log n).</li>
+</ul>
+
+<h3>Disadvantage</h3>
+
+<p>Requires extra memory for merging.</p>
+
+<h3>Time Complexity</h3>
+
+<ul>
+    <li>Best: O(n log n)</li>
+    <li>Average: O(n log n)</li>
+    <li>Worst: O(n log n)</li>
+</ul>
+
+
+<h3>4. Heap Sort</h3>
+
+<p>Heap Sort is a sorting technique based on a heap data structure.</p>
+
+<p>A heap is a special type of binary tree.</p>
+
+<p>For ascending order, we generally use a Max Heap.</p>
+
+<h3>Steps</h3>
+
+<ol>
+    <li>Build a Max Heap from the given elements.</li>
+    <li>Take the largest element from the root.</li>
+    <li>Place it at the end of the array.</li>
+    <li>Rebuild the heap.</li>
+    <li>Repeat until all elements are sorted.</li>
+</ol>
+
+<h3>Example</h3>
+
+<p><b>Given:</b></p>
+
+<p>40 &nbsp; 10 &nbsp; 30 &nbsp; 20 &nbsp; 50</p>
+
+<p>After creating a Max Heap, 50 becomes the largest element.</p>
+
+<p>Move 50 to the end.</p>
+
+<p>Repeat the process for the remaining elements.</p>
+
+<p><b>Final result:</b></p>
+
+<p>10 20 30 40 50</p>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Good performance for large data.</li>
+    <li>Does not require much extra memory.</li>
+    <li>Worst-case time is predictable.</li>
+</ul>
+
+<h3>Disadvantage</h3>
+
+<p>More complex than simple sorting methods.</p>
+
+<h3>Time Complexity</h3>
+
+<ul>
+    <li>Best: O(n log n)</li>
+    <li>Average: O(n log n)</li>
+    <li>Worst: O(n log n)</li>
+</ul>
+
+<h3>5. Difference Between Sorting Techniques</h3>
+
+<table>
+    <tr>
+        <th>Feature</th>
+        <th>Quick Sort</th>
+        <th>Merge Sort</th>
+        <th>Heap Sort</th>
+    </tr>
+    <tr>
+        <td>Method</td>
+        <td>Divide and conquer</td>
+        <td>Divide and conquer</td>
+        <td>Heap</td>
+    </tr>
+    <tr>
+        <td>Main idea</td>
+        <td>Uses pivot</td>
+        <td>Divides and merges</td>
+        <td>Uses heap</td>
+    </tr>
+    <tr>
+        <td>Best case</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+    </tr>
+    <tr>
+        <td>Average case</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+    </tr>
+    <tr>
+        <td>Worst case</td>
+        <td>O(n²)</td>
+        <td>O(n log n)</td>
+        <td>O(n log n)</td>
+    </tr>
+    <tr>
+        <td>Extra memory</td>
+        <td>Low</td>
+        <td>More</td>
+        <td>Low</td>
+    </tr>
+</table>
+
+<h3>Conclusion</h3>
+
+<p>Sorting is an important operation in Data Structures and Algorithms. Quick Sort uses a pivot, Merge Sort divides and merges the elements, and Heap Sort uses a heap data structure. All three are useful for sorting large amounts of data.</p>
+
+
+<!-- HASHING -->
+
+<h2>Hashing – 16 Marks</h2>
+
+<h3>1. Introduction</h3>
+
+<p>Hashing is a technique used to store and search data quickly.</p>
+
+<p>It uses a special function called a hash function to convert a key into an index of a hash table.</p>
+
+<h3>Example</h3>
+
+<p>Suppose the hash table size is 10 and the key is 25.</p>
+
+<p><b>Hash function:</b></p>
+
+<p>h(key) = key % table size</p>
+
+<p>So,</p>
+
+<p>h(25) = 25 % 10 = 5</p>
+
+<p>Therefore, 25 is stored at index 5.</p>
+
+<h3>2. Hash Table</h3>
+
+<p>A hash table is a data structure that stores elements using their hash values.</p>
+
+<table>
+    <tr>
+        <th>Index</th>
+        <th>Data</th>
+    </tr>
+    <tr><td>0</td><td>—</td></tr>
+    <tr><td>1</td><td>—</td></tr>
+    <tr><td>2</td><td>12</td></tr>
+    <tr><td>3</td><td>—</td></tr>
+    <tr><td>4</td><td>34</td></tr>
+    <tr><td>5</td><td>25</td></tr>
+    <tr><td>6</td><td>—</td></tr>
+    <tr><td>7</td><td>17</td></tr>
+    <tr><td>8</td><td>—</td></tr>
+    <tr><td>9</td><td>—</td></tr>
+</table>
+
+<p>The index is obtained using the hash function.</p>
+
+<h3>3. Hash Function</h3>
+
+<p>A hash function converts a key into an index in the hash table.</p>
+
+<h3>Common Hash Function</h3>
+
+<p>h(key) = key % table size</p>
+
+<p><b>Example:</b></p>
+
+<p>Table size = 10</p>
+<p>Key = 37</p>
+
+<p>h(37) = 37 % 10 = 7</p>
+
+<p>So, 37 is stored at index 7.</p>
+
+<h3>Properties of a Good Hash Function</h3>
+
+<ul>
+    <li>It should be simple and fast.</li>
+    <li>It should distribute keys evenly.</li>
+    <li>It should reduce collisions.</li>
+    <li>It should always give the same index for the same key.</li>
+</ul>
+
+<h3>4. Collision</h3>
+
+<p>A collision occurs when two or more keys produce the same hash index.</p>
+
+<h3>Example</h3>
+
+<p>Table size = 10</p>
+
+<p>h(25) = 25 % 10 = 5</p>
+<p>h(35) = 35 % 10 = 5</p>
+
+<p>Both keys get index 5.</p>
+
+<p>This is called a collision.</p>
+
+<h3>5. Collision Resolution Techniques</h3>
+
+<p>Collision can be handled using different methods.</p>
+
+<h4>1. Separate Chaining</h4>
+
+<p>In separate chaining, multiple elements with the same index are stored using a linked list.</p>
+
+<p><b>Example:</b></p>
+
+<p>Index 5 → 25 → 35 → 45</p>
+
+<p>All the elements having the same hash value are connected together.</p>
+
+<p><b>Advantage:</b> Simple and easy to implement.</p>
+
+<h4>2. Open Addressing</h4>
+
+<p>In open addressing, all elements are stored inside the hash table itself.</p>
+
+<p>The main methods are:</p>
+
+<ul>
+    <li>Linear Probing</li>
+    <li>Quadratic Probing</li>
+    <li>Double Hashing</li>
+</ul>
+
+<h3>6. Linear Probing</h3>
+
+<p>If the required position is already occupied, we check the next position.</p>
+
+<h3>Example</h3>
+
+<p>If 25 is stored at index 5 and 35 also gets index 5:</p>
+
+<p>25 → index 5</p>
+<p>35 → index 6</p>
+
+<p>If index 6 is also occupied, check index 7, and so on.</p>
+
+<p><b>Advantage:</b> Very simple.</p>
+
+<p><b>Disadvantage:</b> Can create a group of occupied positions called clustering.</p>
+
+<h3>7. Quadratic Probing</h3>
+
+<p>In quadratic probing, instead of checking the next position directly, we check positions using square values.</p>
+
+<p>For example:</p>
+
+<pre>
+h(k)
+h(k) + 1²
+h(k) + 2²
+h(k) + 3²
+</pre>
+
+<p>It helps reduce clustering compared with linear probing.</p>
+
+<h3>8. Double Hashing</h3>
+
+<p>Double hashing uses two hash functions.</p>
+
+<p>The first function gives the initial position.</p>
+
+<p>The second function is used to find the next position when a collision occurs.</p>
+
+<p>It provides better distribution of elements.</p>
+
+<h3>9. Advantages of Hashing</h3>
+
+<ul>
+    <li>Very fast searching.</li>
+    <li>Fast insertion and deletion.</li>
+    <li>Efficient for large amounts of data.</li>
+    <li>Average searching time is O(1).</li>
+    <li>Widely used in databases and computer systems.</li>
+</ul>
+
+<h3>10. Disadvantages of Hashing</h3>
+
+<ul>
+    <li>Collisions can occur.</li>
+    <li>A good hash function is required.</li>
+    <li>Extra space may be needed.</li>
+    <li>Performance can become poor when many collisions occur.</li>
+</ul>
+
+<h3>11. Applications of Hashing</h3>
+
+<p>Hashing is used in:</p>
+
+<ul>
+    <li>Databases</li>
+    <li>Compiler symbol tables</li>
+    <li>Password storage</li>
+    <li>Caching</li>
+    <li>Searching</li>
+    <li>File systems</li>
+    <li>Dictionaries and maps</li>
+</ul>
+
+<h3>12. Time Complexity</h3>
+
+<table>
+    <tr>
+        <th>Operation</th>
+        <th>Average Case</th>
+        <th>Worst Case</th>
+    </tr>
+    <tr>
+        <td>Search</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+    </tr>
+    <tr>
+        <td>Insertion</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+    </tr>
+    <tr>
+        <td>Deletion</td>
+        <td>O(1)</td>
+        <td>O(n)</td>
+    </tr>
+</table>
+
+<h3>Conclusion</h3>
+
+<p>Hashing is an efficient technique for storing and retrieving data quickly. A hash function converts a key into an index. When two keys get the same index, a collision occurs. Techniques such as chaining, linear probing, quadratic probing, and double hashing are used to handle collisions.</p>
+
+
+<!-- DISJOINT SET -->
+
+<h2>Disjoint Set – 16 Marks</h2>
+
+<h3>1. Introduction</h3>
+
+<p>A Disjoint Set is a collection of sets in which no element is common between two sets.</p>
+
+<p>In simple words, disjoint sets are separate sets with no common elements.</p>
+
+<h3>Example</h3>
+
+<p>Set A = {1, 2, 3}</p>
+<p>Set B = {4, 5, 6}</p>
+
+<p>There is no common element between A and B. So, they are disjoint sets.</p>
+
+<h3>2. Operations of Disjoint Set</h3>
+
+<p>There are mainly two important operations:</p>
+
+<h4>1. Find</h4>
+
+<p>The Find operation determines which set an element belongs to.</p>
+
+<p><b>Example:</b></p>
+
+<p>Set A = {1, 2, 3}</p>
+
+<p>Find(2) → Set A</p>
+
+<h4>2. Union</h4>
+
+<p>The Union operation combines two different sets into one set.</p>
+
+<p><b>Example:</b></p>
+
+<p>Set A = {1, 2}</p>
+<p>Set B = {3, 4}</p>
+
+<p>Union(A, B)</p>
+
+<p>Result = {1, 2, 3, 4}</p>
+
+<h3>3. Representation of Disjoint Set</h3>
+
+<p>Disjoint sets can be represented using a tree structure.</p>
+
+<p>Each set has a representative element, called the root.</p>
+
+<pre>
+       1
+      / \
+     2   3
+
+       4
+       |
+       5
+</pre>
+
+<p>Here:</p>
+
+<ul>
+    <li>Root of first set = 1</li>
+    <li>Root of second set = 4</li>
+    <li>Set 1 = {1, 2, 3}</li>
+    <li>Set 2 = {4, 5}</li>
+</ul>
+
+<h3>4. Find Operation</h3>
+
+<p>The Find operation follows the parent links until it reaches the root.</p>
+
+<h3>Example</h3>
+
+<pre>
+       1
+      / \
+     2   3
+</pre>
+
+<p>For Find(3):</p>
+
+<p>3 → 1</p>
+
+<p>So, the representative of 3 is 1.</p>
+
+<h3>5. Union Operation</h3>
+
+<p>Union combines two separate sets.</p>
+
+<p><b>Example:</b></p>
+
+<p>Set 1 = {1, 2}</p>
+<p>Set 2 = {3, 4}</p>
+
+<p>After Union:</p>
+
+<p>Set = {1, 2, 3, 4}</p>
+
+<p>The roots of the two sets are connected.</p>
+
+<h3>6. Union by Rank</h3>
+
+<p>Union by Rank is used to keep the tree short.</p>
+
+<p>The smaller tree is attached under the larger tree.</p>
+
+<p><b>Example:</b></p>
+
+<p>Tree 1 has rank 3</p>
+<p>Tree 2 has rank 1</p>
+
+<p>Tree 2 is attached below Tree 1.</p>
+
+<p><b>Advantage:</b></p>
+
+<p>It reduces the height of the tree and makes the Find operation faster.</p>
+
+<h3>7. Path Compression</h3>
+
+<p>Path Compression is used during the Find operation.</p>
+
+<p>It makes every node on the path point directly to the root.</p>
+
+<p><b>Before:</b></p>
+
+<p>4 → 3 → 2 → 1</p>
+
+<p><b>After Find(4):</b></p>
+
+<pre>
+4 ─┐
+3 ─┼→ 1
+2 ─┘
+</pre>
+
+<p>Now the nodes can reach the root directly.</p>
+
+<p><b>Advantage:</b></p>
+
+<p>It makes future Find operations much faster.</p>
+
+<h3>8. Applications of Disjoint Sets</h3>
+
+<p>Disjoint sets are used in:</p>
+
+<ul>
+    <li>Kruskal's Minimum Spanning Tree algorithm</li>
+    <li>Finding connected components in a graph</li>
+    <li>Network connectivity</li>
+    <li>Image processing</li>
+    <li>Detecting cycles in graphs</li>
+</ul>
+
+<h3>9. Advantages</h3>
+
+<ul>
+    <li>Simple way to manage separate groups.</li>
+    <li>Fast Find and Union operations.</li>
+    <li>Useful in graph algorithms.</li>
+    <li>Efficient when combined with Union by Rank and Path Compression.</li>
+</ul>
+
+<h3>10. Time Complexity</h3>
+
+<p>With Union by Rank + Path Compression, the operations are nearly constant time.</p>
+
+<p>Find: Almost O(1)</p>
+<p>Union: Almost O(1)</p>
+
+<p>More precisely, the complexity is O(α(n)), where α(n) grows extremely slowly.</p>
+
+<h3>Conclusion</h3>
+
+<p>A Disjoint Set is used to maintain a collection of separate sets. The two main operations are Find and Union. Union by Rank and Path Compression improve its efficiency. Disjoint sets are especially important in Kruskal's algorithm and graph connectivity problems.</p>
+
+
+<!-- PAGE REPLACEMENT -->
+
+<h2>Page Replacement Algorithms – 16 Marks</h2>
+
+<h3>1. Page Replacement</h3>
+
+<p>Page replacement is a technique used in Operating Systems when a required page is not present in main memory.</p>
+
+<p>This situation is called a page fault.</p>
+
+<p>If all memory frames are full, the OS selects one existing page and replaces it with the required page.</p>
+
+<h3>Main Page Replacement Algorithms</h3>
+
+<ul>
+    <li>FIFO – First In First Out</li>
+    <li>LRU – Least Recently Used</li>
+    <li>OPR – Optimal Page Replacement</li>
+    <li>MRU – Most Recently Used</li>
+</ul>
+
+<h3>2. FIFO – First In First Out</h3>
+
+<p>FIFO replaces the page that entered the memory first.</p>
+
+<h3>Example</h3>
+
+<p>Pages in memory:</p>
+
+<p>10 → 20 → 30</p>
+
+<p>If a new page 40 arrives, 10 is removed because it came first.</p>
+
+<p>10 &nbsp; 20 &nbsp; 30</p>
+
+<p>↓</p>
+
+<p>Remove 10</p>
+
+<p>↓</p>
+
+<p>20 &nbsp; 30 &nbsp; 40</p>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Simple and easy to implement.</li>
+    <li>Requires less overhead.</li>
+</ul>
+
+<h3>Disadvantage</h3>
+
+<p>May remove an important page.</p>
+
+<p>Can suffer from Belady's anomaly.</p>
+
+<h3>3. LRU – Least Recently Used</h3>
+
+<p>LRU replaces the page that has not been used for the longest time.</p>
+
+<h3>Example</h3>
+
+<p>Suppose the pages were used in this order:</p>
+
+<p>10 → 20 → 30 → 10 → 40</p>
+
+<p>When replacement is needed, 20 may be removed because it was used least recently.</p>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Usually performs better than FIFO.</li>
+    <li>Uses recent page usage information.</li>
+</ul>
+
+<h3>Disadvantage</h3>
+
+<ul>
+    <li>More difficult to implement.</li>
+    <li>Requires tracking page usage.</li>
+</ul>
+
+<h3>4. OPR – Optimal Page Replacement</h3>
+
+<p>Optimal Page Replacement replaces the page that will not be used for the longest time in the future.</p>
+
+<h3>Example</h3>
+
+<p>If memory contains:</p>
+
+<p>10 &nbsp; 20 &nbsp; 30</p>
+
+<p>and the future references show that:</p>
+
+<p>10 will be used soon</p>
+<p>20 will be used later</p>
+<p>30 will not be used for a long time</p>
+
+<p>Then 30 is replaced.</p>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Gives the minimum possible page faults.</li>
+    <li>Best theoretical performance.</li>
+</ul>
+
+<h3>Disadvantage</h3>
+
+<ul>
+    <li>Future page references are not known in advance.</li>
+    <li>Mainly used for comparison with other algorithms.</li>
+</ul>
+
+<h3>5. MRU – Most Recently Used</h3>
+
+<p>MRU replaces the page that was used most recently.</p>
+
+<h3>Example</h3>
+
+<p>If pages are:</p>
+
+<p>10 &nbsp; 20 &nbsp; 30</p>
+
+<p>and 30 was accessed most recently, then 30 is replaced when a new page arrives.</p>
+
+<h3>Advantages</h3>
+
+<ul>
+    <li>Simple concept.</li>
+    <li>Can be useful for some specific access patterns.</li>
+</ul>
+
+<h3>Disadvantage</h3>
+
+<ul>
+    <li>Usually not suitable for general-purpose page replacement.</li>
+    <li>May remove a page that will be needed again soon.</li>
+</ul>
+
+<h3>6. Comparison</h3>
+
+<table>
+    <tr>
+        <th>Algorithm</th>
+        <th>Page Removed</th>
+        <th>Main Advantage</th>
+    </tr>
+    <tr>
+        <td>FIFO</td>
+        <td>Oldest page</td>
+        <td>Simple</td>
+    </tr>
+    <tr>
+        <td>LRU</td>
+        <td>Least recently used</td>
+        <td>Good performance</td>
+    </tr>
+    <tr>
+        <td>OPR</td>
+        <td>Page needed farthest in future</td>
+        <td>Minimum page faults</td>
+    </tr>
+    <tr>
+        <td>MRU</td>
+        <td>Most recently used</td>
+        <td>Useful for special patterns</td>
+    </tr>
+</table>
+
+<h3>Conclusion</h3>
+
+<p>Page replacement helps the OS manage memory when a page fault occurs and all frames are occupied. FIFO removes the oldest page, LRU removes the least recently used page, OPR removes the page needed farthest in the future, and MRU removes the most recently used page.</p>
+
+</body>
+
     <title>Note3</title>
 https://chatgpt.com/share/6ac3d165-9cdc-83ec-abd3-c02e326f2993?ogimg=plain
     <style>

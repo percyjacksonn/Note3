@@ -1061,6 +1061,1062 @@ h(k) + 3²
 <p>Page replacement helps the OS manage memory when a page fault occurs and all frames are occupied. FIFO removes the oldest page, LRU removes the least recently used page, OPR removes the page needed farthest in the future, and MRU removes the most recently used page.</p>
 
 </body>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Data Structures and Algorithms - Units 3, 4 & 5</title>
+
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 30px;
+        background: #f7f7f7;
+        color: #222;
+    }
+
+    .container {
+        max-width: 1000px;
+        margin: auto;
+        background: white;
+        padding: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        color: #17365d;
+        border-bottom: 3px solid #17365d;
+        padding-bottom: 10px;
+    }
+
+    h2 {
+        background: #17365d;
+        color: white;
+        padding: 12px;
+        margin-top: 35px;
+    }
+
+    h3 {
+        color: #174a7c;
+        border-left: 5px solid #174a7c;
+        padding-left: 10px;
+    }
+
+    h4 {
+        color: #333;
+    }
+
+    p {
+        margin: 8px 0;
+    }
+
+    ul, ol {
+        margin-top: 5px;
+    }
+
+    .box {
+        background: #f0f5fa;
+        border: 1px solid #ccd9e5;
+        padding: 15px;
+        margin: 15px 0;
+    }
+
+    .example {
+        background: #f5f5f5;
+        border-left: 5px solid #555;
+        padding: 12px;
+        margin: 12px 0;
+    }
+
+    pre {
+        background: #222;
+        color: #fff;
+        padding: 15px;
+        overflow-x: auto;
+        border-radius: 5px;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 15px 0;
+    }
+
+    th, td {
+        border: 1px solid #999;
+        padding: 9px;
+        text-align: left;
+    }
+
+    th {
+        background: #dce6f1;
+    }
+
+    .diagram {
+        background: #fafafa;
+        border: 1px solid #aaa;
+        padding: 15px;
+        margin: 15px 0;
+        text-align: center;
+        font-family: monospace;
+        white-space: pre-wrap;
+    }
+
+    .important {
+        font-weight: bold;
+        color: #a00000;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h1>DATA STRUCTURES AND ALGORITHMS<br>UNIT 3, UNIT 4 & UNIT 5</h1>
+
+
+<!-- ================= UNIT 3 ================= -->
+
+<h2>UNIT - 3</h2>
+
+<h3>1. DIJKSTRA'S ALGORITHM</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Dijkstra's algorithm is a shortest path algorithm used to find the shortest distance
+from one source vertex to all other vertices in a weighted graph.
+</p>
+
+<p>
+It works when the graph contains non-negative edge weights.
+</p>
+
+<h4>Types</h4>
+
+<ul>
+    <li>Single-source shortest path</li>
+    <li>Weighted graph shortest path</li>
+</ul>
+
+<h4>Basic Idea</h4>
+
+<ol>
+    <li>Select the source vertex.</li>
+    <li>Assign distance 0 to the source and infinity to all other vertices.</li>
+    <li>Select the unvisited vertex having the smallest distance.</li>
+    <li>Update the distances of its neighbouring vertices.</li>
+    <li>Mark the selected vertex as visited.</li>
+    <li>Repeat until all required vertices are visited.</li>
+</ol>
+
+<h4>Example</h4>
+
+<div class="diagram">
+        2
+   A -------- B
+   |          |
+  4|          |3
+   |          |
+   C -------- D
+        1
+
+Shortest path from A to D:
+A → B → D
+
+Distance = 2 + 3 = 5
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>GPS and navigation systems</li>
+    <li>Google Maps and route finding</li>
+    <li>Computer networks</li>
+    <li>Robotics</li>
+    <li>Transportation systems</li>
+</ul>
+
+<h4>Advantages</h4>
+
+<ul>
+    <li>Finds shortest paths efficiently.</li>
+    <li>Useful for weighted graphs.</li>
+    <li>Widely used in real-world routing systems.</li>
+</ul>
+
+<h4>Disadvantages</h4>
+
+<ul>
+    <li>Does not work correctly with negative edge weights.</li>
+    <li>Can require more processing for very large graphs.</li>
+</ul>
+
+
+<h3>2. PRIM'S ALGORITHM</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Prim's algorithm is a greedy algorithm used to find the Minimum Spanning Tree
+(MST) of a connected weighted graph.
+</p>
+
+<p>
+A Minimum Spanning Tree connects all vertices with minimum total edge weight
+without forming a cycle.
+</p>
+
+<h4>Steps</h4>
+
+<ol>
+    <li>Choose any vertex as the starting vertex.</li>
+    <li>Choose the minimum-weight edge connecting the tree to an unvisited vertex.</li>
+    <li>Add that edge and vertex to the tree.</li>
+    <li>Repeat until all vertices are included.</li>
+</ol>
+
+<h4>Example</h4>
+
+<div class="diagram">
+        2
+   A -------- B
+   |          |
+  3|          |4
+   |          |
+   C -------- D
+        1
+
+Possible MST:
+A -- B = 2
+A -- C = 3
+C -- D = 1
+
+Total cost = 6
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Network cable design</li>
+    <li>Telephone networks</li>
+    <li>Electrical power networks</li>
+    <li>Road construction</li>
+    <li>Computer network design</li>
+</ul>
+
+<h4>Advantages</h4>
+
+<ul>
+    <li>Simple greedy approach.</li>
+    <li>Works efficiently for dense graphs.</li>
+    <li>Produces a minimum spanning tree.</li>
+</ul>
+
+
+<h3>3. KRUSKAL'S ALGORITHM</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Kruskal's algorithm is a greedy algorithm used to find the Minimum Spanning Tree
+of a weighted graph.
+</p>
+
+<h4>Basic Idea</h4>
+
+<p>
+It sorts all edges according to their weight and repeatedly selects the smallest
+edge that does not create a cycle.
+</p>
+
+<h4>Steps</h4>
+
+<ol>
+    <li>Sort all edges in increasing order of weight.</li>
+    <li>Select the smallest edge.</li>
+    <li>Check whether it creates a cycle.</li>
+    <li>If it does not create a cycle, add it to the MST.</li>
+    <li>Continue until all vertices are connected.</li>
+</ol>
+
+<h4>Example</h4>
+
+<div class="diagram">
+Edges:
+
+A-B = 2
+A-C = 3
+C-D = 1
+B-D = 4
+
+Sorted:
+C-D = 1
+A-B = 2
+A-C = 3
+B-D = 4
+
+Select:
+C-D
+A-B
+A-C
+
+MST total cost = 1 + 2 + 3 = 6
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Network design</li>
+    <li>Road construction</li>
+    <li>Electrical networks</li>
+    <li>Communication networks</li>
+</ul>
+
+<h4>Prim vs Kruskal</h4>
+
+<table>
+<tr>
+<th>Prim's Algorithm</th>
+<th>Kruskal's Algorithm</th>
+</tr>
+<tr>
+<td>Starts with a vertex</td>
+<td>Starts with the smallest edge</td>
+</tr>
+<tr>
+<td>Grows one tree</td>
+<td>Initially creates separate components</td>
+</tr>
+<tr>
+<td>Selects minimum connecting edge</td>
+<td>Selects globally smallest edge</td>
+</tr>
+<tr>
+<td>Useful for dense graphs</td>
+<td>Useful for sparse graphs</td>
+</tr>
+</table>
+
+
+<!-- ================= UNIT 4 ================= -->
+
+<h2>UNIT - 4</h2>
+
+
+<h3>1. SEARCHING</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Searching is the process of finding a particular element from a collection of
+elements. The element being searched is called the search key.
+</p>
+
+<h4>Types of Searching</h4>
+
+<ul>
+    <li>Linear Search</li>
+    <li>Binary Search</li>
+</ul>
+
+
+<h3>Linear Search</h3>
+
+<p>
+Linear Search checks every element one by one until the required element is found.
+It can be used on both sorted and unsorted data.
+</p>
+
+<div class="example">
+<b>Example:</b><br>
+Array: 10, 25, 30, 45, 50<br>
+Search key: 45<br><br>
+
+10 → Not found<br>
+25 → Not found<br>
+30 → Not found<br>
+45 → Found
+</div>
+
+<h4>Advantages</h4>
+
+<ul>
+    <li>Very simple.</li>
+    <li>Works with sorted and unsorted data.</li>
+    <li>No special arrangement is required.</li>
+</ul>
+
+<h4>Disadvantages</h4>
+
+<ul>
+    <li>Slow for large data.</li>
+    <li>May have to check every element.</li>
+</ul>
+
+<h4>Time Complexity</h4>
+
+<table>
+<tr><th>Case</th><th>Complexity</th></tr>
+<tr><td>Best</td><td>O(1)</td></tr>
+<tr><td>Average</td><td>O(n)</td></tr>
+<tr><td>Worst</td><td>O(n)</td></tr>
+</table>
+
+
+<h3>Binary Search</h3>
+
+<p>
+Binary Search repeatedly divides a sorted list into two halves to find an element.
+</p>
+
+<p class="important">
+Important: Binary Search requires sorted data.
+</p>
+
+<div class="example">
+<b>Example:</b><br>
+Array: 10, 20, 30, 40, 50, 60, 70<br>
+Search: 60<br><br>
+
+Middle = 40<br>
+60 is greater than 40 → Search right half.<br>
+Middle of remaining part = 60<br>
+60 → Found.
+</div>
+
+<h4>Advantages</h4>
+
+<ul>
+    <li>Much faster than linear search for large sorted data.</li>
+    <li>Search area is reduced by half each time.</li>
+</ul>
+
+<h4>Disadvantages</h4>
+
+<ul>
+    <li>Data must be sorted.</li>
+    <li>More complex than linear search.</li>
+</ul>
+
+<h4>Time Complexity</h4>
+
+<p>Best Case: O(1)</p>
+<p>Average Case: O(log n)</p>
+<p>Worst Case: O(log n)</p>
+
+
+<h3>2. SORTING</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Sorting is the process of arranging data in a particular order.
+The data may be arranged in ascending or descending order.
+</p>
+
+<h4>Important Sorting Techniques</h4>
+
+<ul>
+    <li>Quick Sort</li>
+    <li>Merge Sort</li>
+    <li>Heap Sort</li>
+</ul>
+
+
+<h3>Quick Sort</h3>
+
+<p>
+Quick Sort is a divide-and-conquer sorting algorithm. It selects an element
+called a pivot and divides the array into smaller and larger elements.
+</p>
+
+<h4>Steps</h4>
+
+<ol>
+    <li>Select a pivot.</li>
+    <li>Place smaller elements before the pivot.</li>
+    <li>Place larger elements after the pivot.</li>
+    <li>Apply the same process recursively.</li>
+</ol>
+
+<div class="diagram">
+Array:
+40  20  60  10  30
+
+Pivot = 40
+
+Smaller:
+20  10  30
+
+Pivot:
+40
+
+Larger:
+60
+
+Final:
+10  20  30  40  60
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Large database sorting</li>
+    <li>Searching preparation</li>
+    <li>Data processing</li>
+</ul>
+
+<h4>Complexity</h4>
+
+<p>Best: O(n log n)</p>
+<p>Average: O(n log n)</p>
+<p>Worst: O(n²)</p>
+
+
+<h3>Merge Sort</h3>
+
+<p>
+Merge Sort divides an array into smaller parts and then merges the parts in
+sorted order.
+</p>
+
+<div class="diagram">
+40  20  60  10
+
+        ↓ Divide
+
+40 20     60 10
+
+        ↓ Divide
+
+40 | 20     60 | 10
+
+        ↓ Merge
+
+20 40     10 60
+
+        ↓
+
+10 20 40 60
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Sorting large datasets</li>
+    <li>External sorting</li>
+    <li>Linked-list sorting</li>
+</ul>
+
+<h4>Complexity</h4>
+
+<p>Best: O(n log n)</p>
+<p>Average: O(n log n)</p>
+<p>Worst: O(n log n)</p>
+
+
+<h3>Heap Sort</h3>
+
+<p>
+Heap Sort is a sorting algorithm based on the heap data structure.
+For ascending order, a Max Heap is generally used.
+</p>
+
+<div class="diagram">
+Given:
+40  10  30  20  50
+
+Max Heap:
+
+        50
+       /  \
+     20    30
+    /
+   10
+
+Largest element = 50
+
+Move 50 to the end and rebuild the heap.
+
+Final:
+10 20 30 40 50
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Priority queues</li>
+    <li>Operating systems</li>
+    <li>Scheduling systems</li>
+    <li>Large data sorting</li>
+</ul>
+
+<h4>Complexity</h4>
+
+<p>Best: O(n log n)</p>
+<p>Average: O(n log n)</p>
+<p>Worst: O(n log n)</p>
+
+
+<h3>3. GREEDY ALGORITHM</h3>
+
+<h4>Introduction</h4>
+
+<p>
+A Greedy Algorithm solves a problem by selecting the best possible choice
+at each step. It makes a locally optimal choice with the hope of obtaining
+a globally optimal solution.
+</p>
+
+<h4>Main Applications</h4>
+
+<ul>
+    <li>Coin Change</li>
+    <li>Activity Selection</li>
+    <li>Job Scheduling</li>
+    <li>Prim's Algorithm</li>
+    <li>Kruskal's Algorithm</li>
+</ul>
+
+
+<h3>Coin Change</h3>
+
+<p>
+The coin change problem finds coins that add up to a required amount.
+In the greedy method, the largest possible coin is selected first.
+</p>
+
+<div class="example">
+Amount = 63<br>
+Coins = 25, 10, 5, 1<br><br>
+
+25 + 25 + 10 + 1 + 1 + 1 = 63
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>ATM systems</li>
+    <li>Vending machines</li>
+    <li>Currency systems</li>
+</ul>
+
+
+<h3>Activity Selection</h3>
+
+<p>
+Activity Selection selects the maximum number of activities that do not
+overlap with each other.
+</p>
+
+<h4>Greedy Rule</h4>
+
+<p>
+Always select the activity that finishes earliest.
+</p>
+
+<div class="example">
+Activities:
+
+A = 1 to 3
+B = 2 to 5
+C = 4 to 6
+D = 6 to 8
+
+Select:
+A → C → D
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Meeting room scheduling</li>
+    <li>Classroom scheduling</li>
+    <li>Event planning</li>
+</ul>
+
+
+<h3>Job Scheduling</h3>
+
+<p>
+Job Scheduling arranges jobs to obtain maximum profit while satisfying
+deadlines.
+</p>
+
+<div class="example">
+Job A: Deadline = 2, Profit = 100<br>
+Job B: Deadline = 1, Profit = 50<br>
+Job C: Deadline = 2, Profit = 70<br><br>
+
+Choose high-profit jobs while satisfying their deadlines.
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>CPU scheduling</li>
+    <li>Task scheduling</li>
+    <li>Production planning</li>
+</ul>
+
+
+<h3>4. BACKTRACKING</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Backtracking is a problem-solving technique that builds a solution step by step.
+If a choice does not lead to a valid solution, the algorithm goes back and
+tries another choice.
+</p>
+
+<h4>Basic Process</h4>
+
+<div class="diagram">
+Choose
+  ↓
+Check
+  ↓
+Valid?
+ /   \
+Yes   No
+ |     |
+Continue  Backtrack
+ |
+Solution
+</div>
+
+
+<h3>N-QUEENS PROBLEM</h3>
+
+<p>
+The N-Queens problem places N queens on an N × N chessboard so that no two
+queens attack each other.
+</p>
+
+<h4>Conditions</h4>
+
+<ul>
+    <li>No two queens should be in the same row.</li>
+    <li>No two queens should be in the same column.</li>
+    <li>No two queens should be on the same diagonal.</li>
+</ul>
+
+<h4>4-Queens Example</h4>
+
+<div class="diagram">
+. Q . .
+. . . Q
+Q . . .
+. . Q .
+
+Q = Queen
+. = Empty position
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Constraint satisfaction problems</li>
+    <li>Game problems</li>
+    <li>Scheduling problems</li>
+    <li>Combinatorial problems</li>
+</ul>
+
+
+<h3>SUDOKU</h3>
+
+<p>
+Sudoku is a puzzle-solving problem where numbers must be placed so that each
+row, column and small box contains valid numbers without repetition.
+</p>
+
+<div class="diagram">
+5 3 . | . 7 . | . . .
+6 . . | 1 9 5 | . . .
+. 9 8 | . . . | . 6 .
+------+-------+------
+8 . . | 6 . . | . . 3
+4 . . | 8 . 3 | . . 1
+7 . . | 2 . . | . . 6
+------+-------+------
+. 6 . | . . . | 2 8 .
+. . . | 4 1 9 | . . 5
+. . . | . 8 . | . 7 9
+</div>
+
+<h4>Application</h4>
+
+<p>
+Backtracking can try a number, check whether it is valid, and if it causes
+a conflict, remove it and try another number.
+</p>
+
+
+<h3>5. DYNAMIC PROGRAMMING</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Dynamic Programming (DP) solves complex problems by breaking them into
+smaller overlapping subproblems and storing their results so that they
+are not calculated repeatedly.
+</p>
+
+<h4>Main Idea</h4>
+
+<div class="diagram">
+Large Problem
+      ↓
+Small Problems
+      ↓
+Store Results
+      ↓
+Reuse Results
+      ↓
+Final Solution
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>0/1 Knapsack</li>
+    <li>Longest Common Subsequence</li>
+    <li>Matrix Chain Multiplication</li>
+    <li>Shortest path problems</li>
+</ul>
+
+
+<h3>0/1 KNAPSACK</h3>
+
+<p>
+The 0/1 Knapsack problem selects items to maximize total value without
+exceeding the capacity of the bag.
+Each item can either be selected once or not selected.
+</p>
+
+<div class="example">
+Bag Capacity = 5 kg
+
+Item A: Weight = 2 kg, Value = ₹30
+Item B: Weight = 3 kg, Value = ₹40
+Item C: Weight = 4 kg, Value = ₹50
+
+Choose items to get maximum value without exceeding 5 kg.
+
+A + B:
+Weight = 5 kg
+Value = ₹70
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Resource allocation</li>
+    <li>Investment planning</li>
+    <li>Cargo loading</li>
+    <li>Budget planning</li>
+</ul>
+
+
+<h3>LONGEST COMMON SUBSEQUENCE (LCS)</h3>
+
+<p>
+LCS finds the longest sequence that appears in two strings in the same order,
+but the characters do not have to be next to each other.
+</p>
+
+<div class="example">
+String 1 = ABCDGH<br>
+String 2 = AEDFHR<br><br>
+
+LCS = ADH
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>File comparison</li>
+    <li>DNA sequence comparison</li>
+    <li>Version control systems</li>
+    <li>Text comparison</li>
+</ul>
+
+
+<h3>MATRIX CHAIN MULTIPLICATION</h3>
+
+<p>
+Matrix Chain Multiplication is a Dynamic Programming problem used to find
+the most efficient way to multiply a sequence of matrices.
+</p>
+
+<p>
+The goal is to minimize the number of scalar multiplications.
+</p>
+
+<div class="example">
+Suppose:
+
+A = 10 × 20
+B = 20 × 30
+C = 30 × 40
+
+Two possible ways:
+
+(A × B) × C
+
+or
+
+A × (B × C)
+
+Both give the same final result, but their multiplication costs can be different.
+DP finds the minimum-cost order.
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Compiler optimization</li>
+    <li>Database systems</li>
+    <li>Scientific computing</li>
+    <li>Computer graphics</li>
+</ul>
+
+
+<!-- ================= UNIT 5 ================= -->
+
+<h2>UNIT - 5</h2>
+
+
+<h3>1. DISJOINT SET</h3>
+
+<h4>Introduction</h4>
+
+<p>
+A Disjoint Set is a collection of separate sets in which no element is
+common between two sets.
+</p>
+
+<div class="example">
+Set A = {1, 2, 3}<br>
+Set B = {4, 5, 6}<br><br>
+
+There is no common element.
+Therefore, A and B are disjoint sets.
+</div>
+
+<h4>Main Operations</h4>
+
+<ul>
+    <li>Find</li>
+    <li>Union</li>
+</ul>
+
+<h4>Find</h4>
+
+<p>
+Find determines the representative or root of the set containing an element.
+</p>
+
+<div class="diagram">
+      1
+     / \
+    2   3
+
+Find(3) → 1
+</div>
+
+<h4>Union</h4>
+
+<p>
+Union combines two separate sets into one set.
+</p>
+
+<div class="example">
+Set A = {1,2}<br>
+Set B = {3,4}<br><br>
+
+Union(A,B)<br>
+
+Result = {1,2,3,4}
+</div>
+
+<h4>Union by Rank</h4>
+
+<p>
+Union by Rank attaches the smaller tree under the larger tree.
+It keeps the tree height small.
+</p>
+
+<h4>Path Compression</h4>
+
+<p>
+Path compression makes nodes point directly to the root during the Find operation.
+This makes future Find operations faster.
+</p>
+
+<div class="diagram">
+Before:
+
+4 → 3 → 2 → 1
+
+After Path Compression:
+
+4 ─┐
+3 ─┼──→ 1
+2 ─┘
+</div>
+
+<h4>Applications</h4>
+
+<ul>
+    <li>Kruskal's Minimum Spanning Tree algorithm</li>
+    <li>Finding connected components</li>
+    <li>Network connectivity</li>
+    <li>Cycle detection</li>
+</ul>
+
+
+<h3>2. HASHING</h3>
+
+<h4>Introduction</h4>
+
+<p>
+Hashing is a technique used to store and retrieve data quickly.
+A hash function converts a key into an index of a hash table.
+</p>
+
+<h4>Hash Function</h4>
+
+<div class="example">
+h(key) = key % table size<br><br>
+
+Table size = 10<br>
+Key = 25<br><br>
+
+h(25) = 25 % 10 = 5<br><br>
+
+Therefore, 25 is stored at index 5.
+</div>
+
+<h4>Hash Table</h4>
+
+<table>
+<tr>
+<th>Index</th>
+<th>Data</th>
+</tr>
+<tr><td>0</td><td>-</td></tr>
+<tr><td>1</td><td>-</td></tr>
+<tr><td>2</td><td>12</td></tr>
+<tr><td>3</td><td>-</td></tr>
+<tr><td>4</td><td>34</td></tr>
+<tr><td>5</td><td>25</td></tr>
+<tr><td>6
 
     <title>Note3</title>
 https://chatgpt.com/share/6ac3d165-9cdc-83ec-abd3-c02e326f2993?ogimg=plain

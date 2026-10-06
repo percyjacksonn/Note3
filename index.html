@@ -5,6 +5,521 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            margin: 40px;
+            color: #222;
+            background-color: #f5f5f5;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            background: white;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+        }
+
+        h2 {
+            margin-top: 40px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #333;
+        }
+
+        h3 {
+            margin-top: 30px;
+        }
+
+        .answer {
+            margin-left: 20px;
+        }
+
+        .answer-title {
+            font-weight: bold;
+        }
+
+        ul, ol {
+            margin-top: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+
+        th, td {
+            border: 1px solid #555;
+            padding: 10px;
+            text-align: left;
+        }
+
+        th {
+            background-color: #eee;
+        }
+
+        .example {
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>24EC501 – Microprocessors, Microcontrollers and Interfacing Techniques</h1>
+
+    <h2>PART A – TWO MARK ANSWERS</h2>
+
+    <!-- UNIT 3 -->
+    <h2>UNIT – 3</h2>
+
+    <h3>1. What is the purpose of the Keil IDE in 8051 microcontroller programming? Mention any two steps involved in creating and executing an 8051 program using Keil.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            Keil IDE is used to write, compile, debug and simulate
+            8051 microcontroller programs.
+        </p>
+
+        <p><strong>Two steps:</strong></p>
+
+        <ol>
+            <li>
+                Create a project and write the 8051 program in
+                Embedded C/Assembly.
+            </li>
+
+            <li>
+                Compile the program and generate the HEX file,
+                which can be loaded into the microcontroller.
+            </li>
+        </ol>
+    </div>
+
+
+    <h3>2. Differentiate between Timer mode and Counter mode in the 8051 microcontrollers.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <table>
+            <tr>
+                <th>Timer Mode</th>
+                <th>Counter Mode</th>
+            </tr>
+
+            <tr>
+                <td>Counts internal machine-clock pulses.</td>
+                <td>Counts external events/pulses.</td>
+            </tr>
+
+            <tr>
+                <td>Used for generating time delays.</td>
+                <td>Used for counting external events.</td>
+            </tr>
+
+            <tr>
+                <td>C/T = 0</td>
+                <td>C/T = 1</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <h3>3. Explain the role of the stack in the 8051 microcontroller.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            The stack is a temporary memory area used to store data,
+            return addresses and register contents during program execution.
+        </p>
+
+        <p>
+            It is controlled by the Stack Pointer (SP).
+        </p>
+
+        <p>
+            It is mainly used during subroutine calls and interrupt handling.
+        </p>
+    </div>
+
+
+    <h3>4. Describe how Timer 0 is configured as a timer in the 8051 microcontroller.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            Timer 0 is configured as a timer by setting the C/T bit of TMOD to 0.
+        </p>
+
+        <p><strong>Steps:</strong></p>
+
+        <ol>
+            <li>
+                Select the required Timer 0 mode using the M1 and M0 bits.
+            </li>
+
+            <li>
+                Load the initial value into TH0 and TL0.
+            </li>
+
+            <li>
+                Set TR0 = 1 to start Timer 0.
+            </li>
+        </ol>
+    </div>
+
+
+    <!-- UNIT 4 -->
+    <h2>UNIT – 4</h2>
+
+    <h3>1. What is the purpose of an ADC in a microcontroller-based system? Name any one ADC IC used with 8051.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            An ADC (Analog-to-Digital Converter) converts an analog
+            signal such as temperature or voltage into a digital value
+            that can be processed by the microcontroller.
+        </p>
+
+        <p>
+            <span class="example">Example:</span> ADC0808 / ADC0809.
+        </p>
+    </div>
+
+
+    <h3>2. List the basic steps involved in interfacing a 16×2 LCD with 8051.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>The basic steps are:</p>
+
+        <ol>
+            <li>Connect the LCD data pins to an 8051 port.</li>
+            <li>Connect RS, R/W and E control pins.</li>
+            <li>Initialize the LCD.</li>
+            <li>Send commands and data to display characters.</li>
+        </ol>
+    </div>
+
+
+    <h3>3. What is the purpose of a driver circuit in DC motor interfacing with 8051? Name one commonly used motor driver IC.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            A driver circuit is used to provide sufficient current
+            and voltage to the DC motor, since the 8051 cannot drive
+            the motor directly.
+        </p>
+
+        <p>
+            <span class="example">Example:</span> L293D motor driver IC.
+        </p>
+    </div>
+
+
+    <h3>4. What is meant by serial communication? Name any two serial communication protocols.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            Serial communication is the method of transmitting data
+            one bit at a time through a communication channel.
+        </p>
+
+        <p><strong>Examples:</strong></p>
+
+        <ul>
+            <li>UART/USART</li>
+            <li>SPI</li>
+            <li>I²C</li>
+        </ul>
+    </div>
+
+
+    <h3>5. Differentiate between LED and LCD displays based on their characteristics.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <table>
+            <tr>
+                <th>LED</th>
+                <th>LCD</th>
+            </tr>
+
+            <tr>
+                <td>Uses light-emitting diodes.</td>
+                <td>Uses liquid crystals.</td>
+            </tr>
+
+            <tr>
+                <td>Brighter and faster response.</td>
+                <td>Consumes less power.</td>
+            </tr>
+
+            <tr>
+                <td>Suitable for indicator/display applications.</td>
+                <td>Suitable for text and numeric displays.</td>
+            </tr>
+        </table>
+    </div>
+
+
+    <h3>6. Explain the functions of the EOC and SOC signals in an ADC when interfaced with a microprocessor.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            <strong>SOC (Start of Conversion):</strong>
+            Signal used to start the analog-to-digital conversion.
+        </p>
+
+        <p>
+            <strong>EOC (End of Conversion):</strong>
+            Signal indicates that the conversion is completed and
+            digital data is ready.
+        </p>
+    </div>
+
+
+    <h3>7. Identify and explain the limitations of memory-mapped I/O.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            In memory-mapped I/O, I/O devices share the same address
+            space as memory.
+        </p>
+
+        <p><strong>Limitations:</strong></p>
+
+        <ol>
+            <li>
+                It uses part of the available memory address space.
+            </li>
+
+            <li>
+                More address lines and memory resources may be required
+                for I/O devices.
+            </li>
+        </ol>
+    </div>
+
+
+    <h3>8. Define USART and summarize its primary function in serial communication.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            USART stands for Universal Synchronous/Asynchronous
+            Receiver Transmitter.
+        </p>
+
+        <p>
+            It converts parallel data into serial data for transmission
+            and serial data back into parallel data for reception.
+            It supports both synchronous and asynchronous communication.
+        </p>
+    </div>
+
+
+    <!-- UNIT 5 -->
+    <h2>UNIT – 5</h2>
+
+    <h3>1. What is the purpose of a keypad interface in an 8051-based embedded system?</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            A keypad interface allows the user to enter numbers,
+            characters or commands into the 8051 system.
+        </p>
+
+        <p>
+            It is commonly used in applications such as password systems,
+            calculators and control panels.
+        </p>
+    </div>
+
+
+    <h3>2. What is meant by timer-based delay generation in 8051? Mention one application.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            Timer-based delay generation uses the 8051 timer to produce
+            a precise time delay by counting machine-clock pulses.
+        </p>
+
+        <p>
+            <span class="example">Application:</span>
+            LED blinking or generating baud-rate/time delays.
+        </p>
+    </div>
+
+
+    <h3>3. How can an ADC-based sensor be interfaced with a microcontroller for data acquisition?</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            The sensor output is given to the analog input of the ADC.
+            The ADC converts the analog signal into digital data,
+            which is then read and processed by the microcontroller.
+        </p>
+
+        <p>
+            <span class="example">Example:</span>
+            Temperature sensor → ADC → 8051.
+        </p>
+    </div>
+
+
+    <h3>4. List the major steps involved in the design and deployment of a microcontroller-based automation project.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>Major steps are:</p>
+
+        <ol>
+            <li>Define the system requirements.</li>
+            <li>Design the hardware and select the microcontroller.</li>
+            <li>Develop and test the software.</li>
+            <li>
+                Interface sensors/actuators and test the complete system.
+            </li>
+            <li>Deploy the final system.</li>
+        </ol>
+    </div>
+
+
+    <h3>5. List and explain the various operating modes of serial communication in the 8051.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            The 8051 has four serial communication modes:
+        </p>
+
+        <ul>
+            <li>
+                <strong>Mode 0:</strong>
+                Shift-register mode.
+            </li>
+
+            <li>
+                <strong>Mode 1:</strong>
+                8-bit UART with variable baud rate.
+            </li>
+
+            <li>
+                <strong>Mode 2:</strong>
+                9-bit UART with fixed baud rate.
+            </li>
+
+            <li>
+                <strong>Mode 3:</strong>
+                9-bit UART with variable baud rate.
+            </li>
+        </ul>
+    </div>
+
+
+    <h3>6. Describe the phenomenon of key bouncing in keypad interfacing.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            Key bouncing is the rapid ON/OFF switching of electrical
+            contacts when a key is pressed or released.
+        </p>
+
+        <p>
+            It may cause the microcontroller to detect one key press
+            as multiple presses.
+        </p>
+
+        <p>
+            <strong>Solution:</strong>
+            Use software or hardware debouncing.
+        </p>
+    </div>
+
+
+    <h3>7. Explain the function of the RS pin in an LCD module.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            RS (Register Select) determines whether the LCD receives
+            a command or data.
+        </p>
+
+        <ul>
+            <li>
+                <strong>RS = 0:</strong>
+                Command/instruction register.
+            </li>
+
+            <li>
+                <strong>RS = 1:</strong>
+                Data register.
+            </li>
+        </ul>
+    </div>
+
+
+    <h3>8. Define ADC0808 and describe its function in analog-to-digital conversion.</h3>
+
+    <div class="answer">
+        <p class="answer-title">Answer:</p>
+
+        <p>
+            ADC0808 is an 8-bit, 8-channel Analog-to-Digital Converter IC.
+        </p>
+
+        <p>
+            It selects one of the analog input channels and converts
+            the selected analog signal into an 8-bit digital output
+            for the microcontroller.
+        </p>
+    </div>
+
+</div>
+
+</body>
+
 
 <style>
     * {

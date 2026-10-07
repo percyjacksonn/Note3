@@ -4,6 +4,842 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f4f6f8;
+            color: #1f2937;
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            width: 92%;
+            max-width: 1000px;
+            margin: 30px auto;
+            background: white;
+            padding: 35px 45px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.08);
+        }
+
+        h1 {
+            text-align: center;
+            font-size: 28px;
+            margin-bottom: 8px;
+            color: #111827;
+        }
+
+        .subtitle {
+            text-align: center;
+            font-size: 15px;
+            color: #6b7280;
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            font-size: 22px;
+            border-bottom: 3px solid #2563eb;
+            padding-bottom: 8px;
+            margin-top: 35px;
+        }
+
+        .question {
+            margin: 25px 0;
+            padding: 20px;
+            border: 1px solid #d1d5db;
+            border-left: 5px solid #2563eb;
+            border-radius: 7px;
+            background: #ffffff;
+        }
+
+        .question-title {
+            font-size: 17px;
+            font-weight: bold;
+            color: #111827;
+            margin-bottom: 12px;
+        }
+
+        .answer {
+            font-size: 15.5px;
+        }
+
+        .keyword {
+            font-weight: bold;
+            color: #1d4ed8;
+        }
+
+        .important {
+            background: #eff6ff;
+            border-left: 4px solid #2563eb;
+            padding: 10px 14px;
+            margin-top: 12px;
+            border-radius: 4px;
+        }
+
+        .example {
+            background: #f9fafb;
+            border: 1px solid #d1d5db;
+            padding: 10px 14px;
+            margin-top: 12px;
+            border-radius: 5px;
+        }
+
+        pre {
+            background: #111827;
+            color: #f9fafb;
+            padding: 14px;
+            border-radius: 6px;
+            overflow-x: auto;
+            font-family: Consolas, monospace;
+            font-size: 14px;
+        }
+
+        ul {
+            margin-top: 8px;
+        }
+
+        li {
+            margin-bottom: 5px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 12px;
+        }
+
+        th, td {
+            border: 1px solid #d1d5db;
+            padding: 9px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background: #eef2ff;
+            font-weight: bold;
+        }
+
+        .exam-tip {
+            background: #ecfdf5;
+            border: 1px solid #a7f3d0;
+            border-left: 5px solid #10b981;
+            padding: 12px 15px;
+            margin-top: 12px;
+            border-radius: 5px;
+        }
+
+        .diagram {
+            text-align: center;
+            font-family: Consolas, monospace;
+            background: #f8fafc;
+            border: 1px solid #cbd5e1;
+            padding: 14px;
+            margin-top: 12px;
+            white-space: pre-wrap;
+            border-radius: 5px;
+        }
+
+        @media print {
+            body {
+                background: white;
+            }
+
+            .container {
+                width: 100%;
+                max-width: none;
+                margin: 0;
+                box-shadow: none;
+            }
+
+            .question {
+                break-inside: avoid;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>Computer Architecture & Organization</h1>
+    <div class="subtitle">
+        PART – A | 2-Mark Questions | Simple, Keyword-Rich Exam Answers
+    </div>
+
+    <div class="exam-tip">
+        <strong>Exam Tip:</strong>
+        For a 2-mark answer, write the <strong>definition + important keywords + type/classification or example</strong>
+        whenever applicable. The answers below are written in that format.
+    </div>
+
+
+    <h2>1. Translation Lookaside Buffer (TLB)</h2>
+
+    <div class="question">
+        <div class="question-title">
+            1. What is the purpose of a Translation Lookaside Buffer (TLB)?
+        </div>
+
+        <div class="answer">
+            A <span class="keyword">Translation Lookaside Buffer (TLB)</span> is a small,
+            high-speed cache that stores recently used <span class="keyword">virtual-page
+            number to physical-frame number translations</span>.
+            <br><br>
+
+            Its purpose is to <span class="keyword">speed up virtual-to-physical address
+            translation</span> and reduce memory access time.
+        </div>
+
+        <div class="important">
+            <strong>Keywords:</strong> Virtual address → Physical address, page table,
+            fast cache, address translation, TLB hit, TLB miss.
+        </div>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If a page number is already present in the TLB, it is a
+            <strong>TLB hit</strong> and the corresponding frame number is obtained quickly.
+        </div>
+    </div>
+
+
+    <h2>2. Memory Management in Linux</h2>
+
+    <div class="question">
+        <div class="question-title">
+            2. State any two features of memory management in Linux.
+        </div>
+
+        <div class="answer">
+            Important features of Linux memory management include:
+            <ul>
+                <li><span class="keyword">Virtual Memory:</span> Gives each process a large logical address space.</li>
+                <li><span class="keyword">Paging:</span> Divides virtual memory into pages and physical memory into frames.</li>
+                <li><span class="keyword">Demand Paging:</span> Loads a page into RAM only when it is required.</li>
+                <li><span class="keyword">Memory Protection:</span> Prevents one process from accessing another process's protected memory.</li>
+                <li><span class="keyword">Swap Space:</span> Allows inactive memory pages to be temporarily stored on secondary storage.</li>
+            </ul>
+        </div>
+
+        <div class="important">
+            <strong>For 2 marks:</strong> Any two features are sufficient.
+            The safest answer is <strong>virtual memory + paging</strong>.
+        </div>
+    </div>
+
+
+    <h2>3. Instruction Pipeline</h2>
+
+    <div class="question">
+        <div class="question-title">
+            3. List the basic stages of a typical instruction pipeline.
+        </div>
+
+        <div class="answer">
+            An <span class="keyword">instruction pipeline</span> divides instruction execution
+            into multiple stages so that different instructions can be processed
+            simultaneously in different stages.
+            <br><br>
+
+            The basic stages of a typical <span class="keyword">5-stage RISC pipeline</span> are:
+            <ol>
+                <li><strong>IF – Instruction Fetch:</strong> Fetch the instruction from memory.</li>
+                <li><strong>ID – Instruction Decode/Register Fetch:</strong> Decode the instruction and read registers.</li>
+                <li><strong>EX – Execute:</strong> Perform ALU operation or calculate an address.</li>
+                <li><strong>MEM – Memory Access:</strong> Read/write data memory for load/store instructions.</li>
+                <li><strong>WB – Write Back:</strong> Write the result into the destination register.</li>
+            </ol>
+        </div>
+
+        <div class="diagram">
+            IF → ID → EX → MEM → WB
+            <br>
+            Fetch → Decode → Execute → Memory → Write Back
+        </div>
+    </div>
+
+
+    <h2>4. Pipeline Stalling</h2>
+
+    <div class="question">
+        <div class="question-title">
+            4. What is meant by pipeline stalling?
+        </div>
+
+        <div class="answer">
+            <span class="keyword">Pipeline stalling</span> is the temporary stopping or
+            delaying of an instruction in the pipeline when it cannot safely proceed
+            because of a <span class="keyword">pipeline hazard</span>.
+            <br><br>
+
+            A <span class="keyword">bubble or NOP</span> is inserted into the pipeline
+            until the hazard is resolved.
+        </div>
+
+        <div class="example">
+            <strong>Example:</strong> If an instruction needs a result that has not yet
+            been produced by the previous instruction, the dependent instruction may
+            be stalled for one or more clock cycles.
+        </div>
+
+        <div class="important">
+            <strong>Keywords:</strong> Delay, hazard, bubble, NOP, extra clock cycle.
+        </div>
+    </div>
+
+
+    <h2>5. Forwarding and Data Hazards</h2>
+
+    <div class="question">
+        <div class="question-title">
+            5. How does forwarding reduce data hazards?
+        </div>
+
+        <div class="answer">
+            <span class="keyword">Forwarding</span>, also called
+            <span class="keyword">bypassing</span>, directly transfers the result
+            produced by one pipeline stage to another instruction that needs it,
+            without waiting for the result to be written back to the register file.
+            <br><br>
+
+            It therefore reduces or eliminates unnecessary
+            <span class="keyword">data-hazard stalls</span>.
+        </div>
+
+        <div class="example">
+            <strong>Example:</strong>
+            <pre>
+ADD R1, R2, R3
+SUB R4, R1, R5
+            </pre>
+
+            The result of <code>ADD</code> is forwarded directly to the
+            <code>SUB</code> instruction.
+        </div>
+
+        <div class="important">
+            <strong>Keyword:</strong> Forwarding = Bypassing = Direct result transfer.
+        </div>
+    </div>
+
+
+    <h2>6. Superscalar vs VLIW</h2>
+
+    <div class="question">
+        <div class="question-title">
+            6. Differentiate between Superscalar and VLIW architectures.
+        </div>
+
+        <div class="answer">
+
+            <table>
+                <tr>
+                    <th>Superscalar</th>
+                    <th>VLIW</th>
+                </tr>
+
+                <tr>
+                    <td>
+                        Finds and schedules multiple instructions
+                        <strong>dynamically at run time</strong>.
+                    </td>
+
+                    <td>
+                        Compiler identifies and schedules parallel instructions
+                        <strong>at compile time</strong>.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Requires more complex hardware.
+                    </td>
+
+                    <td>
+                        Uses comparatively simpler hardware.
+                    </td>
+                </tr>
+
+                <tr>
+                    <td>
+                        Hardware performs instruction scheduling.
+                    </td>
+
+                    <td>
+                        Compiler performs most scheduling.
+                    </td>
+                </tr>
+            </table>
+
+            <div class="example">
+                <strong>Example:</strong>
+                Modern high-performance CPUs commonly use superscalar execution.
+                VLIW is commonly associated with some DSP and embedded processor designs.
+            </div>
+        </div>
+    </div>
+
+
+    <h2>7. Programmed I/O</h2>
+
+    <div class="question">
+        <div class="question-title">
+            7. What is Programmed I/O?
+        </div>
+
+        <div class="answer">
+            <span class="keyword">Programmed I/O</span> is an I/O technique in which
+            the <span class="keyword">CPU directly controls the I/O operation</span>
+            by executing instructions and repeatedly checking the device's status.
+            <br><br>
+
+            The CPU remains involved until the I/O operation is completed.
+        </div>
+
+        <div class="diagram">
+            CPU
+             │
+             │ Status checking / Data transfer
+             ▼
+        I/O Device
+        </div>
+
+        <div class="important">
+            <strong>Keyword:</strong> CPU continuously polls/checks the device.
+            <br>
+            <strong>Disadvantage:</strong> CPU time is wasted while waiting.
+        </div>
+    </div>
+
+
+    <h2>8. RISC-V</h2>
+
+    <div class="question">
+        <div class="question-title">
+            7. What is RISC-V?
+        </div>
+
+        <div class="answer">
+            <span class="keyword">RISC-V</span> is an
+            <span class="keyword">open-standard Reduced Instruction Set Computer
+            (RISC) Instruction Set Architecture (ISA)</span>.
+            It follows a <span class="keyword">load/store architecture</span>
+            and has a modular instruction-set design.
+        </div>
+
+        <div class="important">
+            <strong>Important features:</strong>
+            Open ISA, RISC design, load/store architecture, modular extensions,
+            simple instruction format.
+        </div>
+
+        <div class="example">
+            <strong>Example instruction:</strong>
+            <pre>
+ADD x5, x6, x7
+            </pre>
+            This adds the values in <code>x6</code> and <code>x7</code> and stores
+            the result in <code>x5</code>.
+        </div>
+    </div>
+
+
+    <h2>9. Device Driver</h2>
+
+    <div class="question">
+        <div class="question-title">
+            8. What is the purpose of a device driver?
+        </div>
+
+        <div class="answer">
+            A <span class="keyword">device driver</span> is system software that acts
+            as an interface between the <span class="keyword">operating system and
+            hardware device</span>.
+            <br><br>
+
+            Its purpose is to translate operating-system commands into
+            <span class="keyword">device-specific operations</span> and control
+            the hardware.
+        </div>
+
+        <div class="diagram">
+            Application
+                ↓
+            Operating System
+                ↓
+          Device Driver
+                ↓
+          Hardware Device
+        </div>
+
+        <div class="example">
+            <strong>Examples:</strong>
+            Printer driver, graphics/GPU driver, keyboard driver,
+            network-card driver.
+        </div>
+    </div>
+
+
+    <h2>10. I/O Interrupt</h2>
+
+    <div class="question">
+        <div class="question-title">
+            8. State the role of an I/O interrupt.
+        </div>
+
+        <div class="answer">
+            An <span class="keyword">I/O interrupt</span> is a signal generated by
+            an I/O device to inform the CPU that it requires attention or that
+            an I/O operation has completed.
+            <br><br>
+
+            It allows the CPU to perform other tasks instead of continuously
+            polling the device.
+        </div>
+
+        <div class="diagram">
+            CPU ─────────► I/O Device
+             ▲                  │
+             │                  │
+             └── Interrupt ─────┘
+        </div>
+
+        <div class="important">
+            <strong>Keyword:</strong> Interrupt-driven I/O improves CPU utilization
+            by avoiding continuous polling.
+        </div>
+    </div>
+
+
+    <h2>11. Direct Memory Access (DMA)</h2>
+
+    <div class="question">
+        <div class="question-title">
+            9. Define Direct Memory Access (DMA).
+        </div>
+
+        <div class="answer">
+            <span class="keyword">Direct Memory Access (DMA)</span> is a data-transfer
+            technique in which a <span class="keyword">DMA controller transfers
+            data directly between an I/O device and main memory</span> with
+            minimal CPU involvement.
+            <br><br>
+
+            The CPU normally initializes the DMA operation and is notified by
+            an interrupt after the transfer is completed.
+        </div>
+
+        <div class="diagram">
+             CPU
+              │
+              │ Initialize DMA
+              ▼
+        DMA Controller
+          ↙         ↘
+         ↙           ↘
+      Memory  ←────→  I/O Device
+        </div>
+
+        <div class="important">
+            <strong>Advantages:</strong> High-speed data transfer and reduced CPU
+            overhead.
+        </div>
+
+        <div class="example">
+            <strong>Applications:</strong>
+            Disk/SSD transfers, network cards, audio/video devices,
+            high-speed data acquisition.
+        </div>
+    </div>
+
+
+    <h2>12. CUDA in GPU Computing</h2>
+
+    <div class="question">
+        <div class="question-title">
+            10. What is the purpose of CUDA in GPU computing?
+        </div>
+
+        <div class="answer">
+            <span class="keyword">CUDA (Compute Unified Device Architecture)</span>
+            is NVIDIA's parallel computing platform and programming model that
+            allows programmers to use <span class="keyword">GPU cores for
+            general-purpose parallel computation</span>.
+            <br><br>
+
+            Its purpose is to execute large numbers of computationally similar
+            operations simultaneously using <span class="keyword">threads,
+            blocks and grids</span>.
+        </div>
+
+        <div class="diagram">
+            CUDA Program
+                 │
+                 ▼
+              GPU
+                 │
+             ┌───┴───┐
+             ▼       ▼
+          Block 0  Block 1
+             │       │
+          Threads  Threads
+        </div>
+
+        <div class="example">
+            <strong>Applications:</strong>
+            Artificial intelligence, machine learning, image processing,
+            scientific computing, simulations and matrix operations.
+        </div>
+    </div>
+
+
+    <h2>13. Structural Hazard</h2>
+
+    <div class="question">
+        <div class="question-title">
+            3. What is meant by a structural hazard in a pipeline?
+        </div>
+
+        <div class="answer">
+            A <span class="keyword">structural hazard</span> occurs when two or more
+            instructions in a pipeline require the <span class="keyword">same
+            hardware resource at the same time</span>, but the processor does not
+            have enough resources to serve them simultaneously.
+        </div>
+
+        <div class="example">
+            <strong>Example:</strong>
+            If an instruction needs to access data memory while another instruction
+            needs to fetch an instruction from the same single-port memory during
+            the same clock cycle, a structural hazard occurs.
+        </div>
+
+        <div class="important">
+            <strong>Solutions:</strong>
+            Add/duplicate hardware resources, use separate instruction and data
+            memories/caches, or stall the pipeline.
+        </div>
+
+        <div class="important">
+            <strong>Classification:</strong>
+            Structural hazards are one of the three major pipeline hazards:
+            <strong>Data, Structural and Control hazards.</strong>
+        </div>
+    </div>
+
+
+    <h2>14. Speculative Execution</h2>
+
+    <div class="question">
+        <div class="question-title">
+            5. Define speculative execution.
+        </div>
+
+        <div class="answer">
+            <span class="keyword">Speculative execution</span> is a processor technique
+            in which instructions are executed <span class="keyword">before it is
+            certain that they are actually required</span>, usually based on a
+            prediction such as a branch prediction.
+            <br><br>
+
+            If the prediction is correct, execution continues normally. If the
+            prediction is wrong, the speculative results are discarded and the
+            correct instructions are executed.
+        </div>
+
+        <div class="diagram">
+            Branch
+              │
+              ▼
+        Branch Prediction
+           /       \
+       Taken     Not Taken
+         │           │
+         ▼           ▼
+      Execute     Execute
+      Speculatively
+         │
+         ▼
+      Prediction checked
+        </div>
+
+        <div class="important">
+            <strong>Purpose:</strong> Improve instruction-level parallelism and
+            reduce the performance penalty caused by branches.
+        </div>
+    </div>
+
+
+    <h2>15. Pipeline Hazards – Classification</h2>
+
+    <div class="question">
+        <div class="question-title">
+            What are the main types of pipeline hazards?
+        </div>
+
+        <div class="answer">
+            Pipeline hazards are conditions that prevent an instruction from
+            executing in its intended clock cycle.
+
+            The three main types are:
+            <ol>
+                <li>
+                    <strong>Data Hazard:</strong>
+                    Occurs because one instruction depends on the result of another.
+                    <br>
+                    <strong>Example:</strong>
+                    <code>ADD R1,R2,R3</code> followed by
+                    <code>SUB R4,R1,R5</code>.
+                </li>
+
+                <li>
+                    <strong>Structural Hazard:</strong>
+                    Occurs when instructions compete for the same hardware resource.
+                </li>
+
+                <li>
+                    <strong>Control Hazard:</strong>
+                    Occurs due to branch or jump instructions when the next instruction
+                    is uncertain.
+                </li>
+            </ol>
+        </div>
+
+        <div class="important">
+            <strong>Easy memory trick:</strong>
+            <br>
+            Data = Dependency
+            <br>
+            Structural = Resource conflict
+            <br>
+            Control = Branch/Jump
+        </div>
+    </div>
+
+
+    <h2>16. Quick Revision Table</h2>
+
+    <table>
+        <tr>
+            <th>Topic</th>
+            <th>One-line keyword answer</th>
+        </tr>
+
+        <tr>
+            <td>TLB</td>
+            <td>Fast cache for virtual-page to physical-frame translation.</td>
+        </tr>
+
+        <tr>
+            <td>Virtual Memory</td>
+            <td>Provides a large logical address space using RAM and secondary storage.</td>
+        </tr>
+
+        <tr>
+            <td>Paging</td>
+            <td>Divides virtual memory into pages and physical memory into frames.</td>
+        </tr>
+
+        <tr>
+            <td>Pipeline</td>
+            <td>Divides instruction execution into stages for overlapping execution.</td>
+        </tr>
+
+        <tr>
+            <td>5 Pipeline Stages</td>
+            <td>IF → ID → EX → MEM → WB.</td>
+        </tr>
+
+        <tr>
+            <td>Stalling</td>
+            <td>Temporarily delays pipeline execution because of a hazard.</td>
+        </tr>
+
+        <tr>
+            <td>Forwarding</td>
+            <td>Directly transfers a result between pipeline stages to reduce data stalls.</td>
+        </tr>
+
+        <tr>
+            <td>Structural Hazard</td>
+            <td>Two instructions need the same hardware resource simultaneously.</td>
+        </tr>
+
+        <tr>
+            <td>Data Hazard</td>
+            <td>Instruction dependency on a previous instruction's result.</td>
+        </tr>
+
+        <tr>
+            <td>Control Hazard</td>
+            <td>Uncertainty caused by branches or jumps.</td>
+        </tr>
+
+        <tr>
+            <td>Superscalar</td>
+            <td>Multiple instructions executed per cycle using dynamic hardware scheduling.</td>
+        </tr>
+
+        <tr>
+            <td>VLIW</td>
+            <td>Compiler packs independent instructions into one long instruction word.</td>
+        </tr>
+
+        <tr>
+            <td>Programmed I/O</td>
+            <td>CPU continuously checks the I/O device and performs the transfer.</td>
+        </tr>
+
+        <tr>
+            <td>I/O Interrupt</td>
+            <td>Device signals the CPU when attention or service is required.</td>
+        </tr>
+
+        <tr>
+            <td>DMA</td>
+            <td>Transfers data directly between I/O and memory with minimal CPU involvement.</td>
+        </tr>
+
+        <tr>
+            <td>Device Driver</td>
+            <td>Software interface between the operating system and hardware.</td>
+        </tr>
+
+        <tr>
+            <td>RISC-V</td>
+            <td>Open-standard RISC instruction set architecture with modular extensions.</td>
+        </tr>
+
+        <tr>
+            <td>Speculative Execution</td>
+            <td>Executes predicted instructions before their necessity is confirmed.</td>
+        </tr>
+
+        <tr>
+            <td>CUDA</td>
+            <td>NVIDIA platform for parallel computation using GPU threads.</td>
+        </tr>
+    </table>
+
+
+    <div class="exam-tip" style="margin-top:30px;">
+        <strong>How to write these in the exam:</strong>
+        Start with the definition, underline or highlight the important
+        <strong>keywords</strong>, then add the type/classification or example
+        whenever the question asks for it. For questions asking "any two",
+        write at least two clearly separated points.
+    </div>
+
+</div>
+
+</body>
 
     <style>
         body {

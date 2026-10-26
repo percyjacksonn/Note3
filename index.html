@@ -4,6 +4,178 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4f6f8;
+            margin: 20px;
+            line-height: 1.5;
+        }
+
+        h1 {
+            color: #16324f;
+            text-align: center;
+        }
+
+        h2 {
+            color: #24527a;
+        }
+
+        .program {
+            background: white;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 8px;
+        }
+
+        pre {
+            background: #eeeeee;
+            padding: 12px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: Consolas, monospace;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>DSA Python Practical Programs</h1>
+
+    <div class="program">
+        <h2>1. Singly Linked List — Student Records</h2>
+        <p>Insert, search, display, and delete a student record.</p>
+
+<pre><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+head = Node(101)
+head.next = Node(102)
+head.next.next = Node(103)
+
+temp = head
+while temp:
+    print(temp.data, end=" -> ")
+    temp = temp.next
+
+key = 102
+temp = head
+
+while temp:
+    if temp.data == key:
+        print("\nStudent found")
+        break
+    temp = temp.next
+
+head = head.next
+
+print("After deletion:")
+temp = head
+while temp:
+    print(temp.data)
+    temp = temp.next</code></pre>
+    </div>
+
+    <div class="program">
+        <h2>2. Doubly Linked List — Music Playlist</h2>
+        <p>Display songs in forward and backward order.</p>
+
+<pre><code>class Node:
+    def __init__(self, data):
+        self.data = data
+        self.prev = None
+        self.next = None
+
+a = Node("Song A")
+b = Node("Song B")
+c = Node("Song C")
+
+a.next = b
+b.prev = a
+b.next = c
+c.prev = b
+
+print("Forward:")
+temp = a
+while temp:
+    print(temp.data)
+    last = temp
+    temp = temp.next
+
+print("Backward:")
+temp = last
+while temp:
+    print(temp.data)
+    temp = temp.prev</code></pre>
+    </div>
+
+    <div class="program">
+        <h2>3. Stack — Evaluate Postfix Expression</h2>
+
+<pre><code>exp = "5 3 + 2 *"
+stack = []
+
+for x in exp.split():
+    if x.isdigit():
+        stack.append(int(x))
+    else:
+        b = stack.pop()
+        a = stack.pop()
+
+        if x == "+":
+            stack.append(a + b)
+        elif x == "-":
+            stack.append(a - b)
+        elif x == "*":
+            stack.append(a * b)
+
+print("Answer:", stack.pop())</code></pre>
+
+        <p><b>Output:</b> Answer: 16</p>
+    </div>
+
+    <div class="program">
+        <h2>4. Queue — Printer Jobs</h2>
+
+<pre><code>queue = []
+
+queue.append("Document 1")
+queue.append("Document 2")
+queue.append("Document 3")
+
+print("Queue:", queue)
+print("Printed:", queue.pop(0))
+print("Remaining:", queue)</code></pre>
+    </div>
+
+    <div class="program">
+        <h2>5. Factorial — Recursive and Iterative</h2>
+
+<pre><code>def fact(n):
+    if n <= 1:
+        return 1
+    return n * fact(n - 1)
+
+n = 5
+ans = 1
+
+for i in range(1, n + 1):
+    ans *= i
+
+print("Recursive:", fact(n))
+print("Iterative:", ans)</code></pre>
+
+        <p><b>Output:</b> Recursive: 120, Iterative: 120</p>
+    </div>
+
+</body>
+
     <style>
         * {
             box-sizing: border-box;

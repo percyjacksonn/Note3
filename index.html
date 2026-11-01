@@ -5,6 +5,1107 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 
+<style>
+:root {
+    --bg: #f5f2e9;
+    --paper: #fffdf7;
+    --ink: #24231f;
+    --accent: #d9573b;
+    --line: #e8e1d4;
+    --green: #526b4d;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+header {
+    background: #24231f;
+    color: white;
+    padding: 30px 18px;
+    text-align: center;
+}
+
+header h1 {
+    font-size: 28px;
+    margin: 8px 0;
+}
+
+header p {
+    color: #d5d0c5;
+}
+
+.toolbar {
+    position: sticky;
+    top: 0;
+    background: #f5f2e9;
+    padding: 12px;
+    border-bottom: 1px solid var(--line);
+    z-index: 10;
+}
+
+.controls {
+    max-width: 900px;
+    margin: auto;
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+input {
+    flex: 1;
+    min-width: 190px;
+    padding: 12px;
+    border: 1px solid #d9d1c3;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.filter {
+    border: 1px solid #d9d1c3;
+    background: white;
+    border-radius: 10px;
+    padding: 10px 13px;
+    cursor: pointer;
+}
+
+.filter.active {
+    background: var(--accent);
+    color: white;
+}
+
+main {
+    max-width: 900px;
+    margin: 25px auto;
+    padding: 0 16px 50px;
+}
+
+.unit {
+    margin: 25px 0;
+}
+
+.unit h2 {
+    background: #e9e3d6;
+    padding: 12px;
+    border-radius: 10px;
+    font-size: 19px;
+}
+
+.qa {
+    background: var(--paper);
+    border: 1px solid var(--line);
+    border-radius: 12px;
+    margin: 10px 0;
+    overflow: hidden;
+}
+
+.question {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    text-align: left;
+    padding: 15px;
+    background: transparent;
+    border: none;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.qnum {
+    background: #f7e4dc;
+    color: #a43d29;
+    padding: 4px 8px;
+    border-radius: 7px;
+}
+
+.chev {
+    margin-left: auto;
+    color: var(--accent);
+}
+
+.answer {
+    display: none;
+    padding: 0 16px 16px;
+}
+
+.qa.open .answer {
+    display: block;
+}
+
+.key {
+    background: #f0f2e9;
+    border-left: 3px solid var(--green);
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.empty {
+    display: none;
+    text-align: center;
+    padding: 30px;
+}
+
+@media print {
+    .toolbar {
+        display: none;
+    }
+
+    .answer {
+        display: block;
+    }
+
+    body {
+        background: white;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <h1>Microprocessors & Microcontrollers</h1>
+    <p>Complete 2-Mark Question Bank | 5 Units</p>
+</header>
+
+<div class="toolbar">
+    <div class="controls">
+        <input type="search" id="search"
+        placeholder="Search questions or topics...">
+
+        <button class="filter active" data-unit="all">All Units</button>
+        <button class="filter" data-unit="0">8085</button>
+        <button class="filter" data-unit="1">8086</button>
+        <button class="filter" data-unit="2">8051</button>
+        <button class="filter" data-unit="3">Interfacing</button>
+        <button class="filter" data-unit="4">Programs</button>
+    </div>
+</div>
+
+<main>
+
+<div class="unit">
+<h2>UNIT 1 – 8085 MICROPROCESSOR</h2>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">01</span>
+Explain the architecture of 8085 microprocessor.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8085 is an 8-bit microprocessor with a 16-bit address bus and an 8-bit data bus. Its architecture consists of ALU, registers, instruction decoder, timing and control unit, address buffer, data buffer and interrupt control.</p>
+<div class="key">
+<b>Important points:</b> 8-bit CPU, 16-bit address bus, 64 KB memory, ALU and control unit.
+<br><b>Example:</b> 8085 can address 2¹⁶ = 64 KB memory.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">02</span>
+Explain registers, ALU, control unit and flag register.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Registers are temporary storage locations. 8085 contains B, C, D, E, H and L general-purpose registers, accumulator, Program Counter and Stack Pointer. ALU performs arithmetic and logical operations. The control unit generates control signals.</p>
+<p>The five flags are Sign, Zero, Auxiliary Carry, Parity and Carry.</p>
+<div class="key">
+<b>Example:</b> ADD B adds register B to accumulator A.
+<br><b>Keywords:</b> Accumulator, ALU, PC, SP, S, Z, AC, P, CY.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">03</span>
+Explain addressing modes of 8085 with examples.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Addressing mode specifies how an instruction accesses its operand.</p>
+<ul>
+<li>Immediate: MVI A, 25H</li>
+<li>Register: MOV A, B</li>
+<li>Direct: LDA 2050H</li>
+<li>Register indirect: MOV A, M</li>
+<li>Implied: CMA</li>
+</ul>
+<div class="key">
+<b>Keywords:</b> Immediate, register, direct, indirect and implied addressing.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">04</span>
+Describe the instruction set of 8085.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>The 8085 instruction set is classified into five categories:</p>
+<ul>
+<li>Data transfer: MOV, MVI, LDA, STA.</li>
+<li>Arithmetic: ADD, SUB, INR, DCR.</li>
+<li>Logical: ANA, ORA, XRA, CMP.</li>
+<li>Branching: JMP, CALL, RET, JZ.</li>
+<li>Machine control: NOP, HLT, EI, DI.</li>
+</ul>
+<div class="key">
+<b>Example:</b> ADD B adds B to accumulator A. HLT stops program execution.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">05</span>
+Explain timing diagrams of 8085.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A timing diagram represents the variation of address, data and control signals with respect to time during an operation.</p>
+<ul>
+<li>Opcode fetch: Fetches the instruction.</li>
+<li>Memory read: Reads data from memory using RD.</li>
+<li>Memory write: Writes data into memory using WR.</li>
+</ul>
+<div class="key">
+<b>Keywords:</b> T-state, machine cycle, ALE, RD, WR.
+<br>Memory read/write commonly take 3 T-states.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">06</span>
+Write an 8085 program for arithmetic and logical operations.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p><b>Addition of two numbers:</b></p>
+<pre>
+LDA 2050H
+MOV B,A
+LDA 2051H
+ADD B
+STA 2052H
+HLT
+</pre>
+<p>For logical operations, use ANA (AND), ORA (OR) and XRA (XOR).</p>
+<div class="key">
+<b>Example:</b> XRA A clears the accumulator.
+<br><b>Keywords:</b> Accumulator, memory location, arithmetic and logical operations.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">07</span>
+Explain evolution of microprocessors and features of 8-bit processors.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Microprocessors evolved from 4-bit to 8-bit, 16-bit, 32-bit and 64-bit architectures. Each generation improved processing speed, word size and memory capacity.</p>
+<p>An 8-bit processor processes 8-bit data at a time.</p>
+<div class="key">
+<b>Examples:</b> Intel 8085 and Zilog Z80.
+<br><b>Advantages:</b> Low cost, simple design and low power consumption.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">08</span>
+Explain applications of 8085.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8085 is used in digital instruments, timers, signal generators and traffic-light control systems. It processes input signals and controls output devices through interfacing circuits.</p>
+<div class="key">
+<b>Example:</b> In traffic lights, 8085 controls red, yellow and green lights using programmed delays.
+<br><b>Keywords:</b> Automation, interfacing, timing and control.
+</div>
+</div>
+</article>
+</div>
+
+<div class="unit">
+<h2>UNIT 2 – 8086 MICROPROCESSOR</h2>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">01</span>
+Explain the architecture of 8086.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8086 is a 16-bit microprocessor with a 20-bit address bus and 16-bit data bus. It consists of two major units: Bus Interface Unit (BIU) and Execution Unit (EU).</p>
+<p>BIU fetches instructions and handles bus operations. EU decodes and executes instructions.</p>
+<div class="key">
+<b>Features:</b> 1 MB memory, 6-byte instruction queue and pipelining.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">02</span>
+Explain segmented memory organization of 8086.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8086 memory is divided into four segments: Code Segment (CS), Data Segment (DS), Stack Segment (SS) and Extra Segment (ES). Each segment can contain up to 64 KB.</p>
+<p>Physical address = Segment × 10H + Offset.</p>
+<div class="key">
+<b>Example:</b> 2000H:1234H = 21234H.
+<br><b>Advantage:</b> Organized memory management.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">03</span>
+Explain important pins of 8086.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8086 is a 40-pin microprocessor.</p>
+<ul>
+<li>AD0–AD15: Address/data bus.</li>
+<li>A16–A19: Higher address lines.</li>
+<li>RD: Read control signal.</li>
+<li>WR: Write control signal.</li>
+<li>ALE: Address latch enable.</li>
+<li>READY: Wait-state control.</li>
+<li>INTR and NMI: Interrupt inputs.</li>
+</ul>
+<div class="key">
+<b>Keywords:</b> Multiplexed bus, minimum mode and maximum mode.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">04</span>
+Explain addressing modes of 8086 with examples.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Addressing modes specify the location of operands.</p>
+<ul>
+<li>Immediate: MOV AX, 1234H</li>
+<li>Register: MOV AX, BX</li>
+<li>Direct: MOV AL, [2000H]</li>
+<li>Register indirect: MOV AX, [BX]</li>
+<li>Based/indexed: MOV AX, [BX+SI+10H]</li>
+</ul>
+<div class="key">
+<b>Keywords:</b> Immediate, register, direct, indirect, based and indexed.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">05</span>
+Explain the instruction set of 8086.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8086 instructions are classified into:</p>
+<ul>
+<li>Data transfer: MOV, PUSH, POP, XCHG.</li>
+<li>Arithmetic: ADD, SUB, MUL, DIV.</li>
+<li>Logical: AND, OR, XOR, NOT.</li>
+<li>Control transfer: JMP, CALL, RET, JZ, JNZ.</li>
+</ul>
+<div class="key">
+<b>Example:</b> ADD AX, BX adds BX to AX.
+<br><b>Keywords:</b> Data manipulation and program control.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">06</span>
+Write an 8086 arithmetic program using MASM/TASM.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<pre>
+MOV AX, 1234H
+MOV BX, 0010H
+ADD AX, BX
+SUB AX, 0004H
+MOV AH, 4CH
+INT 21H
+</pre>
+<p>This program adds BX to AX and then subtracts 4 from the result.</p>
+<div class="key">
+<b>Keywords:</b> MASM, TASM, AX, BX, ADD, SUB.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">07</span>
+Explain procedures and macros in 8086.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A procedure is a reusable block of instructions called using CALL and terminated using RET.</p>
+<p>A macro is a group of instructions expanded by the assembler wherever it is called.</p>
+<div class="key">
+<b>Example:</b> ADDNUM PROC ... RET ... ADDNUM ENDP.
+<br><b>Advantage:</b> Code reuse and easier programming.
+<br><b>Difference:</b> Procedures use CALL/RET; macros expand inline.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">08</span>
+Explain keyboard and display interfacing using 8255 PPI.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8255 is a Programmable Peripheral Interface containing three 8-bit ports: Port A, Port B and Port C. It connects keyboards and displays to the processor.</p>
+<p>The microprocessor scans keyboard rows and columns and sends display data through the output ports.</p>
+<div class="key">
+<b>Features:</b> 24 programmable I/O lines.
+<br><b>Advantage:</b> Flexible peripheral interfacing.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">09</span>
+Explain applications of 8086.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8086 is used in embedded control systems, industrial automation, machine control, data acquisition and process monitoring.</p>
+<div class="key">
+<b>Example:</b> Industrial temperature monitoring using sensors and an ADC.
+<br><b>Keywords:</b> Automation, sensors, actuators and control systems.
+</div>
+</div>
+</article>
+</div>
+
+<div class="unit">
+<h2>UNIT 3 – 8051 MICROCONTROLLER</h2>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">01</span>
+Explain the architecture of 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8051 is an 8-bit microcontroller containing CPU, RAM, ROM, four I/O ports, two timers, serial communication and interrupt control on a single chip.</p>
+<div class="key">
+<b>Features:</b> 4 KB ROM, 128 bytes RAM and 32 I/O pins in the classic 8051.
+<br><b>Advantage:</b> Compact and low-cost embedded system.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">02</span>
+Compare microprocessors and microcontrollers.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A microprocessor mainly contains the CPU and requires external memory and peripherals. A microcontroller contains CPU, memory and I/O devices on a single chip.</p>
+<div class="key">
+<b>Examples:</b> 8085 is a microprocessor; 8051 is a microcontroller.
+<br><b>Advantage of microcontroller:</b> Compact, low cost and suitable for embedded systems.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">03</span>
+Explain internal memory organization of 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Classic 8051 contains 128 bytes of internal RAM and 4 KB of on-chip ROM.</p>
+<ul>
+<li>00H–1FH: Register banks.</li>
+<li>20H–2FH: Bit-addressable RAM.</li>
+<li>30H–7FH: General-purpose RAM.</li>
+<li>80H–FFH: Special Function Registers.</li>
+</ul>
+<div class="key">
+<b>Keywords:</b> RAM, ROM, register banks, SFR and bit-addressable memory.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">04</span>
+Explain registers, I/O ports, stack and PSW of 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8051 has accumulator A, B register, DPTR, PC, SP and PSW. Ports P0, P1, P2 and P3 provide 32 I/O lines. The stack stores temporary data in RAM.</p>
+<p>PSW contains status flags and register-bank selection bits.</p>
+<div class="key">
+<b>PSW flags:</b> CY, AC, F0, RS1, RS0, OV and P.
+<br><b>Example:</b> SETB P1.0 sets Port 1 bit 0.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">05</span>
+Explain addressing modes of 8051 with examples.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<ul>
+<li>Immediate: MOV A, #25H</li>
+<li>Register: MOV A, R2</li>
+<li>Direct: MOV A, 30H</li>
+<li>Register indirect: MOV A, @R0</li>
+<li>Indexed: MOVC A, @A+DPTR</li>
+<li>Bit addressing: SETB P1.0</li>
+</ul>
+<div class="key">
+<b>Keywords:</b> Immediate, register, direct, indirect, indexed and bit addressing.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">06</span>
+Describe the instruction set of 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<ul>
+<li>Data transfer: MOV, MOVX, MOVC.</li>
+<li>Arithmetic: ADD, SUBB, MUL, DIV.</li>
+<li>Logical: ANL, ORL, XRL.</li>
+<li>Bit operations: SETB, CLR, CPL.</li>
+<li>Branching: SJMP, LJMP, JZ, CALL, RET.</li>
+</ul>
+<div class="key">
+<b>Example:</b> ADD A, R1 adds R1 to A.
+<br><b>Special feature:</b> Bit-level operations.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">07</span>
+Explain timer and counter programming in 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8051 contains Timer 0 and Timer 1. A timer counts internal clock pulses, while a counter counts external pulses. TMOD selects the operating mode and TCON controls timer operation.</p>
+<div class="key">
+<b>Example:</b> SETB TR0 starts Timer 0.
+<br><b>Registers:</b> TMOD, TCON, TH0, TL0, TH1 and TL1.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">08</span>
+Explain interrupts in 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>An interrupt temporarily stops the main program and transfers control to an Interrupt Service Routine (ISR). 8051 supports external, timer and serial interrupts.</p>
+<p>IE enables interrupts and IP sets interrupt priority. RETI returns from the ISR.</p>
+<div class="key">
+<b>Advantages:</b> Fast response and efficient event handling.
+<br><b>Keywords:</b> ISR, IE, IP and RETI.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">09</span>
+Write an 8051 program to generate delay using timers.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<pre>
+MOV TMOD, #01H
+MOV TH0, #0FCH
+MOV TL0, #066H
+SETB TR0
+
+WAIT: JNB TF0, WAIT
+
+CLR TR0
+CLR TF0
+</pre>
+<p>This program configures Timer 0 in Mode 1, starts the timer and waits for overflow.</p>
+<div class="key">
+<b>Keywords:</b> Timer Mode 1, TH0, TL0, TR0 and TF0.
+<br>Actual delay depends on oscillator frequency and reload value.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">10</span>
+Explain applications of 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>8051 is used in washing machines, automatic lighting and temperature control systems.</p>
+<div class="key">
+<b>Example:</b> A temperature sensor sends readings to 8051, which switches ON a fan when the temperature exceeds a set value.
+<br><b>Keywords:</b> Sensors, actuators and automation.
+</div>
+</div>
+</article>
+</div>
+
+<div class="unit">
+<h2>UNIT 4 – MEMORY AND DEVICE INTERFACING</h2>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">01</span>
+Explain memory interfacing and I/O interfacing.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Memory interfacing connects RAM and ROM to the processor using address, data and control buses. I/O interfacing connects external devices such as keyboards, displays and sensors.</p>
+<div class="key">
+<b>Keywords:</b> Address bus, data bus, RD, WR and chip select.
+<br><b>Difference:</b> Memory uses memory addresses; I/O uses ports or memory-mapped addresses.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">02</span>
+Explain LED and seven-segment display interfacing.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>An LED is connected to a microcontroller output pin through a current-limiting resistor. A seven-segment display contains seven LEDs arranged to display numbers.</p>
+<div class="key">
+<b>Types:</b> Common anode and common cathode.
+<br><b>Example:</b> Digit 0 uses segments a, b, c, d, e and f.
+<br><b>Application:</b> Digital counters and clocks.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">03</span>
+Explain LCD interfacing with 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A 16×2 LCD is connected to 8051 using data lines and three control signals: RS, R/W and Enable.</p>
+<ul>
+<li>RS: Selects command or data.</li>
+<li>R/W: Selects read or write.</li>
+<li>Enable: Enables data transfer.</li>
+</ul>
+<div class="key">
+<b>Example:</b> RS = 0 sends a command; RS = 1 sends character data.
+<br><b>Advantage:</b> Displays text and numbers.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">04</span>
+Explain ADC and DAC interfacing with 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>ADC converts analog signals into digital values. DAC converts digital data into analog signals.</p>
+<p>ADC0808/0809 is an 8-bit ADC with 8 input channels. DAC0808/DAC0800 are 8-bit current-output DAC devices.</p>
+<div class="key">
+<b>Applications:</b> Sensor measurement and signal generation.
+<br><b>Keywords:</b> Analog, digital, resolution and conversion.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">05</span>
+Explain sensor interfacing with 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Sensors convert physical quantities into electrical signals.</p>
+<ul>
+<li>Temperature sensor: Measures temperature.</li>
+<li>IR sensor: Detects infrared radiation.</li>
+<li>Ultrasonic sensor: Measures distance using sound waves.</li>
+</ul>
+<div class="key">
+<b>Example:</b> An ultrasonic sensor measures distance using echo time.
+<br><b>Keywords:</b> Signal conditioning, ADC, trigger and echo.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">06</span>
+Explain stepper motor and DC motor interfacing.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A microcontroller uses a motor driver IC to control motors because its output pins cannot provide sufficient current.</p>
+<p>Stepper motors rotate in fixed steps. DC motors provide continuous rotation and can be controlled using PWM and an H-bridge.</p>
+<div class="key">
+<b>Examples:</b> ULN2003 for suitable stepper motors; L293D for DC motors.
+<br><b>Advantages:</b> Speed, direction and position control.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">07</span>
+Explain UART, RS232, I2C and SPI protocols.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<ul>
+<li>UART: Asynchronous serial communication using TX and RX.</li>
+<li>RS232: Electrical standard for serial communication.</li>
+<li>I2C: Two-wire communication using SDA and SCL.</li>
+<li>SPI: Synchronous communication using MOSI, MISO, SCLK and CS.</li>
+</ul>
+<div class="key">
+<b>Applications:</b> Sensor communication and peripheral interfacing.
+<br><b>Keywords:</b> Baud rate, clock, serial data and communication.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">08</span>
+Explain applications of interfacing techniques.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Interfacing connects sensors, displays and actuators to microcontrollers.</p>
+<ul>
+<li>Robotics: Sensor and motor control.</li>
+<li>Instrumentation: Measurement and display.</li>
+<li>Smart homes: Automatic lighting and appliances.</li>
+</ul>
+<div class="key">
+<b>Example:</b> A motion sensor automatically switches ON a light.
+<br><b>Keywords:</b> Automation, sensors and actuators.
+</div>
+</div>
+</article>
+</div>
+
+<div class="unit">
+<h2>UNIT 5 – PROGRAMMING AND APPLICATIONS</h2>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">01</span>
+Explain interfacing of LED, LCD and keypad with 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>LEDs connect to output pins through resistors. LCDs connect through data and control lines. A matrix keypad connects rows and columns to the microcontroller.</p>
+<p>The controller scans keypad rows and reads columns to identify pressed keys.</p>
+<div class="key">
+<b>Example:</b> Pressing key 5 displays 5 on the LCD.
+<br><b>Keywords:</b> Scanning, debounce and I/O ports.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">02</span>
+Write an 8085 program for arithmetic and logical operations.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p><b>Addition program:</b></p>
+<pre>
+LDA 2050H
+MOV B,A
+LDA 2051H
+ADD B
+STA 2052H
+HLT
+</pre>
+<p>For logical operations, use ANA B for AND, ORA B for OR and XRA B for XOR.</p>
+<div class="key">
+<b>Keywords:</b> Accumulator, registers, memory and flags.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">03</span>
+Write an 8086 arithmetic program.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<pre>
+MOV AX, 1234H
+MOV BX, 0010H
+ADD AX, BX
+SUB AX, 0002H
+
+MOV AH, 4CH
+INT 21H
+</pre>
+<p>The program performs addition and subtraction using 16-bit registers.</p>
+<div class="key">
+<b>Keywords:</b> AX, BX, ADD, SUB, MASM and TASM.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">04</span>
+Explain timer-based delay generation in 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Timer-based delay uses internal clock pulses to increment a timer register until overflow occurs.</p>
+<pre>
+MOV TMOD, #01H
+MOV TH0, #0FCH
+MOV TL0, #066H
+SETB TR0
+
+WAIT: JNB TF0, WAIT
+
+CLR TR0
+CLR TF0
+</pre>
+<div class="key">
+<b>Advantages:</b> Accurate delay and less CPU involvement.
+<br><b>Keywords:</b> Timer, overflow, TH0, TL0 and TR0.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">05</span>
+Explain serial communication between PC and 8051.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>Serial communication transfers data between PC and 8051 one bit at a time. The TXD and RXD pins are used for transmission and reception. MAX232 can be used for voltage-level conversion when connecting to a traditional RS232 interface.</p>
+<div class="key">
+<b>Keywords:</b> UART, TXD, RXD, baud rate and MAX232.
+<br><b>Application:</b> Sending sensor data to a computer.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">06</span>
+Explain motor control using a microcontroller.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A microcontroller sends control signals to a motor driver, which supplies the required current to the motor. An H-bridge controls direction, while PWM controls speed.</p>
+<div class="key">
+<b>Example:</b> Changing PWM duty cycle changes DC motor speed.
+<br><b>Advantages:</b> Automatic speed and direction control.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">07</span>
+Explain ADC-based sensor data acquisition.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A sensor generates an analog signal. The ADC converts it into digital form, and the microcontroller processes the value and displays the result or controls an actuator.</p>
+<div class="key">
+<b>Block sequence:</b> Sensor → ADC → Microcontroller → Display/Actuator.
+<br><b>Example:</b> Temperature measurement using an ADC and 8051.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">08</span>
+Explain design and deployment of a microcontroller-based automation project.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>The process includes identifying the problem, selecting the controller and components, designing the circuit, writing the program, simulation, testing, debugging and deployment.</p>
+<div class="key">
+<b>Block diagram:</b> Sensors → Microcontroller → Driver → Actuators.
+<br><b>Example:</b> Automatic room-light control system.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">09</span>
+Explain the procedure for writing and simulating assembly programs.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>First write the algorithm and assembly code. Then assemble the program, check errors, load it into a simulator, execute instructions and observe registers, flags and memory values.</p>
+<div class="key">
+<b>Tools:</b> 8085 simulator, MASM/TASM for 8086 and Keil µVision for 8051.
+<br><b>Advantage:</b> Errors can be identified before hardware implementation.
+</div>
+</div>
+</article>
+
+<article class="qa">
+<button class="question">
+<span class="qnum">10</span>
+Design a microcontroller-based automation system.
+<span class="chev">＋</span>
+</button>
+<div class="answer">
+<p>A sensor measures a physical condition and sends the signal to the microcontroller. The controller processes the data, activates an actuator through a driver and displays information on an LCD.</p>
+<div class="key">
+<b>Example:</b> Automatic temperature control system.
+<br><b>Block diagram:</b> Temperature Sensor → 8051 → Motor Driver → Fan.
+<br>8051 → LCD Display.
+<br><b>Advantages:</b> Automatic operation, reduced manual effort and fast response.
+</div>
+</div>
+</article>
+
+</div>
+
+<div class="empty" id="empty">
+No matching questions found.
+</div>
+
+</main>
+
+<script>
+const search = document.getElementById("search");
+const filters = document.querySelectorAll(".filter");
+const sections = document.querySelectorAll(".unit");
+
+let selected = "all";
+
+function update() {
+    const term = search.value.toLowerCase().trim();
+    let total = 0;
+
+    sections.forEach((section, index) => {
+        const unitMatch =
+            selected === "all" || selected === String(index);
+
+        let shown = 0;
+
+        section.querySelectorAll(".qa").forEach(card => {
+            const match =
+                unitMatch &&
+                card.innerText.toLowerCase().includes(term);
+
+            card.style.display = match ? "" : "none";
+
+            if (match) {
+                shown++;
+                total++;
+            }
+        });
+
+        section.style.display = shown ? "" : "none";
+    });
+
+    document.getElementById("empty").style.display =
+        total ? "none" : "block";
+}
+
+search.addEventListener("input", update);
+
+filters.forEach(button => {
+    button.addEventListener("click", () => {
+        selected = button.dataset.unit;
+
+        filters.forEach(btn =>
+            btn.classList.toggle("active", btn === button)
+        );
+
+        update();
+    });
+});
+
+document.querySelectorAll(".question").forEach(button => {
+    button.addEventListener("click", () => {
+        const card = button.closest(".qa");
+        card.classList.toggle("open");
+
+        const icon = button.querySelector(".chev");
+        icon.textContent = card.classList.contains("open")
+            ? "−"
+            : "＋";
+    });
+});
+</script>
+
+</body>
+
+
     <style>
         body {
             font-family: Arial, sans-serif;

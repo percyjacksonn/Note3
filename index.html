@@ -3,6 +3,1571 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+@page{size:A4;margin:18mm}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#000;font-family:Arial,sans-serif;font-size:14px;line-height:1.65}
+main{max-width:900px;margin:auto;padding:30px}
+h1{text-align:center;font-size:23px;margin-bottom:5px}
+.subtitle{text-align:center;margin-bottom:28px}
+h2{font-size:19px;border-bottom:2px solid #000;padding-bottom:7px;margin-top:32px}
+h3{font-size:15px;margin-top:24px;margin-bottom:8px}
+p{text-align:justify;margin:8px 0}
+li{margin-bottom:5px}
+ul,ol{padding-left:25px}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{border:1px solid #000;padding:7px;text-align:left;vertical-align:top}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;border:1px solid #000;padding:12px;font:12px/1.5 Consolas,monospace}
+.important{border-left:3px solid #000;padding:5px 12px;margin:12px 0}
+.diagram{text-align:center}
+.unit{page-break-before:always}
+@media print{main{max-width:none;padding:0}h2,h3{page-break-after:avoid}pre,table{page-break-inside:avoid}}
+</style>
+</head>
+<body>
+<main>
+
+<h1>MICROPROCESSORS AND MICROCONTROLLERS</h1>
+<p class="subtitle">Five Units – Important Questions with Complete Answers</p>
+
+<h2>UNIT I – 8085 MICROPROCESSOR</h2>
+
+<h3>1. Explain the architecture of the 8085 microprocessor with a neat block diagram and describe the functions of each block.</h3>
+<p>The Intel 8085 is an 8-bit microprocessor. It processes 8-bit data, has a 16-bit address bus and can address up to 64 KB of memory.</p>
+<p><b>Block diagram:</b></p>
+<pre class="diagram">
++-----------------------------+
+| 8085 CPU |
+| |
+| +-----------------------+ |
+| | General Registers | |
+| | B C D E H L | |
+| +-----------------------+ |
+| |
+| +------------+ +--------+ |
+| |Accumulator | | ALU | |
+| +------------+ +--------+ |
+| |
+| +-----------------------+ |
+| | Instruction Register | |
+| | and Decoder | |
+| +-----------------------+ |
+| |
+| +-----------------------+ |
+| | Timing and Control | |
+| +-----------------------+ |
+| |
+| PC, SP and Flag Register |
+| Interrupt and Serial I/O |
++-----------------------------+
+| |
+Address Bus Data Bus
+16-bit 8-bit
+</pre>
+<p><b>Functions of each block:</b></p>
+<ol>
+<li><b>ALU:</b> Performs arithmetic operations such as addition, subtraction, increment and decrement, and logical operations such as AND, OR, XOR and comparison.</li>
+<li><b>Accumulator:</b> An 8-bit register that stores operands and results of arithmetic and logical operations.</li>
+<li><b>General-purpose registers:</b> B, C, D, E, H and L are six 8-bit registers used for temporary data storage. They can be combined into BC, DE and HL register pairs.</li>
+<li><b>Program Counter (PC):</b> A 16-bit register that stores the address of the next instruction.</li>
+<li><b>Stack Pointer (SP):</b> A 16-bit register that points to the top of the stack in memory.</li>
+<li><b>Instruction Register and Decoder:</b> Holds the fetched opcode and decodes it to identify the operation to be performed.</li>
+<li><b>Timing and Control Unit:</b> Generates control signals such as ALE, RD̅ and WR̅ to coordinate memory and I/O operations.</li>
+<li><b>Interrupt Control:</b> Accepts and prioritizes interrupt requests from external devices.</li>
+<li><b>Serial I/O Control:</b> Supports serial communication through SID (Serial Input Data) and SOD (Serial Output Data).</li>
+<li><b>Address and Data Buses:</b> The address bus selects a memory or I/O location. The data bus transfers data between the processor and external devices.</li>
+</ol>
+<div class="important"><b>Important points:</b> 8-bit processor, 16-bit address bus, 8-bit data bus and 64 KB maximum addressable memory.</div>
+
+<h3>2. Explain the various registers, ALU, control unit and flag register of the 8085 microprocessor.</h3>
+<p>Registers are small, high-speed storage locations inside the microprocessor. They temporarily store data, addresses and instructions during program execution.</p>
+<p><b>Accumulator:</b> An 8-bit register used to store operands and results of ALU operations.</p>
+<p><b>General-purpose registers:</b> B, C, D, E, H and L are six 8-bit registers. They can be combined as BC, DE and HL 16-bit pairs.</p>
+<p><b>Program Counter:</b> Stores the address of the next instruction to be executed.</p>
+<p><b>Stack Pointer:</b> Points to the top of the stack and is used during PUSH, POP, CALL and RET operations.</p>
+<p><b>Instruction Register:</b> Temporarily stores the opcode fetched from memory.</p>
+<p><b>ALU:</b> Performs arithmetic and logical operations on data.</p>
+<p><b>Control Unit:</b> Decodes instructions and generates control and timing signals to coordinate the processor's operations.</p>
+<p><b>Flag Register:</b> Contains five condition flags that indicate the result of operations.</p>
+<table>
+<tr><th>Flag</th><th>Name</th><th>Function</th></tr>
+<tr><td>S</td><td>Sign</td><td>Set when bit 7 of the result is 1.</td></tr>
+<tr><td>Z</td><td>Zero</td><td>Set when the result is 00H.</td></tr>
+<tr><td>AC</td><td>Auxiliary Carry</td><td>Set when carry occurs from bit 3 to bit 4.</td></tr>
+<tr><td>P</td><td>Parity</td><td>Set when the result contains an even number of 1 bits.</td></tr>
+<tr><td>CY</td><td>Carry</td><td>Set when addition produces a carry out of bit 7; indicates borrow in subtraction.</td></tr>
+</table>
+<p><b>Example:</b> If 25H + 15H = 3AH, the result is non-zero, its most significant bit is 0, and there is no carry out of bit 7. Therefore, Z=0, S=0 and CY=0.</p>
+
+<h3>3. Explain the different addressing modes of the 8085 microprocessor with suitable examples.</h3>
+<p>An addressing mode specifies how an instruction identifies the operand on which it operates.</p>
+<ol>
+<li><b>Immediate addressing:</b> The data is included directly in the instruction. Example: <code>MVI A,32H</code> loads 32H into A.</li>
+<li><b>Register addressing:</b> The operand is present in a register. Example: <code>MOV A,B</code> copies the contents of B into A.</li>
+<li><b>Direct addressing:</b> The instruction contains the memory address. Example: <code>LDA 2050H</code> loads A from memory location 2050H.</li>
+<li><b>Register indirect addressing:</b> A register pair contains the memory address. Example: <code>MOV A,M</code> reads the memory byte addressed by HL. <code>LDAX B</code> reads from the address in BC.</li>
+<li><b>Implied addressing:</b> The operand is understood from the instruction itself. Example: <code>CMA</code> complements the accumulator.</li>
+</ol>
+<div class="important"><b>Important:</b> In 8085, M represents the memory location whose address is stored in the HL register pair.</div>
+
+<h3>4. Describe the instruction set of 8085 under data transfer, arithmetic, logical, branching and machine control categories.</h3>
+<p>The instruction set is the collection of commands that the 8085 can execute.</p>
+<table>
+<tr><th>Category</th><th>Purpose</th><th>Examples</th></tr>
+<tr><td>Data transfer</td><td>Transfers data between registers, memory and accumulator.</td><td>MOV, MVI, LXI, LDA, STA, LHLD, SHLD, XCHG</td></tr>
+<tr><td>Arithmetic</td><td>Performs addition, subtraction, increment and decrement.</td><td>ADD, ADC, SUB, SBB, INR, DCR, INX, DCX, DAD</td></tr>
+<tr><td>Logical</td><td>Performs bitwise operations, comparison and rotation.</td><td>ANA, ORA, XRA, CMP, CMA, RLC, RRC, RAL, RAR</td></tr>
+<tr><td>Branching</td><td>Changes the normal sequence of program execution.</td><td>JMP, JZ, JNZ, JC, JNC, CALL, RET, RST</td></tr>
+<tr><td>Machine control</td><td>Controls processor operation and interrupts.</td><td>NOP, HLT, EI, DI, SIM, RIM</td></tr>
+</table>
+<p><b>Examples:</b></p>
+<pre>
+MVI A,10H
+MVI B,05H
+ADD B ; A = 15H
+
+MOV C,A ; Copy A into C
+CMA ; Complement accumulator
+JZ NEXT ; Jump if zero flag is set
+HLT ; Stop execution
+</pre>
+
+<h3>5. Explain the timing diagrams of 8085 for opcode fetch, memory read and memory write operations.</h3>
+<p>A timing diagram represents the sequence of address, data and control signals during a bus operation. One T-state is one clock period. A machine cycle contains a number of T-states.</p>
+<p><b>Opcode fetch:</b> The processor places the program counter address on the address bus. ALE becomes high during T1 to latch the lower address. RD̅ becomes low so that memory can place the opcode on the data bus. The processor reads and decodes the opcode. A normal opcode-fetch machine cycle takes at least four T-states.</p>
+<pre>
+OPCODE FETCH (simplified)
+
+T-state T1 T2 T3 T4
+Address PC address Held Held -
+ALE HIGH LOW LOW LOW
+RD(bar) HIGH LOW LOW HIGH
+AD bus Low address Opcode Opcode -
+Action Latch addr Read begins Read opcode Decode
+</pre>
+<p><b>Memory read:</b> The processor sends the memory address during T1. ALE latches the lower address. RD̅ goes low, allowing memory to place the requested data on the data bus. The processor reads the data. A typical memory-read cycle takes three T-states.</p>
+<pre>
+MEMORY READ
+
+T-state T1 T2 T3
+Address Memory addr Held Held
+ALE HIGH LOW LOW
+RD(bar) HIGH LOW HIGH
+AD bus Low address Data Data sampled
+</pre>
+<p><b>Memory write:</b> The processor sends the memory address during T1. It then places the data to be written on the data bus and activates WR̅. Memory stores the data at the selected address. A typical memory-write cycle takes three T-states.</p>
+<pre>
+MEMORY WRITE
+
+T-state T1 T2 T3
+Address Memory addr Held Held
+ALE HIGH LOW LOW
+WR(bar) HIGH LOW HIGH
+AD bus Low address Output data Data held
+</pre>
+<div class="important"><b>Important points:</b> RD̅ and WR̅ are active-low signals. AD0–AD7 carry the lower address during T1 and data during later states. Wait states may be inserted for slow memory or peripherals.</div>
+
+<h3>6. Write an 8085 assembly language program to perform arithmetic and logical operations with suitable examples.</h3>
+<p><b>A. Addition of two numbers (25H + 15H):</b></p>
+<pre>
+MVI A,25H
+MVI B,15H
+ADD B
+STA 2050H
+HLT
+</pre>
+<p><b>Explanation:</b> The first instruction loads 25H into A. The second loads 15H into B. ADD B adds B to A. The result 3AH is stored at memory location 2050H.</p>
+<p><b>B. Subtraction (35H − 12H):</b></p>
+<pre>
+MVI A,35H
+MVI B,12H
+SUB B
+STA 2051H
+HLT
+</pre>
+<p><b>Result:</b> A = 23H.</p>
+<p><b>C. AND operation (5AH AND 3CH):</b></p>
+<pre>
+MVI A,5AH
+MVI B,3CH
+ANA B
+STA 2052H
+HLT
+</pre>
+<p><b>Result:</b> A = 18H.</p>
+<p><b>D. OR operation:</b></p>
+<pre>
+MVI A,5AH
+MVI B,3CH
+ORA B
+STA 2053H
+HLT
+</pre>
+<p><b>Result:</b> A = 7EH.</p>
+<p><b>E. XOR operation:</b></p>
+<pre>
+MVI A,5AH
+MVI B,3CH
+XRA B
+STA 2054H
+HLT
+</pre>
+<p><b>Result:</b> A = 66H.</p>
+<div class="important"><b>Important:</b> MVI loads immediate data, ADD and SUB perform arithmetic, ANA/ORA/XRA perform logical operations, and STA stores the accumulator in memory. These examples store the 8-bit result; a carry byte must be handled separately when required.</div>
+
+<h3>7. Explain the evolution of microprocessor architectures and discuss the features of 8-bit microprocessors.</h3>
+<p>Microprocessor architecture has evolved with improvements in semiconductor technology. Each generation introduced wider data paths, higher processing speeds, larger memory capacity and more advanced instructions.</p>
+<ol>
+<li><b>4-bit microprocessors:</b> Early processors mainly used in calculators and simple electronic devices.</li>
+<li><b>8-bit microprocessors:</b> Examples include Intel 8085, Zilog Z80 and MOS 6502. They were used in early computers and control systems.</li>
+<li><b>16-bit microprocessors:</b> Examples include Intel 8086 and 80286. They support wider data processing and larger address spaces.</li>
+<li><b>32-bit microprocessors:</b> Provide wider registers and address capabilities for personal computers and embedded applications.</li>
+<li><b>64-bit microprocessors:</b> Used in modern computers and mobile devices, supporting large address spaces and advanced processing.</li>
+<li><b>Modern architectures:</b> Include multicore processing, cache memory, pipelining, power management and specialized processing units.</li>
+</ol>
+<p><b>Features of 8-bit microprocessors:</b></p>
+<ul>
+<li>Process 8 bits of data at a time.</li>
+<li>Contain an ALU, registers, instruction decoder and control unit.</li>
+<li>Support arithmetic, logical, data-transfer and branching instructions.</li>
+<li>Usually use an 8-bit data bus, although address-bus width varies by processor.</li>
+<li>Suitable for simple control, measurement and embedded applications.</li>
+</ul>
+<div class="important"><b>Example:</b> The 8085 is an 8-bit microprocessor with a 16-bit address bus. It can address 64 KB of memory. The 8-bit description refers to its data width, not its address width.</div>
+
+<h3>8. Explain the applications of 8085 in digital instruments, timers, signal generators and traffic light control systems.</h3>
+<p><b>1. Digital instruments:</b> The 8085 can receive digital data from an ADC connected to a sensor. It processes the measured value and sends the result to a display. Examples include digital voltmeters and digital temperature meters.</p>
+<p><b>2. Timers:</b> A programmable timer such as the 8253 can generate accurate time intervals. The 8085 configures the timer and uses its output or interrupt to perform an operation after the required interval.</p>
+<p><b>3. Signal generators:</b> The 8085 sends digital samples to a DAC. A lookup table stores sample values for waveforms such as sine or triangular waves. The DAC converts the samples into an analog output.</p>
+<p><b>4. Traffic light control:</b> The 8085 controls red, yellow and green lights in a fixed sequence. A timer determines how long each light remains active. Input sensors may be used to detect vehicles and request changes.</p>
+<pre class="diagram">
+Sensors / Switches
+|
+v
+Input Interface
+|
+v
++-------+
+| 8085 |
+| CPU |
++-------+
+|
+v
+Output Interface
+|
++----+-----+
+| | |
+Display DAC Lamp Drivers
+</pre>
+<p><b>Advantages:</b> Programmable operation, repeatable timing, reduced manual control and easy modification of sequences. Actual traffic installations require certified safety and fail-safe hardware.</p>
+
+<div class="unit"></div>
+<h2>UNIT II – 8086 MICROPROCESSOR</h2>
+
+<h3>1. Explain the architecture of the 8086 microprocessor with a neat block diagram.</h3>
+<p>The Intel 8086 is a 16-bit microprocessor. It has a 16-bit data bus and a 20-bit address bus, allowing it to address up to 1 MB of memory. Its architecture is divided into two major units: the Bus Interface Unit (BIU) and the Execution Unit (EU).</p>
+<pre class="diagram">
++---------------------------+
+| 8086 CPU |
+| |
+| +---------------------+ |
+| | Bus Interface Unit | |
+| | Segment Registers | |
+| | CS, DS, SS, ES | |
+| | Instruction Pointer | |
+| | 6-byte Queue | |
+| | Address Generation | |
+| +---------------------+ |
+| | |
+| +---------------------+ |
+| | Execution Unit | |
+| | ALU | |
+| | General Registers | |
+| | Flag Register | |
+| | Instruction Decoder | |
+| +---------------------+ |
++---------------------------+
+| |
+Address Bus Data Bus
+20-bit 16-bit
+</pre>
+<p><b>Bus Interface Unit (BIU):</b></p>
+<ul>
+<li>Fetches instructions from memory.</li>
+<li>Contains segment registers CS, DS, SS and ES.</li>
+<li>Contains the Instruction Pointer (IP).</li>
+<li>Generates the 20-bit physical address.</li>
+<li>Contains a 6-byte instruction prefetch queue.</li>
+<li>Controls memory and I/O bus operations.</li>
+</ul>
+<p><b>Execution Unit (EU):</b></p>
+<ul>
+<li>Decodes and executes instructions.</li>
+<li>Contains the ALU for arithmetic and logical operations.</li>
+<li>Contains general-purpose registers AX, BX, CX and DX.</li>
+<li>Contains pointer and index registers SP, BP, SI and DI.</li>
+<li>Contains the flag register.</li>
+</ul>
+<p>The BIU fetches instructions while the EU executes previously fetched instructions. This overlapping improves overall processing speed.</p>
+<div class="important"><b>Important:</b> 8086 is a 16-bit processor, has a 20-bit address bus, addresses 1 MB of memory and uses a 6-byte instruction queue.</div>
+
+<h3>2. Describe the segmented memory organization of 8086 with suitable examples.</h3>
+<p>The 8086 uses segmented memory organization. Memory is divided into logical segments, each of which can contain up to 64 KB.</p>
+<p>The four main segments are:</p>
+<ol>
+<li><b>Code Segment (CS):</b> Stores program instructions.</li>
+<li><b>Data Segment (DS):</b> Stores data used by the program.</li>
+<li><b>Stack Segment (SS):</b> Stores stack data, return addresses and temporary values.</li>
+<li><b>Extra Segment (ES):</b> Provides an additional data segment, commonly used in string operations.</li>
+</ol>
+<p>The physical address is calculated using the segment address and offset:</p>
+<pre>
+Physical Address = Segment × 10H + Offset
+</pre>
+<p><b>Example:</b></p>
+<pre>
+Segment = 2000H
+Offset = 1500H
+
+Physical Address
+= 2000H × 10H + 1500H
+= 20000H + 1500H
+= 21500H
+</pre>
+<p>Thus, the physical memory address is 21500H.</p>
+<div class="important"><b>Advantages:</b> Allows organized memory management, separates code and data, supports stack operations and provides access to the 1 MB address space.</div>
+
+<h3>3. Explain the pin diagram of 8086 and describe the functions of important pins.</h3>
+<p>The 8086 is a 40-pin microprocessor. Its pins are used for address, data, control, interrupt, clock and power connections.</p>
+<pre class="diagram">
+8086 MICROPROCESSOR
++-------------------------+
+GND| |VCC
+AD14| |AD15
+AD13| |A16/S3
+AD12| |A17/S4
+AD11| |A18/S5
+AD10| |A19/S6
+AD9| |BHE/S7
+AD8| |MN/MX
+AD7| |RD
+AD6| |HOLD/RQ-GT0
+AD5| |HLDA/RQ-GT1
+AD4| |WR/LOCK
+AD3| |M/IO/S2
+AD2| |DT/R/S1
+AD1| |DEN/S0
+AD0| |ALE/QS0
+NMI| |QS1
+INTR| |TEST
+CLK| |READY
+GND| |RESET
++-------------------------+
+</pre>
+<p><b>Important pin functions:</b></p>
+<ul>
+<li><b>AD0–AD15:</b> Multiplexed address and data lines. They carry address during T1 and data during later bus states.</li>
+<li><b>A16/S3–A19/S6:</b> Carry the upper address bits initially and status information later.</li>
+<li><b>BHE̅/S7:</b> Bus High Enable selects the upper byte of the data bus.</li>
+<li><b>RD̅:</b> Active-low read control signal.</li>
+<li><b>WR̅:</b> Active-low write control signal in minimum mode.</li>
+<li><b>ALE:</b> Address Latch Enable indicates when the multiplexed address is available to be latched.</li>
+<li><b>READY:</b> Inserts wait states when a device is not ready.</li>
+<li><b>RESET:</b> Resets the processor.</li>
+<li><b>CLK:</b> Supplies the clock signal.</li>
+<li><b>INTR:</b> Maskable interrupt request.</li>
+<li><b>NMI:</b> Non-maskable interrupt request.</li>
+<li><b>MN/MX̅:</b> Selects minimum mode or maximum mode.</li>
+<li><b>HOLD and HLDA:</b> Used for bus-request and bus-grant operations in minimum mode.</li>
+<li><b>DT/R̅ and DEN̅:</b> Control data direction and enable external data-bus transceivers in minimum mode.</li>
+</ul>
+
+<h3>4. Explain the different addressing modes of 8086 with suitable examples.</h3>
+<p>Addressing modes specify how the 8086 accesses operands.</p>
+<ol>
+<li><b>Immediate:</b> Operand is part of the instruction. Example: <code>MOV AX,1234H</code>.</li>
+<li><b>Register:</b> Operand is in a register. Example: <code>MOV AX,BX</code>.</li>
+<li><b>Direct memory:</b> Instruction specifies the memory offset. Example: <code>MOV AL,[2000H]</code>.</li>
+<li><b>Register indirect:</b> A register holds the memory offset. Example: <code>MOV AX,[BX]</code>.</li>
+<li><b>Based:</b> Effective address uses BX or BP, optionally with displacement. Example: <code>MOV AX,[BX+04H]</code>.</li>
+<li><b>Indexed:</b> Effective address uses SI or DI, optionally with displacement. Example: <code>MOV AX,[SI+08H]</code>.</li>
+<li><b>Based-indexed:</b> Combines a base register and index register. Example: <code>MOV AX,[BX+SI]</code>.</li>
+<li><b>Relative:</b> A branch target is calculated relative to the instruction pointer. Example: <code>JNZ NEXT</code>.</li>
+<li><b>Implied:</b> Operand is understood from the instruction. Example: <code>CLC</code>.</li>
+</ol>
+
+<h3>5. Explain the instruction set of 8086 under data transfer, arithmetic, logical and control transfer instructions.</h3>
+<table>
+<tr><th>Category</th><th>Purpose</th><th>Examples</th></tr>
+<tr><td>Data transfer</td><td>Moves data between registers, memory and stack.</td><td>MOV, PUSH, POP, XCHG, LEA, LDS, LES, IN, OUT</td></tr>
+<tr><td>Arithmetic</td><td>Performs mathematical operations.</td><td>ADD, ADC, SUB, SBB, INC, DEC, MUL, IMUL, DIV, IDIV, CMP</td></tr>
+<tr><td>Logical</td><td>Performs bitwise operations and shifts.</td><td>AND, OR, XOR, NOT, TEST, SHL, SHR, SAR, ROL, ROR</td></tr>
+<tr><td>Control transfer</td><td>Changes program execution sequence.</td><td>JMP, CALL, RET, JZ, JNZ, JC, LOOP, INT, IRET</td></tr>
+</table>
+<p><b>Example:</b></p>
+<pre>
+MOV AX, 1000H
+MOV BX, 0200H
+ADD AX, BX
+CMP AX, 1200H
+JZ EQUAL
+</pre>
+<p>AX receives the sum. CMP compares AX with 1200H and updates flags. JZ branches if the values are equal.</p>
+
+<h3>6. Write an 8086 assembly language program to perform arithmetic operations using MASM/TASM.</h3>
+<p>The following MASM/TASM program performs addition, subtraction, multiplication and division using unsigned 8-bit operands. It stores the results in memory variables.</p>
+<pre>
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+NUM1 DB 20
+NUM2 DB 5
+SUM DW ?
+DIFF DB ?
+PROD DW ?
+QUOT DB ?
+REMN DB ?
+
+.CODE
+MAIN PROC
+MOV AX, @DATA
+MOV DS, AX
+
+; ADDITION
+MOV AL, NUM1
+ADD AL, NUM2
+MOV AH, 00H
+MOV SUM, AX
+
+; SUBTRACTION
+MOV AL, NUM1
+SUB AL, NUM2
+MOV DIFF, AL
+
+; MULTIPLICATION
+MOV AL, NUM1
+MOV BL, NUM2
+MUL BL
+MOV PROD, AX
+
+; DIVISION
+MOV AX, 0000H
+MOV AL, NUM1
+MOV BL, NUM2
+DIV BL
+MOV QUOT, AL
+MOV REMN, AH
+
+MOV AH, 4CH
+INT 21H
+MAIN ENDP
+END MAIN
+</pre>
+<p><b>Explanation:</b></p>
+<ul>
+<li>MOV loads the operands into registers.</li>
+<li>ADD performs addition and stores the result in SUM.</li>
+<li>SUB performs subtraction and stores the result in DIFF.</li>
+<li>MUL performs unsigned multiplication. The result is stored in AX.</li>
+<li>DIV divides AX by BL. The quotient is stored in AL and remainder in AH.</li>
+<li>INT 21H with AH=4CH terminates the DOS program.</li>
+</ul>
+<p><b>Expected results:</b> SUM=25, DIFF=15, PROD=100, QUOT=4 and REMN=0.</p>
+<div class="important"><b>Note:</b> Division by zero must be avoided. The program uses unsigned operands.</div>
+
+<h3>7. Explain procedures and macros in 8086 assembly language programming with suitable examples.</h3>
+<p><b>Procedure:</b> A procedure is a reusable block of instructions. It is called using CALL and returns using RET. CALL saves the return address on the stack.</p>
+<pre>
+.MODEL SMALL
+.STACK 100H
+.CODE
+
+MAIN PROC
+MOV AX, 0005H
+MOV BX, 0003H
+CALL ADDITION
+
+MOV AH, 4CH
+INT 21H
+MAIN ENDP
+
+ADDITION PROC
+ADD AX, BX
+RET
+ADDITION ENDP
+
+END MAIN
+</pre>
+<p>When ADDITION is called, the processor executes ADD AX,BX and returns to the instruction after CALL.</p>
+<p><b>Macro:</b> A macro is a named block of assembly instructions. The assembler expands the macro wherever it is used. It does not require a CALL and RET at runtime.</p>
+<pre>
+DISPLAY MACRO
+MOV AH, 02H
+MOV DL, 'A'
+INT 21H
+ENDM
+
+.MODEL SMALL
+.STACK 100H
+.CODE
+
+MAIN PROC
+DISPLAY
+MOV AH, 4CH
+INT 21H
+MAIN ENDP
+
+END MAIN
+</pre>
+<table>
+<tr><th>Procedure</th><th>Macro</th></tr>
+<tr><td>Called using CALL.</td><td>Expanded by the assembler.</td></tr>
+<tr><td>Returns using RET.</td><td>No RET is required for macro expansion.</td></tr>
+<tr><td>Uses stack space for return address.</td><td>Does not need a runtime call stack for invocation.</td></tr>
+<tr><td>Can reduce repeated code size.</td><td>May increase code size when expanded many times.</td></tr>
+</table>
+
+<h3>8. Explain the interfacing of keyboard and display using 8255 PPI with a neat diagram.</h3>
+<p>The 8255 Programmable Peripheral Interface is an I/O device used to connect external devices to a microprocessor. It provides 24 programmable I/O lines divided into three 8-bit ports: Port A, Port B and Port C.</p>
+<pre class="diagram">
+Keyboard Matrix Seven-Segment Display
+| ^
+v |
++-------------------------------+
+| 8255 |
+| |
+| Port A <----> Display data |
+| Port B <----> Keyboard lines |
+| Port C <----> Scan/control |
++-------------------------------+
+|
+v
+8086
+</pre>
+<p><b>Keyboard interfacing:</b></p>
+<ol>
+<li>Rows and columns of the keyboard are connected to 8255 ports.</li>
+<li>The processor selects one row at a time by sending an output pattern.</li>
+<li>The column inputs are read to identify a pressed key.</li>
+<li>The processor determines the key value using the row and column position.</li>
+<li>Debouncing is used to prevent multiple readings from a single key press.</li>
+</ol>
+<p><b>Display interfacing:</b></p>
+<ol>
+<li>Display segment lines are connected to an 8255 output port through suitable driver circuitry.</li>
+<li>The processor sends the segment pattern corresponding to the required digit.</li>
+<li>For multiple digits, digit-select lines are activated one at a time.</li>
+<li>Rapid scanning makes all digits appear continuously illuminated.</li>
+</ol>
+<p><b>8255 modes:</b> Mode 0 is simple I/O, Mode 1 is strobed I/O and Mode 2 is bidirectional bus operation for Port A.</p>
+<div class="important"><b>Advantages:</b> Provides programmable I/O, reduces processor pin requirements and allows connection of keyboards and displays.</div>
+
+<h3>9. Discuss the applications of 8086 in embedded control systems and industrial automation.</h3>
+<p>The 8086 can be used in control systems where a processor receives input data, processes it and generates output signals.</p>
+<ul>
+<li><b>Industrial automation:</b> Controls machine sequences, conveyors and production processes.</li>
+<li><b>Process monitoring:</b> Reads sensor values through ADC interfaces and displays measurements.</li>
+<li><b>Motor control:</b> Generates control signals through interface circuits to operate motors.</li>
+<li><b>Robotics:</b> Processes sensor inputs and coordinates movement commands.</li>
+<li><b>Data acquisition:</b> Collects and processes data from external instruments.</li>
+<li><b>Alarm systems:</b> Monitors input conditions and activates alarms when limits are exceeded.</li>
+</ul>
+<pre class="diagram">
+Sensors --> Signal Conditioning --> ADC
+|
+v
+8086 CPU
+|
++--------------+--------------+
+| | |
+Display Motor Alarm
+Driver
+</pre>
+<p>The 8086 is a general-purpose processor rather than a modern single-chip microcontroller. It requires external memory and I/O interfaces for these applications.</p>
+
+<div class="unit"></div>
+<h2>UNIT III – 8051 MICROCONTROLLER</h2>
+
+<h3>1. Explain the architecture of the 8051 microcontroller with a neat block diagram.</h3>
+<p>The 8051 is an 8-bit microcontroller developed by Intel. A microcontroller combines a processor, memory, I/O ports, timers and serial communication facilities in one chip.</p>
+<pre class="diagram">
++---------------------------+
+| 8051 MICROCONTROLLER |
+| |
+| +-----------+ |
+| | 8-bit ALU| |
+| +-----------+ |
+| |
+| +---------------------+ |
+| | CPU Registers | |
+| | A, B, PSW, PC, SP | |
+| +---------------------+ |
+| |
+| +----------+ +--------+ |
+| | Program | | RAM | |
+| | Memory | | | |
+| +----------+ +--------+ |
+| |
+| +---------------------+ |
+| | I/O Ports P0-P3 | |
+| +---------------------+ |
+| |
+| Timers | Serial Port |
+| Interrupt Control |
++---------------------------+
+</pre>
+<p><b>Functions:</b></p>
+<ul>
+<li><b>CPU:</b> Executes instructions and controls all operations.</li>
+<li><b>ALU:</b> Performs arithmetic and logical operations.</li>
+<li><b>Program memory:</b> Stores the program. The classic 8051 contains 4 KB of on-chip ROM.</li>
+<li><b>Data memory:</b> The classic 8051 contains 128 bytes of internal RAM.</li>
+<li><b>I/O ports:</b> Four 8-bit ports provide 32 programmable I/O lines.</li>
+<li><b>Timers/Counters:</b> Two 16-bit timers/counters are available in the classic 8051.</li>
+<li><b>Serial port:</b> Provides serial communication through TXD and RXD pins.</li>
+<li><b>Interrupt controller:</b> Handles external and internal interrupt requests.</li>
+<li><b>Oscillator and clock:</b> Provides timing for instruction execution and peripheral operation.</li>
+</ul>
+<div class="important"><b>Important:</b> Classic 8051 has 8-bit CPU, 4 KB ROM, 128 bytes RAM, 32 I/O pins, two 16-bit timers and one serial port. Many modern 8051 variants have different memory and peripheral sizes.</div>
+
+<h3>2. Compare microprocessors and microcontrollers with suitable examples.</h3>
+<p>A microprocessor mainly contains the CPU and requires external memory and peripherals. A microcontroller combines the CPU, memory and peripherals on a single chip.</p>
+<table>
+<tr><th>Microprocessor</th><th>Microcontroller</th></tr>
+<tr><td>Primarily contains the CPU.</td><td>Contains CPU, memory and peripherals.</td></tr>
+<tr><td>Usually requires external RAM, ROM and I/O interfaces.</td><td>Usually includes on-chip memory and I/O.</td></tr>
+<tr><td>Used in general-purpose computing.</td><td>Used in dedicated embedded applications.</td></tr>
+<tr><td>System design may require more external components.</td><td>Often produces a compact system.</td></tr>
+<tr><td>Examples: 8085, 8086.</td><td>Examples: 8051, PIC, AVR.</td></tr>
+</table>
+<p><b>Example:</b> An 8085-based system can be designed for general data processing with external RAM and I/O chips. An 8051 can directly control a small appliance using its built-in ports and timers.</p>
+
+<h3>3. Explain the internal memory organization of 8051 with a neat diagram.</h3>
+<p>The classic 8051 has separate program and data memory spaces. Its internal data RAM is 128 bytes, while its on-chip program ROM is 4 KB.</p>
+<pre class="diagram">
+INTERNAL DATA RAM (00H-7FH)
+
+7FH +-----------------------+
+| General-purpose RAM |
+30H +-----------------------+
+| Bit-addressable RAM |
+20H +-----------------------+
+| Register Banks |
+00H +-----------------------+
+
+SPECIAL FUNCTION REGISTERS
+80H - FFH
++-----------------------+
+| SFRs: ports, timers, |
+| serial, PSW, ACC, etc.|
++-----------------------+
+</pre>
+<p><b>Internal RAM organization:</b></p>
+<ol>
+<li><b>Register banks (00H–1FH):</b> Four banks, each containing R0–R7.</li>
+<li><b>Bit-addressable area (20H–2FH):</b> 16 bytes or 128 individually addressable bits.</li>
+<li><b>General-purpose RAM (30H–7FH):</b> Used for temporary data storage and stack space.</li>
+<li><b>Special Function Registers (80H–FFH):</b> Control CPU and peripheral functions. Examples include ACC, B, PSW, SP, P0, P1, P2, P3, TMOD and TCON.</li>
+</ol>
+<p><b>Program memory:</b> The classic 8051 contains 4 KB of internal ROM. It can also access external program memory in supported configurations.</p>
+<div class="important"><b>Important:</b> Internal RAM and SFRs are separate address spaces in the classic 8051. The stack is located in internal RAM.</div>
+
+<h3>4. Explain the registers, I/O ports, stack and Program Status Word (PSW) of 8051.</h3>
+<p><b>Registers:</b></p>
+<ul>
+<li><b>Accumulator A:</b> Used in arithmetic, logical and data-transfer operations.</li>
+<li><b>B register:</b> Used in multiplication and division and can also store general data.</li>
+<li><b>R0–R7:</b> General-purpose registers in the selected register bank.</li>
+<li><b>DPTR:</b> A 16-bit Data Pointer made of DPH and DPL, used for external memory and table access.</li>
+<li><b>PC:</b> Holds the address of the next instruction.</li>
+<li><b>SP:</b> Points to the top of the stack.</li>
+</ul>
+<p><b>I/O Ports:</b> The 8051 contains four 8-bit ports.</p>
+<table>
+<tr><th>Port</th><th>Function</th></tr>
+<tr><td>Port 0</td><td>General I/O or multiplexed low address/data bus during external memory access. Requires external pull-ups for ordinary I/O.</td></tr>
+<tr><td>Port 1</td><td>General-purpose I/O port.</td></tr>
+<tr><td>Port 2</td><td>General I/O or high address bus during external memory access.</td></tr>
+<tr><td>Port 3</td><td>General I/O and alternate functions such as RXD, TXD, INT0, INT1, T0, T1, WR and RD.</td></tr>
+</table>
+<p><b>Stack:</b> The stack stores temporary data and return addresses. In the classic 8051, the stack grows toward higher internal RAM addresses. The reset value of SP is 07H.</p>
+<p><b>Program Status Word (PSW):</b> The PSW contains status flags and register-bank selection bits.</p>
+<table>
+<tr><th>Bit</th><th>Function</th></tr>
+<tr><td>CY</td><td>Carry flag.</td></tr>
+<tr><td>AC</td><td>Auxiliary carry flag.</td></tr>
+<tr><td>F0</td><td>User-defined flag.</td></tr>
+<tr><td>RS1, RS0</td><td>Select register bank.</td></tr>
+<tr><td>OV</td><td>Overflow flag.</td></tr>
+<tr><td>-</td><td>Reserved bit.</td></tr>
+<tr><td>P</td><td>Parity flag.</td></tr>
+</table>
+
+<h3>5. Explain the different addressing modes of 8051 with suitable examples.</h3>
+<ol>
+<li><b>Immediate addressing:</b> Constant data is included in the instruction. Example: <code>MOV A,#25H</code>.</li>
+<li><b>Register addressing:</b> Operand is stored in a register. Example: <code>MOV A,R2</code>.</li>
+<li><b>Direct addressing:</b> Instruction specifies a direct internal RAM or SFR address. Example: <code>MOV A,30H</code>.</li>
+<li><b>Register indirect addressing:</b> R0 or R1 contains the internal RAM address. Example: <code>MOV A,@R0</code>.</li>
+<li><b>Indexed addressing:</b> Used to access code-memory lookup tables using A and DPTR or PC. Example: <code>MOVC A,@A+DPTR</code>.</li>
+<li><b>Bit addressing:</b> Accesses an individual bit. Example: <code>SETB P1.0</code>.</li>
+</ol>
+
+<h3>6. Describe the instruction set of 8051 with suitable examples.</h3>
+<table>
+<tr><th>Category</th><th>Instructions</th><th>Purpose</th></tr>
+<tr><td>Data transfer</td><td>MOV, MOVX, MOVC, PUSH, POP, XCH</td><td>Moves data between registers and memory.</td></tr>
+<tr><td>Arithmetic</td><td>ADD, ADDC, SUBB, INC, DEC, MUL, DIV</td><td>Performs arithmetic operations.</td></tr>
+<tr><td>Logical</td><td>ANL, ORL, XRL, CLR, CPL, RL, RR</td><td>Performs logical and bit operations.</td></tr>
+<tr><td>Branching</td><td>SJMP, LJMP, JZ, JNZ, JC, DJNZ, CJNE</td><td>Changes program execution sequence.</td></tr>
+<tr><td>Bit manipulation</td><td>SETB, CLR, CPL, JB, JNB, JBC</td><td>Sets, clears, complements and tests individual bits.</td></tr>
+</table>
+<p><b>Example – Addition:</b></p>
+<pre>
+MOV A,#25H
+MOV R0,#15H
+ADD A,R0
+; A = 3AH
+</pre>
+<p><b>Example – Logical AND:</b></p>
+<pre>
+MOV A,#5AH
+ANL A,#3CH
+; A = 18H
+</pre>
+<p><b>Example – Bit operation:</b></p>
+<pre>
+SETB P1.0
+; Set Port 1 bit 0
+
+CLR P1.0
+; Clear Port 1 bit 0
+</pre>
+
+<h3>7. Explain timer and counter programming in 8051 with suitable programs.</h3>
+<p>The classic 8051 contains two 16-bit timer/counters: Timer 0 and Timer 1. They can operate as timers to measure internal clock intervals or as counters to count external pulses.</p>
+<p><b>Important registers:</b></p>
+<ul>
+<li><b>TMOD:</b> Selects timer/counter operation and mode.</li>
+<li><b>TCON:</b> Contains control bits such as TR0, TR1, TF0 and TF1.</li>
+<li><b>TH0/TL0:</b> High and low bytes of Timer 0.</li>
+<li><b>TH1/TL1:</b> High and low bytes of Timer 1.</li>
+</ul>
+<p><b>Timer modes:</b> Mode 0 is 13-bit, Mode 1 is 16-bit, Mode 2 is 8-bit auto-reload and Mode 3 splits Timer 0 into two 8-bit timers.</p>
+<p><b>Example – Timer 0 Mode 1:</b></p>
+<pre>
+MOV TMOD,#01H
+MOV TH0,#0FCH
+MOV TL0,#018H
+
+SETB TR0
+
+WAIT:
+JNB TF0,WAIT
+
+CLR TR0
+CLR TF0
+</pre>
+<p><b>Explanation:</b> TMOD selects Timer 0 Mode 1. TH0 and TL0 load the starting count F C18H. TR0 starts the timer. The program waits until TF0 becomes 1, then stops and clears the timer flag.</p>
+<p>The exact delay depends on the oscillator frequency and machine-cycle timing.</p>
+
+<h3>8. Explain interrupts in 8051 and describe their handling mechanism.</h3>
+<p>An interrupt is a signal that temporarily stops the normal program sequence so the processor can respond to an important event.</p>
+<p><b>Classic 8051 interrupt sources:</b></p>
+<table>
+<tr><th>Interrupt</th><th>Vector address</th><th>Function</th></tr>
+<tr><td>External interrupt 0</td><td>0003H</td><td>External event on INT0.</td></tr>
+<tr><td>Timer 0</td><td>000BH</td><td>Timer 0 overflow.</td></tr>
+<tr><td>External interrupt 1</td><td>0013H</td><td>External event on INT1.</td></tr>
+<tr><td>Timer 1</td><td>001BH</td><td>Timer 1 overflow.</td></tr>
+<tr><td>Serial port</td><td>0023H</td><td>Serial transmit or receive event.</td></tr>
+</table>
+<p><b>Interrupt handling mechanism:</b></p>
+<ol>
+<li>An interrupt source generates a request.</li>
+<li>The interrupt controller checks whether the interrupt is enabled and whether its priority allows servicing.</li>
+<li>The processor completes the current instruction.</li>
+<li>The return address is saved on the stack.</li>
+<li>The processor jumps to the corresponding interrupt vector.</li>
+<li>The interrupt service routine (ISR) handles the event.</li>
+<li>RETI returns from the interrupt and restores normal program execution.</li>
+</ol>
+<p><b>Important registers:</b> IE enables or disables interrupt sources. IP selects interrupt priority. TCON controls external interrupt and timer flags.</p>
+
+<h3>9. Write an 8051 assembly language program to generate a time delay using timers.</h3>
+<p><b>Timer 0 Mode 1 delay program:</b></p>
+<pre>
+ORG 0000H
+
+MAIN:
+MOV TMOD,#01H
+
+AGAIN:
+MOV TH0,#0FCH
+MOV TL0,#018H
+
+CLR TF0
+SETB TR0
+
+WAIT:
+JNB TF0,WAIT
+
+CLR TR0
+CLR TF0
+
+SJMP AGAIN
+
+END
+</pre>
+<p><b>Explanation:</b></p>
+<ol>
+<li>TMOD is loaded with 01H to select Timer 0 Mode 1.</li>
+<li>TH0 and TL0 are loaded with F C18H.</li>
+<li>TF0 is cleared before starting the timer.</li>
+<li>TR0 starts Timer 0.</li>
+<li>JNB TF0,WAIT repeatedly checks the overflow flag.</li>
+<li>When overflow occurs, the timer is stopped and the flag is cleared.</li>
+<li>The process repeats continuously.</li>
+</ol>
+<p><b>Delay calculation:</b> For the classic 8051, a timer increments once per machine cycle. With a 12 MHz crystal and the traditional 12-clock machine cycle, one timer count takes 1 microsecond. Loading FC18H leaves 1000 counts until overflow, giving approximately 1 millisecond.</p>
+<div class="important"><b>Note:</b> Modern 8051 derivatives may use different machine-cycle timing. The delay must be recalculated for the selected device and clock frequency.</div>
+
+<h3>10. Explain the applications of 8051 in washing machines, automatic lighting and temperature control systems.</h3>
+<p><b>1. Washing machines:</b> The 8051 receives inputs from buttons and sensors. It controls water valves, motor drivers and indicators according to the selected wash program. Timers manage washing, rinsing and spinning intervals.</p>
+<p><b>2. Automatic lighting:</b> A light sensor detects the surrounding brightness. The 8051 reads the sensor signal and switches lights ON or OFF through a relay or driver circuit.</p>
+<p><b>3. Temperature control:</b> A temperature sensor provides a signal to the microcontroller, directly or through an ADC. The 8051 compares the measured temperature with a set value and controls a fan, heater or alarm.</p>
+<pre class="diagram">
+Sensors / Switches
+|
+v
++-------------+
+| 8051 |
+| Controller |
++-------------+
+| |
+v v
+Display Driver Circuit
+|
+v
+Motor / Relay / Fan
+</pre>
+<p><b>Advantages:</b> Low-cost control, programmable operation, reduced manual effort and easy integration with sensors and actuators.</p>
+
+<div class="unit"></div>
+<h2>UNIT IV – MEMORY AND I/O INTERFACING</h2>
+
+<h3>1. Explain the concepts of memory interfacing and I/O interfacing with suitable diagrams.</h3>
+<p><b>Memory interfacing:</b> Memory interfacing is the process of connecting RAM and ROM chips to a microprocessor. The address bus selects the memory location, the data bus transfers information and control signals determine whether data is read or written.</p>
+<p><b>Basic memory interface:</b></p>
+<pre class="diagram">
++----------------+
+| Microprocessor |
++----------------+
+| | |
+Address Data Control
+| | |
+v v v
++----------------+
+| Memory Decoder |
++----------------+
+|
++------+------+
+| |
+v v
+RAM ROM
+</pre>
+<p><b>Memory interfacing steps:</b></p>
+<ol>
+<li>Connect address lines to memory address pins.</li>
+<li>Connect data lines to the memory data bus.</li>
+<li>Use address decoding to generate chip-select signals.</li>
+<li>Connect read and write control signals.</li>
+<li>Ensure timing and electrical requirements are satisfied.</li>
+</ol>
+<p><b>I/O interfacing:</b> I/O interfacing connects external devices such as keyboards, displays, sensors and printers to a processor. The processor communicates with these devices using input and output instructions or memory-mapped I/O.</p>
+<pre class="diagram">
++----------------+
+| Microprocessor |
++----------------+
+|
+I/O Interface
+|
++--------+--------+
+| | |
+Keyboard Display Sensors
+</pre>
+<p><b>Types:</b> Memory-mapped I/O assigns I/O devices addresses within the memory address space. Isolated I/O uses a separate I/O address space and dedicated I/O instructions where supported.</p>
+<div class="important"><b>Difference:</b> Memory interfacing connects storage devices; I/O interfacing connects communication and peripheral devices.</div>
+
+<h3>2. Explain LED and seven-segment display interfacing with a microcontroller.</h3>
+<p><b>LED interfacing:</b> An LED can be connected to a microcontroller output pin through a current-limiting resistor. The output pin controls whether the LED is ON or OFF.</p>
+<pre class="diagram">
+Microcontroller P1.0 ---- Resistor ---- LED ---- GND
+</pre>
+<p><b>Example 8051 program:</b></p>
+<pre>
+ORG 0000H
+
+MAIN:
+SETB P1.0
+ACALL DELAY
+CLR P1.0
+ACALL DELAY
+SJMP MAIN
+
+DELAY:
+MOV R2,#255
+L1:
+MOV R3,#255
+L2:
+DJNZ R3,L2
+DJNZ R2,L1
+RET
+
+END
+</pre>
+<p>This program repeatedly turns the LED ON and OFF with a software delay. The actual ON/OFF electrical level depends on the wiring.</p>
+<p><b>Seven-segment display:</b> A seven-segment display contains seven LED segments named a, b, c, d, e, f and g. An optional decimal-point segment is also provided.</p>
+<pre class="diagram">
+-- a --
+| |
+f b
+| |
+-- g --
+| |
+e c
+| |
+-- d --
+</pre>
+<p>There are two common types:</p>
+<ul>
+<li><b>Common cathode:</b> All cathodes are connected together. A logic HIGH on a segment input normally turns that segment ON.</li>
+<li><b>Common anode:</b> All anodes are connected together. A logic LOW on a segment input normally turns that segment ON.</li>
+</ul>
+<p>The microcontroller sends a bit pattern to select the required segments. A driver may be required when the display current exceeds the port's safe capability.</p>
+
+<h3>3. Explain LCD interfacing with 8051 with a neat circuit diagram.</h3>
+<p>A 16×2 LCD can display 16 characters in each of two rows. It commonly uses the HD44780-compatible controller.</p>
+<p><b>Important LCD pins:</b></p>
+<table>
+<tr><th>Pin</th><th>Function</th></tr>
+<tr><td>VSS</td><td>Ground.</td></tr>
+<tr><td>VDD</td><td>Supply voltage.</td></tr>
+<tr><td>V0</td><td>Contrast adjustment.</td></tr>
+<tr><td>RS</td><td>Register Select: 0 for command, 1 for data.</td></tr>
+<tr><td>RW</td><td>Read/Write: 0 for write, 1 for read.</td></tr>
+<tr><td>E</td><td>Enable signal.</td></tr>
+<tr><td>D0–D7</td><td>Data lines.</td></tr>
+</table>
+<pre class="diagram">
++----------------+
+| 8051 |
+| |
+| P2.0 - P2.7 |------ D0-D7
+| P3.0 |------ RS
+| P3.1 |------ RW
+| P3.2 |------ E
++----------------+
+|
+v
++-----------+
+| 16x2 LCD |
++-----------+
+</pre>
+<p><b>LCD operation:</b></p>
+<ol>
+<li>Connect the LCD data lines to a microcontroller port.</li>
+<li>Connect RS, RW and E to control pins.</li>
+<li>Adjust contrast using a potentiometer at V0.</li>
+<li>Send initialization commands to configure the LCD.</li>
+<li>Send display data to show characters.</li>
+</ol>
+<p><b>Common commands:</b></p>
+<table>
+<tr><th>Command</th><th>Function</th></tr>
+<tr><td>38H</td><td>8-bit mode, two lines, 5×7 font.</td></tr>
+<tr><td>0CH</td><td>Display ON, cursor OFF.</td></tr>
+<tr><td>06H</td><td>Increment cursor after writing.</td></tr>
+<tr><td>01H</td><td>Clear display.</td></tr>
+<tr><td>80H</td><td>Move cursor to first row, first position.</td></tr>
+</table>
+<p><b>Advantages:</b> Low power consumption, easy text display and simple connection to microcontrollers.</p>
+
+<h3>4. Explain ADC and DAC interfacing with 8051. Discuss ADC0808/0809 and DAC0808/0800.</h3>
+<p><b>ADC (Analog-to-Digital Converter):</b> Converts an analog voltage into a digital value that can be processed by the microcontroller.</p>
+<p><b>DAC (Digital-to-Analog Converter):</b> Converts a digital value into an analog voltage or current.</p>
+<p><b>ADC0808/ADC0809:</b></p>
+<ul>
+<li>8-bit successive-approximation ADC family.</li>
+<li>Provides eight analog input channels selected using address lines.</li>
+<li>Uses address latch, start-conversion and end-of-conversion signals.</li>
+<li>The digital output is read by the microcontroller after conversion.</li>
+</ul>
+<pre class="diagram">
+Analog Sensors
+|
+v
++-------------+
+| ADC0808/0909|
++-------------+
+|
+Digital Data
+|
+v
++-------------+
+| 8051 |
++-------------+
+</pre>
+<p><b>ADC interfacing steps:</b></p>
+<ol>
+<li>Connect the analog sensor output to an ADC input channel.</li>
+<li>Select the required channel using address lines.</li>
+<li>Start conversion.</li>
+<li>Wait for end-of-conversion indication.</li>
+<li>Read the 8-bit digital result through an input port.</li>
+</ol>
+<p><b>DAC0808/DAC0800:</b> These are 8-bit digital-to-analog converter devices that provide a current output. An external current-to-voltage conversion circuit, commonly using an operational amplifier, is used when a voltage output is required.</p>
+<pre class="diagram">
+8051 Output Port
+|
+v
++-------------+
+| DAC0808/0800|
++-------------+
+|
+Current Output
+|
+v
+Current-to-Voltage
+Converter
+|
+v
+Analog Output
+</pre>
+<p><b>Applications:</b> Waveform generation, audio systems, motor control, instrumentation and sensor measurement.</p>
+
+<h3>5. Explain sensor interfacing with 8051, including temperature, IR and ultrasonic sensors.</h3>
+<p>Sensors detect physical quantities and convert them into electrical signals. The 8051 processes these signals and controls external devices.</p>
+<p><b>1. Temperature sensor:</b> A sensor such as LM35 produces an analog voltage proportional to temperature. An ADC converts the voltage into digital data for the 8051.</p>
+<p><b>2. IR sensor:</b> An infrared sensor detects reflected infrared light or interruption of an IR beam. Its digital output can be connected to an 8051 input pin.</p>
+<p><b>3. Ultrasonic sensor:</b> An ultrasonic sensor sends sound pulses and measures the time taken for the echo to return. The microcontroller measures this time and estimates distance.</p>
+<pre class="diagram">
+Temperature Sensor --+
+|
+IR Sensor -----------+----> 8051
+| |
+Ultrasonic Sensor ---+ v
+Display
+|
+v
+Control Output
+</pre>
+<p><b>Applications:</b> Temperature monitoring, obstacle detection, automatic doors, parking assistance and distance measurement.</p>
+
+<h3>6. Explain the interfacing of stepper motors and DC motors with a microcontroller.</h3>
+<p><b>DC motor interfacing:</b> A DC motor rotates when a suitable voltage is applied. A microcontroller cannot normally drive the motor directly because the motor requires more current than an I/O pin can supply. A transistor driver or H-bridge motor-driver IC is used.</p>
+<pre class="diagram">
+8051 Output Pins
+|
+v
++---------------+
+| Motor Driver |
+| L293D |
++---------------+
+|
+v
+DC Motor
+</pre>
+<p>The motor driver can control motor ON/OFF and direction. PWM signals can be used for speed control when supported by the driver and application.</p>
+<p><b>Stepper motor interfacing:</b> A stepper motor rotates in fixed angular steps. The microcontroller sends a sequence of signals to the motor driver, which energizes the motor windings in the correct order.</p>
+<pre class="diagram">
+8051
+|
+v
+Stepper Driver
+|
+v
+Stepper Motor
+</pre>
+<p><b>Advantages of stepper motors:</b></p>
+<ul>
+<li>Precise step-by-step movement.</li>
+<li>Useful for position control.</li>
+<li>Can be controlled using programmed sequences.</li>
+</ul>
+<p><b>Applications:</b> Printers, robotics, CNC equipment, conveyor systems and automated positioning devices.</p>
+
+<h3>7. Explain the serial communication protocols UART, RS232, I2C and SPI.</h3>
+<p>Serial communication transfers data one bit at a time over communication lines.</p>
+<table>
+<tr><th>Protocol</th><th>Description</th><th>Features</th></tr>
+<tr><td>UART</td><td>Asynchronous serial communication.</td><td>Uses TX and RX; normally configured with a baud rate, data bits and optional parity.</td></tr>
+<tr><td>RS232</td><td>Electrical standard for serial communication.</td><td>Uses voltage levels different from logic-level UART; requires suitable level conversion.</td></tr>
+<tr><td>I2C</td><td>Two-wire synchronous communication.</td><td>Uses SDA and SCL, supports addressing of multiple devices and requires pull-up resistors.</td></tr>
+<tr><td>SPI</td><td>Synchronous serial communication.</td><td>Uses clock, MOSI, MISO and chip-select signals; generally supports high-speed full-duplex transfers.</td></tr>
+</table>
+<p><b>UART:</b> The transmitter and receiver must agree on the baud rate and frame format. A typical frame contains a start bit, data bits and optional parity and stop bits.</p>
+<p><b>RS232:</b> Used for serial communication between equipment such as computers and instruments. A level converter is needed to connect RS232 voltage levels to a microcontroller's logic-level UART.</p>
+<p><b>I2C:</b> Devices share SDA for data and SCL for clock. Each device is selected using an address.</p>
+<p><b>SPI:</b> A controller generates the clock and selects a peripheral using chip select. MOSI sends data to the peripheral and MISO receives data.</p>
+
+<h3>8. Discuss the applications of interfacing techniques in robotics, instrumentation and smart home systems.</h3>
+<p><b>Robotics:</b> Sensors detect obstacles and position. The microcontroller processes sensor information and controls motors through driver circuits.</p>
+<p><b>Instrumentation:</b> ADCs read analog measurements from sensors. Displays show measured values, while DACs can generate analog signals for testing and control.</p>
+<p><b>Smart home systems:</b> Sensors detect motion, temperature, light and door status. The controller operates lighting, fans, alarms and other devices through suitable drivers.</p>
+<pre class="diagram">
+Sensors --> Microcontroller --> Driver Circuits
+| |
+v v
+Display Motors / Relays
+|
+v
+Communication
+</pre>
+<p><b>Benefits:</b> Automation, improved monitoring, reduced manual effort, faster response and efficient system control.</p>
+
+<div class="unit"></div>
+<h2>UNIT V – APPLICATIONS AND PROGRAMMING</h2>
+
+<h3>1. Explain the interfacing of LED, LCD and keypad with 8051 using suitable diagrams.</h3>
+<p><b>LED interfacing:</b> An LED is connected to an 8051 output pin through a current-limiting resistor. The port controls its ON/OFF condition.</p>
+<pre class="diagram">
+8051 P1.0 ---- Resistor ---- LED ---- GND
+</pre>
+<p><b>LED program:</b></p>
+<pre>
+ORG 0000H
+
+MAIN:
+SETB P1.0
+ACALL DELAY
+CLR P1.0
+ACALL DELAY
+SJMP MAIN
+
+DELAY:
+MOV R2,#200
+L1:
+MOV R3,#250
+L2:
+DJNZ R3,L2
+DJNZ R2,L1
+RET
+
+END
+</pre>
+<p><b>LCD interfacing:</b> A 16×2 LCD is connected using data lines and control signals RS, RW and E. Commands configure the display and data bytes represent the characters to be shown.</p>
+<pre class="diagram">
++-------------+
+| 8051 |
++-------------+
+| | | |
+| | | +---- E
+| | +-------- RW
+| +------------ RS
++---------------- D0-D7
+|
+v
++---------+
+| 16x2 LCD|
++---------+
+</pre>
+<p><b>Keypad interfacing:</b> A matrix keypad has rows and columns. The microcontroller scans the rows and reads the columns to identify the pressed key.</p>
+<pre class="diagram">
+8051
+|
++-------------+
+| 4x4 Keypad |
+| |
+| R1 R2 R3 R4 |
+| C1 C2 C3 C4 |
++-------------+
+</pre>
+<p><b>Keypad scanning steps:</b></p>
+<ol>
+<li>Configure row pins as outputs and column pins as inputs.</li>
+<li>Activate one row at a time.</li>
+<li>Read the column inputs.</li>
+<li>Identify the key using the active row and detected column.</li>
+<li>Apply debouncing to confirm the key press.</li>
+</ol>
+<div class="important"><b>Applications:</b> User input panels, calculators, password locks, digital instruments and embedded control systems.</div>
+
+<h3>2. Write and explain an 8085 assembly language program for arithmetic and logical operations.</h3>
+<p><b>Addition of two numbers:</b> Add 25H and 15H and store the result at 2050H.</p>
+<pre>
+MVI A,25H
+MVI B,15H
+ADD B
+STA 2050H
+HLT
+</pre>
+<p><b>Explanation:</b> A receives 25H, B receives 15H, ADD B calculates 3AH and STA stores it at 2050H.</p>
+<p><b>Subtraction:</b></p>
+<pre>
+MVI A,35H
+MVI B,12H
+SUB B
+STA 2051H
+HLT
+</pre>
+<p>Result: 23H.</p>
+<p><b>AND operation:</b></p>
+<pre>
+MVI A,5AH
+MVI B,3CH
+ANA B
+STA 2052H
+HLT
+</pre>
+<p>Result: 18H.</p>
+<p><b>OR operation:</b></p>
+<pre>
+MVI A,5AH
+MVI B,3CH
+ORA B
+STA 2053H
+HLT
+</pre>
+<p>Result: 7EH.</p>
+<p><b>XOR operation:</b></p>
+<pre>
+MVI A,5AH
+MVI B,3CH
+XRA B
+STA 2054H
+HLT
+</pre>
+<p>Result: 66H.</p>
+
+<h3>3. Write and explain an 8086 assembly language program for arithmetic operations.</h3>
+<p>The following MASM/TASM program performs addition, subtraction, multiplication and division on unsigned 8-bit numbers.</p>
+<pre>
+.MODEL SMALL
+.STACK 100H
+
+.DATA
+NUM1 DB 20
+NUM2 DB 5
+SUM DW ?
+DIFF DB ?
+PROD DW ?
+QUOT DB ?
+REMN DB ?
+
+.CODE
+MAIN PROC
+MOV AX,@DATA
+MOV DS,AX
+
+; Addition
+MOV AL,NUM1
+ADD AL,NUM2
+MOV AH,00H
+MOV SUM,AX
+
+; Subtraction
+MOV AL,NUM1
+SUB AL,NUM2
+MOV DIFF,AL
+
+; Multiplication
+MOV AL,NUM1
+MOV BL,NUM2
+MUL BL
+MOV PROD,AX
+
+; Division
+MOV AX,0000H
+MOV AL,NUM1
+MOV BL,NUM2
+DIV BL
+MOV QUOT,AL
+MOV REMN,AH
+
+MOV AH,4CH
+INT 21H
+MAIN ENDP
+END MAIN
+</pre>
+<p><b>Explanation:</b></p>
+<ul>
+<li>ADD adds the two operands.</li>
+<li>SUB subtracts the second operand from the first.</li>
+<li>MUL performs unsigned multiplication. The result is stored in AX.</li>
+<li>DIV divides AX by BL. The quotient is stored in AL and remainder in AH.</li>
+<li>INT 21H with AH=4CH terminates the program.</li>
+</ul>
+<p><b>Output:</b> Addition = 25, subtraction = 15, multiplication = 100, quotient = 4 and remainder = 0.</p>
+
+<h3>4. Explain timer-based delay generation in 8051 with a suitable assembly language program.</h3>
+<p>Timer-based delay generation uses the internal timer to produce a known time interval. The classic 8051 contains Timer 0 and Timer 1.</p>
+<p><b>Program – Timer 0 Mode 1:</b></p>
+<pre>
+ORG 0000H
+
+MAIN:
+MOV TMOD,#01H
+
+AGAIN:
+MOV TH0,#0FCH
+MOV TL0,#018H
+
+CLR TF0
+SETB TR0
+
+WAIT:
+JNB TF0,WAIT
+
+CLR TR0
+CLR TF0
+
+SJMP AGAIN
+
+END
+</pre>
+<p><b>Explanation:</b></p>
+<ol>
+<li>TMOD=01H selects Timer 0 in 16-bit Mode 1.</li>
+<li>TH0 and TL0 load the initial count FC18H.</li>
+<li>TR0 starts the timer.</li>
+<li>The program waits until TF0 becomes 1.</li>
+<li>The timer is stopped and the overflow flag is cleared.</li>
+<li>The process repeats to generate repeated intervals.</li>
+</ol>
+<p><b>Delay calculation:</b> With a traditional 12 MHz classic 8051, one machine cycle takes 1 microsecond. The timer requires 1000 counts from FC18H to overflow, so the delay is approximately 1 millisecond.</p>
+
+<h3>5. Explain serial communication between PC and 8051 with a neat block diagram.</h3>
+<p>Serial communication allows a PC and an 8051 microcontroller to exchange data one bit at a time. The 8051 contains a built-in serial port with TXD and RXD pins.</p>
+<pre class="diagram">
+PERSONAL COMPUTER
++---------------+
+| Serial Port |
++---------------+
+|
+RS232 Interface
+/ Level Converter
+|
+v
++---------------+
+| 8051 |
+| |
+| TXD RXD |
++---------------+
+</pre>
+<p><b>Important signals:</b></p>
+<ul>
+<li><b>TXD:</b> Transmits serial data from the 8051.</li>
+<li><b>RXD:</b> Receives serial data into the 8051.</li>
+<li><b>Baud rate:</b> Defines the serial bit transmission rate.</li>
+<li><b>Level converter:</b> Converts between RS232 voltage levels and microcontroller logic levels.</li>
+</ul>
+<p><b>Communication steps:</b></p>
+<ol>
+<li>Configure the serial port and baud rate.</li>
+<li>Connect the transmit line of one device to the receive line of the other.</li>
+<li>Connect a common signal ground.</li>
+<li>Transmit data through TXD and receive data through RXD.</li>
+<li>Use suitable voltage-level conversion when connecting an RS232 interface.</li>
+</ol>
+<p><b>Applications:</b> PC-based monitoring, configuration, debugging and data logging.</p>
+
+<h3>6. Explain motor control using a microcontroller with a suitable interfacing diagram.</h3>
+<p>A microcontroller controls a motor by generating logic signals for a motor-driver circuit. The driver supplies the current required by the motor.</p>
+<pre class="diagram">
++-------------+
+| 8051 |
++-------------+
+|
+Control Signals
+|
+v
++-------------+
+| Motor Driver|
+| L293D |
++-------------+
+|
+v
+DC Motor
+</pre>
+<p><b>Working:</b></p>
+<ol>
+<li>The microcontroller generates control signals.</li>
+<li>The motor driver receives these signals.</li>
+<li>The driver supplies the required current to the motor.</li>
+<li>Input combinations determine the motor direction.</li>
+<li>PWM signals can be used to control speed.</li>
+</ol>
+<p><b>Applications:</b> Robotics, automatic doors, conveyor belts, fans and industrial control systems.</p>
+
+<h3>7. Explain ADC-based sensor data acquisition using a microcontroller.</h3>
+<p>Sensor data acquisition is the process of measuring physical quantities and converting them into digital information for processing.</p>
+<pre class="diagram">
+Physical Quantity
+|
+v
+Sensor
+|
+v
+Signal Conditioning
+|
+v
+ADC
+|
+v
+Microcontroller
+|
++---+---+
+| |
+Display Control
+</pre>
+<p><b>Working:</b></p>
+<ol>
+<li>A sensor detects a physical quantity such as temperature, light or pressure.</li>
+<li>The sensor produces an electrical signal.</li>
+<li>Signal-conditioning circuits adjust the signal if necessary.</li>
+<li>The ADC converts the analog signal into digital data.</li>
+<li>The microcontroller reads the digital value.</li>
+<li>The value is processed and displayed or used to control an actuator.</li>
+</ol>
+<p><b>Example:</b> In a temperature-monitoring system, an LM35 sensor produces an analog voltage. An ADC converts it into digital data. The microcontroller calculates the temperature and displays it on an LCD.</p>
+<p><b>Applications:</b> Industrial monitoring, medical instruments, weather stations and smart home systems.</p>
+
+<h3>8. Describe the design and deployment of a microcontroller-based automation project with a neat block diagram.</h3>
+<p>A microcontroller-based automation project uses sensors, a controller and actuators to perform a task automatically.</p>
+<pre class="diagram">
++------------------+
+| Sensors |
++------------------+
+|
+v
++------------------+
+| Signal Interface |
++------------------+
+|
+v
++------------------+
+| Microcontroller |
++------------------+
+| |
+v v
+Display Driver
+|
+v
+Actuators
+</pre>
+<p><b>Design steps:</b></p>
+<ol>
+<li><b>Identify the problem:</b> Decide which task should be automated.</li>
+<li><b>Select sensors:</b> Choose sensors suitable for the required physical measurements.</li>
+<li><b>Select controller:</b> Choose a microcontroller based on I/O, memory and processing requirements.</li>
+<li><b>Design the circuit:</b> Connect sensors, displays, drivers and power supplies.</li>
+<li><b>Develop the program:</b> Write the embedded program to read inputs and control outputs.</li>
+<li><b>Simulate and test:</b> Verify program logic and circuit operation before deployment.</li>
+<li><b>Deploy:</b> Assemble the system, test it under real conditions and verify safe operation.</li>
+<li><b>Maintain:</b> Check connections, calibrate sensors and update software when necessary.</li>
+</ol>
+<p><b>Example – Automatic room lighting:</b> An LDR detects room brightness. The microcontroller reads the sensor value and switches a lamp through a relay driver when the room becomes dark.</p>
+
+<h3>9. Explain the procedure for writing and simulating assembly language programs for 8085, 8086 and 8051.</h3>
+<p>Assembly language programming involves writing processor-specific instructions, assembling them and testing their execution.</p>
+<p><b>General procedure:</b></p>
+<ol>
+<li><b>Understand the problem:</b> Identify the inputs, outputs and required operations.</li>
+<li><b>Develop an algorithm:</b> Write the sequence of steps needed to solve the problem.</li>
+<li><b>Write assembly code:</b> Use the instruction set of the selected processor.</li>
+<li><b>Assemble:</b> Convert the assembly program into machine code using an assembler.</li>
+<li><b>Load the program:</b> Load the assembled program into a simulator or development system.</li>
+<li><b>Set input values:</b> Enter required data or initialize memory and registers.</li>
+<li><b>Execute:</b> Run the program step by step or continuously.</li>
+<li><b>Observe:</b> Check register contents, memory values, flags and output signals.</li>
+<li><b>Debug:</b> Correct syntax, logical and runtime errors.</li>
+<li><b>Verify:</b> Test normal cases and boundary conditions.</li>
+</ol>
+<table>
+<tr><th>Processor</th><th>Common tools</th></tr>
+<tr><td>8085</td><td>GNUSim8085, 8085 Simulator and trainer kits.</td></tr>
+<tr><td>8086</td><td>MASM, TASM, emu8086 and DOSBox-based environments.</td></tr>
+<tr><td>8051</td><td>Keil µVision, EdSim51 and Proteus simulation environments.</td></tr>
+</table>
+<p><b>Important:</b> Each processor has a different instruction set and programming environment. An instruction written for one processor cannot automatically be used on another.</p>
+
+<h3>10. Design and explain a microcontroller-based automation system using sensors, actuators and display units.</h3>
+<p><b>Example: Automatic temperature-controlled fan system.</b></p>
+<p>The system measures room temperature, displays the value and automatically controls a fan based on the measured temperature.</p>
+<pre class="diagram">
++----------------+
+| Temperature |
+| Sensor (LM35) |
++----------------+
+|
+v
++----------------+
+| ADC Interface |
++----------------+
+|
+v
++----------------+
+| Microcontroller|
+| 8051 |
++----------------+
+| |
+v v
++------+ +--------+
+| LCD | | Driver |
++------+ +--------+
+|
+v
+Fan
+</pre>
+<p><b>Components:</b></p>
+<ul>
+<li>LM35 temperature sensor.</li>
+<li>ADC for analog-to-digital conversion.</li>
+<li>8051 microcontroller.</li>
+<li>16×2 LCD display.</li>
+<li>Transistor or motor-driver circuit.</li>
+<li>DC fan and suitable power supply.</li>
+</ul>
+<p><b>Working:</b></p>
+<ol>
+<li>The LM35 measures the surrounding temperature.</li>
+<li>The sensor output is converted into digital form by the ADC.</li>
+<li>The 8051 reads the digital temperature value.</li>
+<li>The controller compares the value with the programmed temperature limit.</li>
+<li>If the temperature exceeds the limit, the fan is switched ON through the driver circuit.</li>
+<li>If the temperature falls below the selected lower limit, the fan is switched OFF.</li>
+<li>The LCD displays the measured temperature and fan status.</li>
+</ol>
+<p><b>Advantages:</b></p>
+<ul>
+<li>Automatic temperature regulation.</li>
+<li>Reduced manual operation.</li>
+<li>Continuous monitoring.</li>
+<li>Simple and economical implementation.</li>
+<li>Can be extended with alarms and additional sensors.</li>
+</ul>
+<p><b>Applications:</b> Room cooling, server-room monitoring, greenhouse automation and industrial temperature control.</p>
+
+<h2>QUICK REVISION – IMPORTANT POINTS</h2>
+<table>
+<tr><th>Topic</th><th>Key fact</th></tr>
+<tr><td>8085</td><td>8-bit CPU, 16-bit address bus, 64 KB memory.</td></tr>
+<tr><td>8086</td><td>16-bit CPU, 20-bit address bus, 1 MB memory, 6-byte queue.</td></tr>
+<tr><td>8051</td><td>8-bit microcontroller, 4 KB ROM, 128-byte RAM in classic version, 32 I/O lines.</td></tr>
+<tr><td>8255</td><td>24 programmable I/O lines, Ports A, B and C.</td></tr>
+<tr><td>ADC</td><td>Converts analog signals into digital values.</td></tr>
+<tr><td>DAC</td><td>Converts digital values into analog signals.</td></tr>
+<tr><td>UART</td><td>Asynchronous serial communication.</td></tr>
+<tr><td>I2C</td><td>Two-wire synchronous communication.</td></tr>
+<tr><td>SPI</td><td>Synchronous serial communication using clock and data lines.</td></tr>
+<tr><td>Timer</td><td>Measures time intervals using internal clock pulses.</td></tr>
+<tr><td>Counter</td><td>Counts external events or pulses.</td></tr>
+</table>
+
+</main>
+</body>
 
 
 <style>

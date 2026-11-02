@@ -4,6 +4,724 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+<style>
+@page{size:A4;margin:18mm}
+*{box-sizing:border-box}
+body{margin:0;background:#fff;color:#171717;font-family:Arial,sans-serif;font-size:14px;line-height:1.58}
+main{max-width:900px;margin:24px auto;padding:0 22px 40px}
+header{border-bottom:3px solid #1e3558;padding:8px 0 18px;margin-bottom:22px}
+h1{font-size:25px;margin:0 0 5px;color:#1e3558}
+.unit{font-size:20px;color:#1e3558;background:#edf1f7;border-left:5px solid #1e3558;padding:10px 13px;margin:28px 0 14px}
+.qa{margin-bottom:21px;padding-bottom:16px;border-bottom:1px solid #cfd4dc;break-inside:avoid}
+.question{font-size:16px;color:#172b4d;margin:0 0 9px}
+.answer{font-size:14px}
+.answer p{margin:6px 0}
+.answer ul,.answer ol{padding-left:24px}
+pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f0f2f5;border-left:4px solid #405a7e;padding:12px;font:13px/1.5 Consolas,monospace}
+strong{color:#172b4d}
+</style>
+</head>
+<body>
+<main>
+<header>
+<h1>MICROPROCESSORS AND MICROCONTROLLERS</h1>
+<p>Question Bank – Answers for all five units</p>
+</header>
+
+<h2 class="unit">UNIT 1 – 8085 MICROPROCESSOR</h2>
+
+<section class="qa">
+<h3 class="question">1. Define a microprocessor. List the features of 8085.</h3>
+<div class="answer">
+<p>A <strong>microprocessor</strong> is a programmable electronic device that accepts binary data, processes it according to instructions and produces results.</p>
+<p><strong>Features of 8085:</strong></p>
+<ul>
+<li>8-bit processor; processes 8 bits at a time.</li>
+<li>16-bit address bus; can address 64 KB of memory.</li>
+<li>8-bit data bus.</li>
+<li>40-pin IC and single +5 V supply.</li>
+<li>Six general-purpose registers: B, C, D, E, H and L.</li>
+<li>Contains accumulator, ALU, flag register, Program Counter and Stack Pointer.</li>
+<li>Supports hardware and software interrupts.</li>
+</ul>
+<p><strong>Important:</strong> 8085 is an 8-bit processor because its data path is 8 bits wide.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">2. Explain the architecture of 8085.</h3>
+<div class="answer">
+<p>The architecture of 8085 is the arrangement of internal units that perform processing and control.</p>
+<p><strong>Main blocks:</strong></p>
+<ol>
+<li><strong>ALU:</strong> Performs arithmetic and logical operations.</li>
+<li><strong>Accumulator:</strong> 8-bit register used to store operands and results.</li>
+<li><strong>General-purpose registers:</strong> B, C, D, E, H and L store temporary data.</li>
+<li><strong>Flag register:</strong> Contains Sign, Zero, Auxiliary Carry, Parity and Carry flags.</li>
+<li><strong>Program Counter (PC):</strong> Holds the address of the next instruction.</li>
+<li><strong>Stack Pointer (SP):</strong> Points to the top of the stack.</li>
+<li><strong>Instruction register and decoder:</strong> Hold and decode the instruction.</li>
+<li><strong>Timing and Control unit:</strong> Generates control signals such as RD, WR and ALE.</li>
+<li><strong>Interrupt and serial I/O control:</strong> Handles interrupts and SID/SOD serial pins.</li>
+</ol>
+<p><strong>Working:</strong> The processor fetches an instruction, decodes it, executes it and stores the result.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">3. Explain the register organization of 8085.</h3>
+<div class="answer">
+<p>Registers are small, high-speed storage locations inside the processor.</p>
+<ul>
+<li><strong>Accumulator (A):</strong> Stores operands and ALU results.</li>
+<li><strong>B, C, D, E, H, L:</strong> Six 8-bit general-purpose registers.</li>
+<li><strong>Register pairs:</strong> BC, DE and HL can be used as 16-bit pairs. HL commonly acts as a memory pointer.</li>
+<li><strong>Flag register:</strong> Stores the five condition flags.</li>
+<li><strong>Program Counter (PC):</strong> 16-bit register containing the next instruction address.</li>
+<li><strong>Stack Pointer (SP):</strong> 16-bit register pointing to the top of the stack.</li>
+<li><strong>Instruction Register:</strong> Holds the current opcode during decoding.</li>
+</ul>
+<p><strong>Example:</strong></p>
+<pre>MOV A,B</pre>
+<p>Copies the contents of B into A.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">4. What are the addressing modes of 8085? Give examples.</h3>
+<div class="answer">
+<p>An <strong>addressing mode</strong> specifies how an instruction identifies its operand.</p>
+<ol>
+<li><strong>Immediate:</strong> Data is part of the instruction. <code>MVI A,25H</code></li>
+<li><strong>Register:</strong> Operand is in a register. <code>MOV A,B</code></li>
+<li><strong>Direct:</strong> Memory address is given in the instruction. <code>LDA 2050H</code></li>
+<li><strong>Register indirect:</strong> A register pair contains the memory address. <code>MOV A,M</code> uses HL.</li>
+<li><strong>Implied:</strong> Operand is understood from the instruction. <code>CMA</code></li>
+</ol>
+<p><strong>Important:</strong> Immediate mode specifies the value; direct mode specifies the memory address; register-indirect mode uses a register pair as a pointer.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">5. Explain the flag register of 8085.</h3>
+<div class="answer">
+<p>The <strong>flag register</strong> is an 8-bit status register. Five bits are used as condition flags.</p>
+<ul>
+<li><strong>Sign (S):</strong> Set when the most significant bit of the result is 1.</li>
+<li><strong>Zero (Z):</strong> Set when the result is 00H.</li>
+<li><strong>Auxiliary Carry (AC):</strong> Set when carry occurs from bit 3 to bit 4.</li>
+<li><strong>Parity (P):</strong> Set when the result contains an even number of 1s.</li>
+<li><strong>Carry (CY):</strong> Set when addition produces a carry out or subtraction requires a borrow.</li>
+</ul>
+<p><strong>Example:</strong> If an operation produces 00H, the Zero flag is set.</p>
+<p><strong>Importance:</strong> Flags are used by conditional jump instructions.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">6. Explain the interrupt structure of 8085.</h3>
+<div class="answer">
+<p>An <strong>interrupt</strong> is a signal that temporarily stops the normal program sequence so the processor can execute an Interrupt Service Routine (ISR).</p>
+<p><strong>Hardware interrupts, in priority order:</strong></p>
+<ol>
+<li><strong>TRAP:</strong> Highest priority; non-maskable and vectored.</li>
+<li><strong>RST 7.5:</strong> Maskable, vectored and edge-triggered.</li>
+<li><strong>RST 6.5:</strong> Maskable, vectored and level-triggered.</li>
+<li><strong>RST 5.5:</strong> Maskable, vectored and level-triggered.</li>
+<li><strong>INTR:</strong> Maskable and non-vectored; external hardware supplies the instruction.</li>
+</ol>
+<p><strong>Software interrupts:</strong> RST 0 to RST 7.</p>
+<p><strong>Advantages:</strong> Interrupts allow urgent events to be handled without continuously checking devices (polling).</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">7. Explain instruction cycle, machine cycle and T-state of 8085.</h3>
+<div class="answer">
+<ul>
+<li><strong>Instruction cycle:</strong> Total time required to fetch and execute one complete instruction.</li>
+<li><strong>Machine cycle:</strong> A part of an instruction cycle, such as opcode fetch, memory read, memory write or I/O operation.</li>
+<li><strong>T-state:</strong> One clock period; the smallest basic timing unit.</li>
+</ul>
+<p><strong>Relationship:</strong> One instruction cycle consists of one or more machine cycles. Each machine cycle consists of several T-states.</p>
+<p><strong>Example:</strong> An 8085 opcode-fetch machine cycle commonly takes 4 T-states. Memory read/write machine cycles commonly take 3 T-states.</p>
+<p><strong>Important:</strong> Timing depends on the instruction and the number of bus operations required.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">8. Explain the functions of 8085 pins and signals.</h3>
+<div class="answer">
+<p>The 8085 is a 40-pin IC. Its pins are grouped by function.</p>
+<ul>
+<li><strong>A8–A15:</strong> Higher-order address bus.</li>
+<li><strong>AD0–AD7:</strong> Multiplexed lower address/data bus.</li>
+<li><strong>ALE:</strong> Address Latch Enable; separates the lower address from data.</li>
+<li><strong>RD̅:</strong> Active-low read control.</li>
+<li><strong>WR̅:</strong> Active-low write control.</li>
+<li><strong>IO/M̅:</strong> Selects memory or I/O operation.</li>
+<li><strong>READY:</strong> Allows the processor to wait for slow devices.</li>
+<li><strong>HOLD / HLDA:</strong> DMA bus request and acknowledgement.</li>
+<li><strong>RESET IN̅ / RESET OUT:</strong> Reset input and reset-status output.</li>
+<li><strong>TRAP, RST 7.5, RST 6.5, RST 5.5, INTR:</strong> Interrupt inputs.</li>
+<li><strong>SID / SOD:</strong> Serial input and serial output.</li>
+<li><strong>X1, X2, CLK OUT:</strong> Clock-related pins.</li>
+</ul>
+<p><strong>Important:</strong> The bar over a signal indicates active-low operation.</p>
+</div>
+</section>
+
+<h2 class="unit">UNIT 2 – 8086 MICROPROCESSOR</h2>
+
+<section class="qa">
+<h3 class="question">1. Explain the architecture of 8086.</h3>
+<div class="answer">
+<p>The 8086 is a 16-bit microprocessor with a 20-bit address bus and a 16-bit data bus. It can address 1 MB of memory. Its architecture has two main units.</p>
+<p><strong>1. Bus Interface Unit (BIU)</strong></p>
+<ul>
+<li>Fetches instructions from memory.</li>
+<li>Generates physical addresses.</li>
+<li>Performs memory and I/O bus operations.</li>
+<li>Contains CS, DS, SS and ES segment registers.</li>
+<li>Contains the Instruction Pointer (IP) and a 6-byte instruction queue.</li>
+</ul>
+<p><strong>2. Execution Unit (EU)</strong></p>
+<ul>
+<li>Decodes and executes instructions.</li>
+<li>Contains the ALU, general-purpose registers, pointer/index registers and FLAGS register.</li>
+</ul>
+<p><strong>Working:</strong> While the EU executes instructions, the BIU can fetch upcoming instructions into the queue. This overlapping is called pipelining.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">2. Explain memory segmentation in 8086.</h3>
+<div class="answer">
+<p>Memory segmentation divides the 8086 memory space into logical segments, each with a maximum size of 64 KB.</p>
+<ul>
+<li><strong>Code Segment (CS):</strong> Stores instructions.</li>
+<li><strong>Data Segment (DS):</strong> Stores data.</li>
+<li><strong>Stack Segment (SS):</strong> Stores stack data.</li>
+<li><strong>Extra Segment (ES):</strong> Additional data segment.</li>
+</ul>
+<p>A logical address is written as segment:offset.</p>
+<p><strong>Physical address formula:</strong></p>
+<p>Physical address = Segment × 10H + Offset</p>
+<p><strong>Example:</strong> 2000H:1234H = 20000H + 1234H = <strong>21234H</strong>.</p>
+<p><strong>Advantages:</strong> Provides organized memory use and allows code, data and stack areas to be addressed separately.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">3. What are the addressing modes of 8086? Give examples.</h3>
+<div class="answer">
+<p>An addressing mode specifies how an instruction accesses its operand.</p>
+<ol>
+<li><strong>Immediate:</strong> <code>MOV AX,1234H</code></li>
+<li><strong>Register:</strong> <code>MOV AX,BX</code></li>
+<li><strong>Direct memory:</strong> <code>MOV AL,[2000H]</code></li>
+<li><strong>Register indirect:</strong> <code>MOV AX,[BX]</code></li>
+<li><strong>Based:</strong> <code>MOV AX,[BX+04H]</code></li>
+<li><strong>Indexed:</strong> <code>MOV AX,[SI+04H]</code></li>
+<li><strong>Based-indexed:</strong> <code>MOV AX,[BX+SI]</code></li>
+<li><strong>Based-indexed with displacement:</strong> <code>MOV AX,[BX+SI+10H]</code></li>
+<li><strong>Relative:</strong> <code>JNZ LABEL</code></li>
+<li><strong>Implied:</strong> <code>CLC</code></li>
+</ol>
+<p><strong>Important:</strong> Effective address is calculated using base/index registers and any displacement.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">4. Explain the register organization of 8086.</h3>
+<div class="answer">
+<p>The 8086 contains 16-bit registers grouped according to their functions.</p>
+<p><strong>General-purpose registers</strong></p>
+<ul>
+<li>AX – Accumulator.</li><li>BX – Base.</li><li>CX – Count.</li><li>DX – Data.</li>
+</ul>
+<p>Each can be accessed as two 8-bit registers; for example, AX is divided into AH and AL.</p>
+<p><strong>Pointer registers:</strong> SP (Stack Pointer), BP (Base Pointer).</p>
+<p><strong>Index registers:</strong> SI (Source Index), DI (Destination Index).</p>
+<p><strong>Segment registers:</strong> CS, DS, SS and ES.</p>
+<p><strong>Other registers:</strong> IP (Instruction Pointer) and FLAGS.</p>
+<p><strong>Example:</strong> <code>MOV AX,BX</code> copies BX into AX.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">5. What is pipelining in 8086? Explain its advantages.</h3>
+<div class="answer">
+<p>Pipelining is the technique of overlapping instruction fetching and instruction execution.</p>
+<ul>
+<li><strong>BIU:</strong> Fetches instruction bytes and stores them in a 6-byte queue.</li>
+<li><strong>EU:</strong> Takes instructions from the queue, decodes and executes them.</li>
+</ul>
+<p><strong>Working:</strong> While the EU executes the current instruction, the BIU fetches following instructions whenever the bus is available.</p>
+<p><strong>Advantages:</strong></p>
+<ul><li>Reduces waiting time for instruction fetching.</li><li>Improves overall processing speed.</li><li>Makes better use of the bus and execution unit.</li></ul>
+<p><strong>Important:</strong> A jump or branch may empty the queue because instructions must be fetched from the new address.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">6. Explain minimum mode and maximum mode of 8086.</h3>
+<div class="answer">
+<p>The 8086 supports two operating modes selected by the MN/MX̅ pin.</p>
+<p><strong>Minimum mode</strong></p>
+<ul><li>Used in a single-processor system.</li><li>8086 generates control signals directly.</li><li>Hardware design is simpler.</li></ul>
+<p><strong>Maximum mode</strong></p>
+<ul><li>Used in multiprocessor or coprocessor systems.</li><li>An external 8288 bus controller generates bus-control signals.</li><li>Supports bus arbitration and coordination with devices such as the 8087.</li></ul>
+<p><strong>Difference:</strong> Minimum mode is intended for a single processor; maximum mode supports more complex shared-bus systems.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">7. Explain the flag register of 8086.</h3>
+<div class="answer">
+<p>The 8086 FLAGS register is a 16-bit register containing status and control flags.</p>
+<p><strong>Status flags</strong></p>
+<ul><li><strong>CF:</strong> Carry or borrow.</li><li><strong>PF:</strong> Even parity.</li><li><strong>AF:</strong> Auxiliary carry; used in BCD-related operations.</li><li><strong>ZF:</strong> Set when result is zero.</li><li><strong>SF:</strong> Reflects the most significant bit of the result.</li><li><strong>OF:</strong> Indicates signed arithmetic overflow.</li></ul>
+<p><strong>Control flags</strong></p>
+<ul><li><strong>TF:</strong> Enables single-step operation.</li><li><strong>IF:</strong> Enables maskable interrupts.</li><li><strong>DF:</strong> Controls direction in string operations.</li></ul>
+<p><strong>Example:</strong> <code>CMP AX,BX</code> updates flags according to the subtraction but does not store the result.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">8. Explain memory and I/O addressing of 8086.</h3>
+<div class="answer">
+<p><strong>Memory addressing:</strong> The 8086 has a 20-bit address bus and can address 1 MB of memory. It uses segment:offset addressing to form a physical address.</p>
+<p><strong>I/O addressing:</strong> The 8086 supports a separate I/O address space of up to 64 KB.</p>
+<ul>
+<li><strong>Direct I/O:</strong> Port number is given in the instruction. <code>IN AL,80H</code></li>
+<li><strong>Indirect I/O:</strong> Port address is held in DX. <code>OUT DX,AL</code></li>
+</ul>
+<p><strong>Important:</strong> Memory-mapped I/O uses memory addresses and memory instructions. Isolated I/O uses IN and OUT instructions.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">9. Compare 8085 and 8086 microprocessors.</h3>
+<div class="answer">
+<table>
+<tr><th>Feature</th><th>8085</th><th>8086</th></tr>
+<tr><td>Word size</td><td>8-bit</td><td>16-bit</td></tr>
+<tr><td>Address bus</td><td>16-bit</td><td>20-bit</td></tr>
+<tr><td>Data bus</td><td>8-bit</td><td>16-bit</td></tr>
+<tr><td>Addressable memory</td><td>64 KB</td><td>1 MB</td></tr>
+<tr><td>Instruction queue</td><td>No queue</td><td>6-byte queue</td></tr>
+<tr><td>Architecture</td><td>No BIU/EU split</td><td>BIU and EU</td></tr>
+<tr><td>Modes</td><td>Single-processor design</td><td>Minimum and maximum</td></tr>
+</table>
+<p><strong>Conclusion:</strong> 8086 has a wider data path, larger memory space and instruction prefetching compared with 8085.</p>
+</div>
+</section>
+
+<h2 class="unit">UNIT 3 – 8051 MICROCONTROLLER</h2>
+
+<section class="qa">
+<h3 class="question">1. Define a microcontroller. List the features of 8051.</h3>
+<div class="answer">
+<p>A <strong>microcontroller</strong> is a single integrated circuit containing a CPU, memory and input/output peripherals for controlling a specific system.</p>
+<p><strong>Features of the classic 8051:</strong></p>
+<ul><li>8-bit CPU.</li><li>4 KB on-chip program ROM.</li><li>128 bytes internal RAM.</li><li>32 programmable I/O pins in four 8-bit ports.</li><li>Two 16-bit timers/counters.</li><li>Full-duplex serial port.</li><li>Five interrupt sources with two priority levels.</li><li>On-chip oscillator and clock circuitry.</li></ul>
+<p><strong>Applications:</strong> Appliances, embedded control, instruments and automation.</p>
+<p><strong>Note:</strong> These memory specifications refer to the classic 8051; modern compatible chips may differ.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">2. Explain the architecture of 8051.</h3>
+<div class="answer">
+<p>The 8051 combines a CPU, memory, I/O ports and peripherals on one chip.</p>
+<p><strong>Main blocks:</strong></p>
+<ol><li>8-bit CPU and ALU.</li><li>Accumulator (A), B register and PSW.</li><li>Four register banks, each containing R0–R7.</li><li>128-byte internal RAM in the classic 8051.</li><li>4 KB on-chip program ROM in the classic 8051.</li><li>Four I/O ports: P0, P1, P2 and P3.</li><li>Two 16-bit timers/counters.</li><li>Serial communication port.</li><li>Interrupt controller and oscillator circuit.</li></ol>
+<p><strong>Working:</strong> The CPU fetches instructions from program memory, processes data and controls external devices through I/O pins.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">3. Explain the memory organization of 8051.</h3>
+<div class="answer">
+<p>The classic 8051 uses separate program-memory and data-memory spaces.</p>
+<ul>
+<li><strong>Program memory:</strong> 4 KB on-chip ROM, with provision for external program memory.</li>
+<li><strong>Internal data RAM:</strong> 128 bytes, addresses 00H–7FH.</li>
+<li><strong>Register banks:</strong> Four banks occupy 00H–1FH.</li>
+<li><strong>Bit-addressable area:</strong> 20H–2FH; individual bits can be addressed.</li>
+<li><strong>General-purpose RAM:</strong> 30H–7FH.</li>
+<li><strong>SFR space:</strong> 80H–FFH; contains control registers such as ports, timers and serial control.</li>
+</ul>
+<p><strong>Important:</strong> SFRs are not ordinary internal RAM. Memory sizes can vary in enhanced 8051 devices.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">4. Explain the I/O ports of 8051.</h3>
+<div class="answer">
+<p>The 8051 has four 8-bit I/O ports, providing 32 I/O lines.</p>
+<ul>
+<li><strong>Port 0 (P0):</strong> Open-drain port; needs external pull-up resistors when used as general-purpose I/O. It also multiplexes the low address/data bus during external memory access.</li>
+<li><strong>Port 1 (P1):</strong> General-purpose I/O.</li>
+<li><strong>Port 2 (P2):</strong> General-purpose I/O; provides the high address bus during external memory access.</li>
+<li><strong>Port 3 (P3):</strong> Has alternate functions such as RXD, TXD, INT0, INT1, T0, T1, WR̅ and RD̅.</li>
+</ul>
+<p><strong>Example:</strong> <code>SETB P1.0</code> sets pin P1.0 high.</p>
+<p><strong>Important:</strong> Write 1 to a port latch before using a port pin as an input.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">5. Explain the timers and counters in 8051.</h3>
+<div class="answer">
+<p>The classic 8051 has two 16-bit timer/counter units: Timer 0 and Timer 1.</p>
+<ul>
+<li>In <strong>timer mode</strong>, the register increments using internal machine-cycle timing.</li>
+<li>In <strong>counter mode</strong>, it counts external pulses at T0 or T1.</li>
+<li><strong>TMOD</strong> selects timer/counter operation and mode.</li>
+<li><strong>TCON</strong> contains control and overflow flags.</li>
+<li>Modes 0, 1, 2 and 3 are available.</li>
+</ul>
+<p><strong>Applications:</strong> Creating delays, measuring time intervals, counting external events and generating serial baud rates.</p>
+<p><strong>Important:</strong> A timer overflow sets its TF flag. Software or an interrupt service routine can respond to it.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">6. Explain serial communication of 8051.</h3>
+<div class="answer">
+<p>The 8051 has a full-duplex serial port, allowing simultaneous transmission and reception.</p>
+<ul>
+<li><strong>TXD (P3.1):</strong> Serial transmit pin.</li>
+<li><strong>RXD (P3.0):</strong> Serial receive pin.</li>
+<li><strong>SBUF:</strong> Data buffer used to transmit or receive a byte.</li>
+<li><strong>SCON:</strong> Serial control register; selects serial mode and contains status bits.</li>
+<li><strong>Timer 1:</strong> Commonly used to generate baud rate in classic 8051 applications.</li>
+</ul>
+<p><strong>Example:</strong> <code>MOV SBUF,A</code> starts transmission of the accumulator byte. TI indicates transmission completion.</p>
+<p><strong>Applications:</strong> Communication with computers, modules and other controllers.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">7. Explain the interrupt structure of 8051.</h3>
+<div class="answer">
+<p>An interrupt causes the 8051 to suspend the main program and execute an Interrupt Service Routine.</p>
+<p>The classic 8051 has five interrupt sources:</p>
+<ol><li>External interrupt 0 (INT0).</li><li>Timer 0 overflow.</li><li>External interrupt 1 (INT1).</li><li>Timer 1 overflow.</li><li>Serial port interrupt.</li></ol>
+<p><strong>Registers:</strong></p>
+<ul><li>IE enables or disables interrupt sources.</li><li>IP selects priority levels.</li><li>TCON and SCON contain relevant interrupt flags.</li></ul>
+<p><strong>Advantages:</strong> Quick response to external events and efficient CPU use.</p>
+<p><strong>Important:</strong> The classic 8051 supports two priority levels: high and low.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">8. Explain the register banks in 8051.</h3>
+<div class="answer">
+<p>The 8051 contains four register banks, each with eight 8-bit registers R0–R7.</p>
+<ul><li>Bank 0: 00H–07H.</li><li>Bank 1: 08H–0FH.</li><li>Bank 2: 10H–17H.</li><li>Bank 3: 18H–1FH.</li></ul>
+<p>The active bank is selected by RS1 and RS0 bits in the PSW register.</p>
+<p><strong>Advantages:</strong> Register banks provide quick storage and can reduce the need to save and restore registers during interrupt handling.</p>
+<p><strong>Example:</strong> When bank 1 is selected, <code>MOV A,R0</code> uses RAM location 08H as R0.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">9. Explain the PSW register of 8051.</h3>
+<div class="answer">
+<p>The Program Status Word (PSW) is an 8-bit special-function register at address D0H. It stores status flags and register-bank selection bits.</p>
+<ul><li><strong>CY:</strong> Carry flag.</li><li><strong>AC:</strong> Auxiliary carry.</li><li><strong>F0:</strong> User flag.</li><li><strong>RS1 and RS0:</strong> Select the register bank.</li><li><strong>OV:</strong> Overflow flag.</li><li><strong>P:</strong> Parity flag.</li><li><strong>Bit 1:</strong> Reserved in the classic 8051.</li></ul>
+<p><strong>Importance:</strong> PSW records arithmetic status and controls the active register bank.</p>
+<p><strong>Example:</strong> RS1=0 and RS0=1 selects register bank 1.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">10. Explain the addressing modes of 8051 with examples.</h3>
+<div class="answer">
+<p>An addressing mode specifies how an 8051 instruction accesses its operand.</p>
+<ol>
+<li><strong>Immediate:</strong> <code>MOV A,#25H</code> – constant is in the instruction.</li>
+<li><strong>Register:</strong> <code>MOV A,R2</code> – operand is in a register.</li>
+<li><strong>Direct:</strong> <code>MOV A,30H</code> – direct internal RAM/SFR address.</li>
+<li><strong>Register indirect:</strong> <code>MOV A,@R0</code> – R0 contains the RAM address.</li>
+<li><strong>Indexed:</strong> <code>MOVC A,@A+DPTR</code> – reads code memory using A and DPTR.</li>
+<li><strong>Bit addressing:</strong> <code>SETB P1.0</code> – operates on one bit.</li>
+</ol>
+<p><strong>Important:</strong> # indicates immediate data; @ indicates indirect addressing.</p>
+</div>
+</section>
+
+<h2 class="unit">UNIT 4 – MEMORY AND DEVICE INTERFACING</h2>
+
+<section class="qa">
+<h3 class="question">1. What is memory interfacing? Explain its need.</h3>
+<div class="answer">
+<p>Memory interfacing is the process of connecting memory chips to a microprocessor so that data and instructions can be read or written.</p>
+<p><strong>Need for memory interfacing:</strong></p>
+<ul><li>To expand memory capacity.</li><li>To connect RAM for temporary read/write storage.</li><li>To connect ROM/EPROM/Flash for program storage.</li><li>To select the correct chip using address decoding.</li><li>To coordinate read and write operations using control signals.</li></ul>
+<p><strong>Main signals:</strong> Address bus, data bus, chip select (CS), output enable (OE), read (RD) and write (WR).</p>
+<p><strong>Important:</strong> Address decoding ensures that the correct memory device responds to an address.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">2. Explain address decoding in memory interfacing.</h3>
+<div class="answer">
+<p>Address decoding examines address-bus bits and generates a chip-select signal for a particular memory device.</p>
+<p><strong>Types:</strong></p>
+<ul><li><strong>Full decoding:</strong> All required higher address bits are decoded. It avoids address duplication but requires more hardware.</li><li><strong>Partial decoding:</strong> Only some address bits are decoded. It is simpler but may cause address mirroring.</li></ul>
+<p><strong>Example:</strong> A decoder uses higher address lines to select one memory chip, while lower address lines select a location inside that chip.</p>
+<p><strong>Importance:</strong> It ensures that the correct memory device is enabled for each address.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">3. Explain the interfacing of RAM and ROM with 8085.</h3>
+<div class="answer">
+<p>To interface memory with 8085, address, data and control signals must be connected correctly.</p>
+<p><strong>RAM connection:</strong></p>
+<ul><li>Connect address lines to RAM address pins.</li><li>Connect the data bus to the processor data bus.</li><li>Use decoded address lines for chip select (CS).</li><li>Use RD̅ for output enable and WR̅ for write enable.</li></ul>
+<p><strong>ROM connection:</strong></p>
+<ul><li>Connect address and data lines similarly.</li><li>Use CS for chip selection.</li><li>Use RD̅/OE for reading; ordinary ROM is not written during normal execution.</li></ul>
+<p><strong>Important:</strong> Since AD0–AD7 are multiplexed, ALE and an external latch are used to hold the lower address during a bus cycle.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">4. Explain 8255 Programmable Peripheral Interface (PPI).</h3>
+<div class="answer">
+<p>The 8255 PPI is a programmable interface chip used to connect peripheral devices to a microprocessor. It provides 24 programmable I/O lines.</p>
+<p><strong>Ports:</strong></p>
+<ul><li>Port A: 8 bits.</li><li>Port B: 8 bits.</li><li>Port C: 8 bits; can be divided into upper and lower 4-bit groups.</li></ul>
+<p><strong>Operating modes:</strong></p>
+<ul><li><strong>Mode 0:</strong> Simple input/output.</li><li><strong>Mode 1:</strong> Strobed or handshake I/O.</li><li><strong>Mode 2:</strong> Bidirectional bus mode for Port A.</li></ul>
+<p><strong>Advantages:</strong> Reduces processor pin requirements and provides flexible interfacing for keyboards, displays and other peripherals.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">5. Explain ADC interfacing with a microprocessor.</h3>
+<div class="answer">
+<p>An Analog-to-Digital Converter (ADC) converts an analog voltage into a digital number that a microprocessor can read.</p>
+<p><strong>Example device:</strong> ADC0808/ADC0809 are 8-bit ADCs with multiple input channels.</p>
+<p><strong>Basic operation:</strong></p>
+<ol><li>Select the required analog input channel.</li><li>Apply the analog signal to the ADC.</li><li>Start conversion.</li><li>Wait for end-of-conversion (EOC).</li><li>Enable the output and read the digital result.</li></ol>
+<p><strong>Applications:</strong> Temperature measurement, sensor systems and data acquisition.</p>
+<p><strong>Important:</strong> An 8-bit ADC produces 2⁸ = 256 possible digital levels.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">6. Explain DAC interfacing with a microprocessor.</h3>
+<div class="answer">
+<p>A Digital-to-Analog Converter (DAC) converts a digital value from the processor into a proportional analog voltage or current.</p>
+<p><strong>Example:</strong> DAC0808 is an 8-bit current-output DAC.</p>
+<p><strong>Basic operation:</strong></p>
+<ol><li>The processor sends an 8-bit digital value to the DAC.</li><li>The DAC converts the value into an analog current.</li><li>A current-to-voltage amplifier can produce an analog voltage.</li><li>The output can drive a suitable analog circuit.</li></ol>
+<p><strong>Applications:</strong> Waveform generation, audio systems, motor-control references and analog instruments.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">7. Explain the interfacing of a keyboard and display.</h3>
+<div class="answer">
+<p>A keyboard and display are common input/output devices connected through I/O ports or an interface chip such as 8255.</p>
+<p><strong>Keyboard interfacing:</strong></p>
+<ul><li>Keys are arranged in rows and columns.</li><li>The processor scans rows and columns to detect a pressed key.</li><li>Debouncing avoids false repeated readings caused by mechanical contact bounce.</li></ul>
+<p><strong>Display interfacing:</strong></p>
+<ul><li>Seven-segment displays use segment lines to show digits.</li><li>A decoder/driver or port lines provide the segment pattern.</li><li>Multiplexing reduces the number of I/O pins required for multiple digits.</li></ul>
+<p><strong>Applications:</strong> Calculators, control panels and digital instruments.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">8. Explain serial and parallel communication.</h3>
+<div class="answer">
+<p><strong>Serial communication:</strong> Data bits are transmitted one after another over a communication line.</p>
+<ul><li>Uses fewer wires.</li><li>Suitable for longer-distance links.</li><li>Examples: UART/RS-232, SPI and I²C.</li></ul>
+<p><strong>Parallel communication:</strong> Multiple bits are transmitted simultaneously over separate data lines.</p>
+<ul><li>Transfers a word in one transfer.</li><li>Requires more wires and careful timing.</li><li>Used in short-distance internal buses and some peripheral interfaces.</li></ul>
+<p><strong>Difference:</strong> Serial uses fewer signal lines; parallel transfers multiple bits simultaneously but requires more connections.</p>
+</div>
+</section>
+
+<h2 class="unit">UNIT 5 – PROGRAMMING AND APPLICATIONS</h2>
+
+<section class="qa">
+<h3 class="question">1. Write an 8085 program to add two 8-bit numbers.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Add two 8-bit numbers stored at 2050H and 2051H. Store the low-byte sum at 2052H.</p>
+<pre>LDA 2050H      ; Load first number into A
+MOV B,A        ; Save first number in B
+LDA 2051H      ; Load second number into A
+ADD B          ; Add B to A
+STA 2052H      ; Store 8-bit sum
+HLT            ; Stop</pre>
+<p><strong>Explanation:</strong> LDA loads data from memory, MOV copies the first number, ADD performs addition and STA stores the result.</p>
+<p><strong>Important:</strong> If the sum exceeds FFH, the extra carry is indicated by CY but is not stored by this program.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">2. Write an 8085 program to subtract two 8-bit numbers.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Subtract the number at 2051H from the number at 2050H and store the result at 2052H.</p>
+<pre>LDA 2050H      ; Load minuend
+MOV B,A        ; Save it in B
+LDA 2051H      ; Load subtrahend
+MOV C,A        ; Save it in C
+MOV A,B        ; Restore minuend
+SUB C          ; A = A - C
+STA 2052H      ; Store result
+HLT</pre>
+<p><strong>Explanation:</strong> SUB subtracts C from A. The result is stored in memory.</p>
+<p><strong>Important:</strong> If a borrow is required, the Carry flag is set. The stored result is the 8-bit result.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">3. Write an 8085 program to find the largest of two numbers.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Compare unsigned 8-bit numbers at 2050H and 2051H and store the larger at 2052H.</p>
+<pre>LDA 2050H      ; First number
+MOV B,A
+LDA 2051H      ; Second number
+CMP B          ; Compare second with first
+JC FIRST       ; If second < first, first is larger
+STA 2052H      ; Otherwise store second
+JMP DONE
+FIRST: MOV A,B
+STA 2052H
+DONE: HLT</pre>
+<p><strong>Explanation:</strong> CMP sets flags as if A-B were performed, without changing A. For unsigned values, CY=1 means A is smaller than B.</p>
+<p><strong>Important:</strong> If both values are equal, this program stores the second number.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">4. Write an 8085 program to find the smallest of two numbers.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Find the smaller unsigned 8-bit value at 2050H and 2051H and store it at 2052H.</p>
+<pre>LDA 2050H      ; First number
+MOV B,A
+LDA 2051H      ; Second number
+CMP B
+JC SECOND      ; If second < first, A already has smaller value
+MOV A,B        ; Otherwise first is smaller or equal
+JMP STORE
+SECOND:
+; A already contains second number
+STORE: STA 2052H
+HLT</pre>
+<p><strong>Explanation:</strong> CMP compares the second value in A with the first value in B. If CY=1, the second value is smaller; otherwise the first is smaller or equal.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">5. Write an 8085 program to find the 1's complement of a number.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Complement all bits of the number at 2050H and store the result at 2051H.</p>
+<pre>LDA 2050H      ; Load number
+CMA            ; Complement every bit in A
+STA 2051H      ; Store result
+HLT</pre>
+<p><strong>Example:</strong> Input 55H = 01010101₂. Output AAH = 10101010₂.</p>
+<p><strong>Important:</strong> CMA complements all eight bits of the accumulator.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">6. Write an 8085 program to find the 2's complement of a number.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Find the two's complement of the byte at 2050H and store it at 2051H.</p>
+<pre>LDA 2050H      ; Load number
+CMA            ; Find 1's complement
+ADI 01H        ; Add 1
+STA 2051H      ; Store 2's complement
+HLT</pre>
+<p><strong>Formula:</strong> Two's complement = 1's complement + 1.</p>
+<p><strong>Example:</strong> For 05H, the 1's complement is FAH. FAH + 1 = FBH.</p>
+<p><strong>Application:</strong> Two's complement is used to represent negative integers in binary.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">7. Write an 8085 program to perform AND, OR and XOR operations.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Perform logical operations on bytes at 2050H and 2051H. Store results at 2052H, 2053H and 2054H.</p>
+<pre>LDA 2050H      ; First operand
+MOV B,A
+LDA 2051H      ; Second operand
+MOV C,A
+
+MOV A,B
+ANA C          ; AND
+STA 2052H
+
+MOV A,B
+ORA C          ; OR
+STA 2053H
+
+MOV A,B
+XRA C          ; XOR
+STA 2054H
+HLT</pre>
+<p><strong>Meaning:</strong></p>
+<ul><li><strong>AND:</strong> Output bit is 1 only if both input bits are 1.</li><li><strong>OR:</strong> Output bit is 1 if at least one input bit is 1.</li><li><strong>XOR:</strong> Output bit is 1 if the input bits are different.</li></ul>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">8. Write an 8051 program to add two 8-bit numbers.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Add numbers at internal RAM locations 30H and 31H. Store the low byte at 32H and carry at 33H.</p>
+<pre>MOV A,30H       ; Load first number
+ADD A,31H       ; Add second number
+MOV 32H,A       ; Store low byte
+MOV A,#00H      ; Clear accumulator
+ADDC A,#00H     ; Copy carry into bit 0
+MOV 33H,A       ; Store carry (00H or 01H)
+HERE: SJMP HERE ; Stop here</pre>
+<p><strong>Explanation:</strong> ADD performs 8-bit addition. If the result exceeds FFH, CY becomes 1. ADDC with zero copies CY into A.</p>
+<p><strong>Important:</strong> This program uses internal RAM addresses 30H–33H.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">9. Write an 8051 program to toggle an I/O pin continuously.</h3>
+<div class="answer">
+<p><strong>Aim:</strong> Continuously toggle pin P1.0.</p>
+<pre>AGAIN: CPL P1.0 ; Complement P1.0
+       ACALL DELAY
+       SJMP AGAIN
+
+DELAY: MOV R7,#200
+D1:    MOV R6,#250
+D2:    DJNZ R6,D2
+       DJNZ R7,D1
+       RET</pre>
+<p><strong>Explanation:</strong> CPL changes the pin from 0 to 1 or 1 to 0. Nested loops create a software delay, and SJMP repeats the operation.</p>
+<p><strong>Application:</strong> LED blinking and digital output testing.</p>
+<p><strong>Note:</strong> Actual delay depends on oscillator frequency and instruction timing.</p>
+</div>
+</section>
+
+<section class="qa">
+<h3 class="question">10. Explain the applications of microprocessors and microcontrollers.</h3>
+<div class="answer">
+<p><strong>Microprocessor applications:</strong></p>
+<ul><li>Personal computers and computing systems.</li><li>Data processing systems.</li><li>Communication equipment.</li><li>Industrial control systems.</li></ul>
+<p><strong>Microcontroller applications:</strong></p>
+<ul><li>Washing machines and microwave ovens.</li><li>Traffic-light controllers.</li><li>Temperature monitoring systems.</li><li>Embedded devices and simple robotics.</li></ul>
+<p><strong>Difference:</strong> A microprocessor generally needs external memory and peripherals to form a complete system. A microcontroller integrates CPU, memory and I/O peripherals on one chip for embedded control.</p>
+</div>
+</section>
+
+</main>
+</body>
 
 <style>
 :root {

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Microprocessors - Unit I & II</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Times New Roman",serif;background:#fff;color:#000;line-height:1.65;padding:25px}
+.container{max-width:850px;margin:auto}
+h1{text-align:center;font-size:24px;margin-bottom:8px}
+.subtitle{text-align:center;font-size:15px;margin-bottom:25px}
+h2{font-size:20px;margin:28px 0 18px;border-bottom:2px solid #000;padding-bottom:7px}
+h3{font-size:17px;margin:20px 0 7px}
+p,li{font-size:16px}
+p{margin-bottom:9px;text-align:justify}
+ul,ol{margin:5px 0 12px 30px}
+li{padding:2px 0}
+table{width:100%;border-collapse:collapse;margin:12px 0}
+th,td{border:1px solid #000;padding:10px;text-align:left;font-size:15px}
+th{background:#eee}
+.answer{margin-bottom:16px;break-inside:avoid}
+@media print{
+body{padding:15mm}
+.container{max-width:100%}
+h2,h3{break-after:avoid}
+.answer,table{break-inside:avoid}
+}
+@media screen{body{max-width:900px;margin:auto}}
+</style>
+</head>
+<body>
+<div class="container">
+
+<h1>MICROPROCESSORS – QUESTIONS AND ANSWERS</h1>
+<div class="subtitle">Anna University Examination Preparation</div>
+
+<h2>UNIT I – Introduction to Microprocessors, Microcontrollers and Architectures</h2>
+
+<p><b>These answers are prepared in simple, student-friendly language, suitable for writing in Anna University examinations.</b></p>
+
+<div class="answer">
+<h3>1. Define a microprocessor.</h3>
+<p>A microprocessor is a programmable electronic device that acts as the CPU of a computer system. It performs arithmetic, logical and control operations based on instructions given to it.</p>
+</div>
+
+<div class="answer">
+<h3>2. Define a microcontroller.</h3>
+<p>A microcontroller is a single-chip computer that contains a CPU, memory (RAM and ROM) and input/output (I/O) ports. It is mainly used in embedded systems.</p>
+</div>
+
+<div class="answer">
+<h3>3. Differentiate between a microprocessor and a microcontroller.</h3>
+<table>
+<tr><th>Microprocessor</th><th>Microcontroller</th></tr>
+<tr><td>Contains only CPU.</td><td>Contains CPU, memory and I/O ports.</td></tr>
+<tr><td>Requires external memory and peripherals.</td><td>Most components are available on a single chip.</td></tr>
+<tr><td>Used in computers.</td><td>Used in embedded systems.</td></tr>
+</table>
+</div>
+
+<div class="answer">
+<h3>4. Define an interrupt.</h3>
+<p>An interrupt is a signal that temporarily stops the normal execution of a program and makes the processor execute a special routine called the Interrupt Service Routine (ISR).</p>
+</div>
+
+<div class="answer">
+<h3>5. What is the function of the Program Counter?</h3>
+<p>The Program Counter (PC) is a special register that stores the address of the next instruction to be executed by the processor.</p>
+</div>
+
+<div class="answer">
+<h3>6. What is the function of the Stack Pointer?</h3>
+<p>The Stack Pointer (SP) is a special register that holds the address of the top of the stack in memory. It is used during subroutine calls, returns and interrupt handling.</p>
+</div>
+
+<div class="answer">
+<h3>7. Define an opcode and an operand.</h3>
+<ul>
+<li><b>Opcode:</b> Specifies the operation to be performed by the processor.</li>
+<li><b>Operand:</b> Specifies the data or address on which the operation is performed.</li>
+</ul>
+<p><b>Example:</b> In ADD A, B, ADD is the opcode and A, B are the operands.</p>
+</div>
+
+<div class="answer">
+<h3>8. What is meant by instruction execution cycle?</h3>
+<p>The instruction execution cycle is the sequence of steps performed by a processor to execute an instruction.</p>
+<p>It consists of three main stages:</p>
+<ol>
+<li><b>Fetch:</b> Retrieves the instruction from memory.</li>
+<li><b>Decode:</b> Identifies the operation to be performed.</li>
+<li><b>Execute:</b> Performs the specified operation.</li>
+</ol>
+</div>
+
+<h2>UNIT II – 8086 Microprocessor Architecture and Programming</h2>
+
+<div class="answer">
+<h3>1. What is a 16-bit microprocessor?</h3>
+<p>A 16-bit microprocessor is a processor that can process 16 bits of data at a time. It has 16-bit registers and an ALU to perform arithmetic and logical operations.</p>
+<p><b>Example:</b> Intel 8086 microprocessor.</p>
+</div>
+
+<div class="answer">
+<h3>2. List the important features of the 8086 microprocessor.</h3>
+<p>The important features of the 8086 microprocessor are:</p>
+<ol>
+<li>It is a 16-bit microprocessor.</li>
+<li>It has a 20-bit address bus.</li>
+<li>It can address up to 1 MB of memory.</li>
+<li>It has a 16-bit data bus.</li>
+<li>It has a 6-byte instruction queue.</li>
+<li>It supports pipelining.</li>
+<li>It operates in minimum and maximum modes.</li>
+</ol>
+</div>
+
+<div class="answer">
+<h3>3. Draw the block diagram of the 8086 microprocessor.</h3>
+<p>The 8086 microprocessor consists of two major functional units:</p>
+<ol>
+<li>Bus Interface Unit (BIU).</li>
+<li>Execution Unit (EU).</li>
+</ol>
+</div>
+
+<div class="answer">
+<h3>4. What is a Bus Interface Unit (BIU)?</h3>
+<p>The Bus Interface Unit (BIU) handles all bus operations such as instruction fetching, memory reading, memory writing and address generation. It also contains a 6-byte instruction queue.</p>
+</div>
+
+<div class="answer">
+<h3>5. What is an Execution Unit (EU)?</h3>
+<p>The Execution Unit (EU) decodes and executes instructions. It contains the ALU, control unit, general-purpose registers and flag register.</p>
+</div>
+
+<div class="answer">
+<h3>6. What is pipelining?</h3>
+<p>Pipelining is a technique in which instruction fetching and instruction execution are performed simultaneously to increase the speed of the processor.</p>
+</div>
+
+<div class="answer">
+<h3>7. What is an addressing mode?</h3>
+<p>An addressing mode specifies the way in which the operand is accessed or the location of the data required by an instruction.</p>
+</div>
+
+<div class="answer">
+<h3>8. List the different addressing modes of 8086.</h3>
+<ol>
+<li>Immediate addressing mode.</li>
+<li>Register addressing mode.</li>
+<li>Direct addressing mode.</li>
+<li>Register indirect addressing mode.</li>
+<li>Based addressing mode.</li>
+<li>Indexed addressing mode.</li>
+<li>Based indexed addressing mode.</li>
+<li>Based indexed with displacement addressing mode.</li>
+<li>Relative addressing mode.</li>
+<li>Implied addressing mode.</li>
+</ol>
+</div>
+
+<div class="answer">
+<h3>9. Define an assembler.</h3>
+<p>An assembler is a system software that converts an assembly language program into machine language (object code) that can be executed by the processor.</p>
+</div>
+
+<div class="answer">
+<h3>10. What is an assembly language program?</h3>
+<p>An assembly language program is a set of instructions written using mnemonic codes and symbolic addresses to perform a specific task.</p>
+<p><b>Examples:</b> MOV, ADD, SUB and JMP.</p>
+</div>
+
+<div class="answer">
+<h3>11. Differentiate between CALL and JMP instructions.</h3>
+<table>
+<tr><th>CALL</th><th>JMP</th></tr>
+<tr><td>Transfers control to a subroutine.</td><td>Transfers control to another location.</td></tr>
+<tr><td>Saves the return address on the stack.</td><td>Does not save the return address.</td></tr>
+<tr><td>Returns using RET instruction.</td><td>No automatic return mechanism.</td></tr>
+</table>
+</div>
+
+<div class="answer">
+<h3>12. What is a flag register?</h3>
+<p>The flag register is a 16-bit register that indicates the status of the result of arithmetic and logical operations and controls certain processor operations.</p>
+<p><b>Examples of flags:</b></p>
+<ul>
+<li>Carry Flag (CF)</li>
+<li>Zero Flag (ZF)</li>
+<li>Sign Flag (SF)</li>
+<li>Overflow Flag (OF)</li>
+<li>Parity Flag (PF)</li>
+</ul>
+</div>
+
+<div class="answer">
+<h3>13. What is meant by minimum mode and maximum mode in 8086?</h3>
+<p><b>Minimum Mode:</b> The 8086 operates in a single-processor system and generates control signals directly.</p>
+<p><b>Maximum Mode:</b> The 8086 operates in a multiprocessor system and uses an external bus controller (8288) to generate control signals.</p>
+</div>
+
+</div>
+</body>
+</html>
